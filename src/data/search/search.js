@@ -1,5 +1,5 @@
 const getSearchData = async () => {
-    const response = await fetch('http://localhost:3123/data/search/pre-load');
+    const response = await fetch('https://logos-server-j2ld.onrender.com/data/search/pre-load');
     const data = await response.json();
     return data;
 }

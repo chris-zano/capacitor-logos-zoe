@@ -1,5 +1,5 @@
 const getTodaysDevotional = async () => {
-    const response = await fetch('http://localhost:3123/devotionals/today');
+    const response = await fetch('https://logos-server-j2ld.onrender.com/devotionals/today');
     const data = await response.json();
     return data;
 }
