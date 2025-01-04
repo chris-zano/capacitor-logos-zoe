@@ -1,8 +1,9 @@
-
+import Partnership from "../../Components/DonateComponents/PartnershipComponent.jsx";
+import '../../styles/donate.css'
 const DonatePage = () => {
     return (
       <div>
-        <h1>Donate Page</h1>
+        <Partnership />
       </div>
     );
   };

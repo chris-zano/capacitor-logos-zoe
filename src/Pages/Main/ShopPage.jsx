@@ -1,10 +1,22 @@
+import React from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import '../../styles/shop.css'
+import Landing from '../../Components/ShopComponents/LandingComponent.jsx';
+import Checkout from '../../Components/ShopComponents/CheckoutComponent.jsx';
+import Details from '../../Components/ShopComponents/DetailsComponent.jsx';
 
 const ShopPage = () => {
-    return (
-      <div>
-        <h1>Shop Page</h1>
-      </div>
-    );
-  };
-  
-  export default ShopPage;
+  const location = useLocation();
+  console.log(location.pathname);
+  const fileUrl = location.pathname === '/shop' ? 'shop' : location.pathname.split('/')[2];
+
+  return (
+    <div className="shop-page">
+      {fileUrl === 'shop' && <Landing />}
+      {fileUrl === 'landing' && <Landing />}
+      {fileUrl === 'details' && <Details />}
+    </div>
+  );
+};
+
+export default ShopPage;

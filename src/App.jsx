@@ -15,6 +15,10 @@ import ShopPage from "./Pages/Main/ShopPage.jsx";
 import DonatePage from "./Pages/Main/DonatePage.jsx";
 import ProfilePage from "./Pages/Profile/ProfilePage.jsx";
 import SearchPage from "./Pages/Search/SearchPage.jsx";
+import Landing from "./Components/ShopComponents/LandingComponent.jsx";
+import Details from "./Components/ShopComponents/DetailsComponent.jsx";
+import Checkout from "./Components/ShopComponents/CheckoutComponent.jsx";
+import DonationPage from "./Components/DonateComponents/DonationComponent.jsx";
 
 function App() {
   return (
@@ -37,7 +41,7 @@ function App() {
         <Route path="/" element={<AuthenticatedLayout />}>
           <Route index element={<HomePage />} />
           {/* Broadcasts Route */}
-          <Route path="/broadcast"  element={<BroadcastPage />}>
+          <Route path="/broadcast" element={<BroadcastPage />}>
             <Route path="podcasts" element={<BroadcastPage />} />
             <Route path="word-of-power" element={<BroadcastPage />} />
             <Route path="wisdom-nuggets" element={<BroadcastPage />} />
@@ -46,11 +50,16 @@ function App() {
             <Route path="testimony-of-jesus" element={<BroadcastPage />} />
           </Route>
           <Route path="explore" element={<ExplorePage />} />
-          <Route path="shop" element={<ShopPage />} />
+          <Route path="shop" element={<ShopPage />}>
+            <Route path="landing" element={<ShopPage />} />
+            <Route path="details/:id" element={<ShopPage />} />
+            <Route path="checkout" element={<ShopPage />} />
+          </Route>
           <Route path="donate" element={<DonatePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="search" element={<SearchPage />} />
         </Route>
+          <Route path="donations/donate" element={<DonationPage />} />
 
         {/* <Route path="/broadcast"  /> */}
 

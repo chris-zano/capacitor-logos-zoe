@@ -1,0 +1,121 @@
+.nav-tabs {
+    position: fixed;
+    top: 4rem;
+    left: 2ch;
+    right: 2ch;
+    border-radius: 1ch;
+    padding: 0ch;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 2px 10px #e0e0e073;
+    z-index: 10001;
+}
+.nav-tabs button {
+    outline: none;
+    border: none;
+    background-color: var(--white);
+    font-family: Raleway;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center;
+    padding: 0.9ch 0;
+    transition: all ease-in-out 350ms;
+}
+
+.nav-tabs button.left-tab {
+    border-right: 1px solid #3ecd1e;
+    border-bottom-left-radius: 1ch;
+    border-top-left-radius: 1ch;
+}
+
+.nav-tabs button.right-tab {
+    border-bottom-right-radius: 1ch;
+    border-top-right-radius: 1ch;
+}
+
+.nav-tabs button.focused {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--green);
+}
+
+/* partnership Articles */
+
+.partnership {
+    margin-top: 4ch;
+    padding: 1ch;
+}
+
+.articles-group .p-article {
+    background-color: white;
+    border-radius: 2ch;
+    padding: 1ch 2ch;
+    margin: 1ch;
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
+
+.articles-group .p-article img {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 2ch;
+    object-fit: cover;
+    object-position: center;
+}
+
+.articles-group .p-article .p-title {
+    font-family: inter;
+    font-weight: 500;
+    margin-bottom: 1ch;
+}
+
+details {
+    margin-block: 1ch 0;
+}
+
+.expandable {
+    display: flex;
+    flex-direction: column;
+}
+
+.donate-btn {
+    width: fit-content;
+    margin-block: 1ch 0;
+    padding: .5ch 1.5ch;
+    background-color: #3ecd1e;
+    text-align: center;
+    font-family: inter;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--white);
+    border-radius: 2ch;
+}
+
+.options-group {
+    padding: 1ch;
+}
+
+.options-group ul {
+    padding: 0;
+    margin: 0;
+}
+
+.options-group li {
+    background-color: white;
+    border-radius: 2ch;
+    padding: 2ch;
+    margin: 1ch 0;
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
+
+
+.options-group li img {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 2ch;
+    object-fit: cover;
+    object-position: center;
+}
