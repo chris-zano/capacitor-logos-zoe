@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import WelcomePage from "./Pages/Welcome/WelcomePage.jsx";
 import SignInPage from "./Pages/Auth/SignInPage.jsx";
 import SignUpPage from "./Pages/Auth/SignUpPage.jsx";
@@ -36,13 +36,24 @@ function App() {
         {/* Authenticated Layout */}
         <Route path="/" element={<AuthenticatedLayout />}>
           <Route index element={<HomePage />} />
+          {/* Broadcasts Route */}
+          <Route path="/broadcast"  element={<BroadcastPage />}>
+            <Route path="podcasts" element={<BroadcastPage />} />
+            <Route path="word-of-power" element={<BroadcastPage />} />
+            <Route path="wisdom-nuggets" element={<BroadcastPage />} />
+            <Route path="motivationals" element={<BroadcastPage />} />
+            <Route path="inspirational" element={<BroadcastPage />} />
+            <Route path="testimony-of-jesus" element={<BroadcastPage />} />
+          </Route>
           <Route path="explore" element={<ExplorePage />} />
-          <Route path="broadcast" element={<BroadcastPage />} />
           <Route path="shop" element={<ShopPage />} />
           <Route path="donate" element={<DonatePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="search" element={<SearchPage />} />
         </Route>
+
+        {/* <Route path="/broadcast"  /> */}
+
       </Routes>
     </Router>
   );

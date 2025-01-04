@@ -1,0 +1,62 @@
+/* explore grid */
+
+
+div.explore-title {
+    margin: 0.5ch;
+    padding: 0.5ch 1ch;
+}
+
+div.explore-title h2 {
+    font-size: 1.5rem;
+}
+
+div.explore-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1ch;
+}
+
+div.explore-grid div.grid-card {
+    height: 135px;
+    background-color: var(--white);
+    border-radius: 1ch;
+    padding: 1.5ch 1ch;
+    border-radius: 2ch;
+    background-color: var(--white);
+}
+
+div.explore-grid div.grid-card .card-icon i {
+    padding: ch 2ch;
+    font-size: 22px;
+}
+
+div.explore-grid div.grid-card .card-title p {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+div.explore-grid div.grid-card .card-description p {
+    font-size: 13px;
+    color: var(--text);
+    opacity: 0.5;
+}
+
+div.explore-grid div.grid-card {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: opacity, transform;
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

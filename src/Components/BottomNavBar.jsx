@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const BottomNavBarComponent = () => {
     const location = useLocation();
     const currentPath = location.pathname;
-    console.log(currentPath);
 
     const navItems = [
         { name: 'Home', icon: 'home', path: '/' },
