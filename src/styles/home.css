@@ -1,0 +1,440 @@
+
+
+section#daily-verse {
+    margin-block: 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: .4ch;
+    padding: 2ch;
+    border-radius: 2ch;
+    background-color: var(--white);
+}
+
+section#daily-verse .verse-card .title-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text);
+}
+
+section#daily-verse .verse-card .verse-date {
+    font-size: 13px;
+    font-weight: light;
+    margin-top: .5ch;
+    font-family: inter;
+}
+
+section#daily-verse .verse-card .verse-ref,
+section#daily-verse .verse-card .verse-ref a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: light;
+    margin-bottom: 1ch;
+    font-family: inter;
+    color: var(--pink);
+}
+
+section#daily-verse .verse-card .insp-text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 3ch;
+}
+
+section#daily-verse .verse-card .verse {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: .4ch;
+}
+
+section#daily-verse .verse-actions {
+    margin-top: 2ch;
+    display: flex;
+    justify-content: end;
+    gap: 2ch;
+}
+
+section#daily-verse .verse-actions button {
+    outline: none;
+    background-color: unset;
+    border: none;
+    box-shadow: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+section#daily-verse .verse-actions button svg {
+    font-size: 22px;
+}
+
+span#notice {
+    margin-top: 1ch;
+    font-size: 0.5rem;
+    font-family: inter;
+}
+
+
+.podcast-list {
+    margin-top: 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: .4ch;
+    padding: 1ch;
+    border-radius: 2ch;
+    background-color: var(--white);
+}
+
+.podcast-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.podcast-header h2.section-title {
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+.podcast-header div a {
+    background-color: white;
+    padding: 1ch 1.2ch;
+    border: 1px solid var(--theme-background);
+    border-radius: 1ch;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+}
+
+.podcast-header div a span {
+    font-size: 13px;
+    color: var(--text);
+}
+
+.podcast-header div a svg {
+    display: none;
+    color: var(--theme-icon);
+}
+
+.podcast-list .podcast-item svg {
+    color: #0087f5;
+}
+
+@media screen and (max-width: 380px) {
+    .podcast-header h2.section-title {
+        text-transform: capitalize;
+        font-size: 0.6rem;
+        font-weight: 600;
+    }
+
+    .podcast-header div a span {
+        font-size: 13px;
+        color: var(--text);
+    }
+}
+
+.podcast-list .podcast-item {
+    display: flex;
+    align-items: center;
+    padding: 0 2ch 1ch 1ch;
+}
+
+.podcast-list .podcast-item .p-image {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 1ch;
+}
+
+.p-image img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1ch;
+}
+
+.podcast-item .podcast-details {
+    margin-inline: 1.2ch;
+    display: block;
+    flex-direction: column;
+}
+
+.podcast-details .p-title {
+    font-weight: bold;
+    margin-bottom: 0.5ch;
+    font-size: 0.9rem;
+}
+
+.podcast-details .p-description {
+    font-size: 0.6rem;
+}
+
+section#recommended-readings {
+    margin-top: 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+    padding: 1ch;
+    border-radius: 2ch;
+    background-color: var(--white);
+}
+
+
+section#recommended-readings div.reading-articles {
+    display: flex;
+    gap: 1rem;
+    padding: 0 2ch 2ch 1ch;
+    overflow-x: scroll;
+}
+section#recommended-readings div.reading-articles a.reading-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2ch;
+    width: 9rem;
+}
+
+a.reading-card div.r-card-img {
+    background-color: black;
+    width: 9rem;
+    height: 11rem;
+    border-radius: 1.5ch;
+}
+
+a.reading-card div.r-card-img img {
+    width: 9rem;
+    height: 11rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1.5ch;
+    border: 1px solid var(--theme-background);
+}
+
+a.reading-card div.card-info {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.rc-author-datetime small {
+    color: #5d809ccc;
+}
+
+section#symbols {
+    margin-top: 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: .4ch;
+    padding: 1ch;
+    border-radius: 2ch;
+    background-color: var(--white);
+}
+
+a.related-article-card {
+    display: flex;
+    align-items: center;
+    padding: 0 2ch 1ch 1ch;
+}
+
+a.related-article-card img {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 1ch;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid var(--theme-background);
+}
+
+a.related-article-card .article-details {
+    margin-inline: 1.2ch;
+    display: block;
+    flex-direction: column;
+}
+
+a.related-article-card .article-details h3 {
+    font-weight: bold;
+    margin-bottom: 0.5ch;
+    font-size: 0.9rem;
+}
+
+a.related-article-card .article-details small {
+    font-family: inter;
+    font-size: 0.6rem;
+    color: var(--theme-icon);
+}
+
+section#testimonies {
+    border-radius: 1ch;
+    margin-block: 2ch;
+    margin-top: 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: .4ch;
+    padding: 1ch;
+    border-radius: 2ch;
+    background-color: var(--white);
+}
+
+.testimony-list {
+    margin-top: 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: .4ch;
+    padding: 1ch;
+    border-radius: 2ch;
+    background-color: var(--white);
+}
+
+.testimony-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.testimony-header h2.section-title {
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+.testimony-header div a {
+    background-color: white;
+    padding: 1ch 1.2ch;
+    border: 1px solid var(--theme-background);
+    border-radius: 1ch;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+}
+
+.testimony-header div a span {
+    font-size: 13px;
+    color: var(--text);
+}
+
+.testimony-header div a svg {
+    display: none;
+    color: var(--theme-icon);
+}
+
+.testimony-list .testimony-item {
+    display: flex;
+    align-items: center;
+    padding: 0 2ch 1ch 1ch;
+}
+
+.testimony-list .testimony-item .p-image {
+    height: 60px;
+    width: 60px;
+    border-radius: 1ch;
+}
+
+.p-image img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1ch;
+}
+
+.testimony-item .testimony-details {
+    margin-inline: 1.2ch;
+    display: block;
+    flex-direction: column;
+}
+
+.testimony-details .p-title {
+    font-weight: bold;
+    margin-bottom: 0.5ch;
+    font-size: 0.9rem;
+}
+
+.testimony-details .p-description {
+    font-size: 0.6rem;
+}
+
+.testimonial-card {
+    position: relative;
+}
+
+.testimony-list .testimony-play-icon {
+    position: absolute;
+    top: 0;
+    right: 2ch;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimony-list .testimony-item svg {
+    color: #0087f5;
+}
+
+
+
+.devotional-daily {
+    margin-top: 0.5ch;
+    background-color: var(--white);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    border-radius: 2ch;
+  }
+  
+  .devotional-daily img {
+    padding: 0.5ch;
+    height: 250px;
+    width: 100%;
+    border-radius: 2ch;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .devotional-daily .devotional-details {
+    padding: 0 1ch 2ch 1ch;
+  }
+  
+  .devotional-daily span.top-text {
+    font-weight: bold;
+    color: var(--text);
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .devotional-daily div.date {
+    font-size: 14px;
+    margin-block: 0.7rem;
+    font-family: inter;
+    font-weight: bold;
+    color: var(--gray-dark);
+  }
+  
+  .devotional-daily .bottom-row {
+    padding: 0 1ch 2ch 1ch;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .devotional-daily span.read-now {
+    font-family: inter;
+    margin-top: 0.6rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-dark);
+  }
+  
+  .devotional-daily .actions {
+    display: flex;
+    align-items: end;
+    gap: 1.5rem;
+    margin-right: 1rem;
+  }
+  
+  .devotional-daily .actions svg {
+    color: var(--text);
+    fill: var(--white);
+    font-size: 1.4rem;
+  }
