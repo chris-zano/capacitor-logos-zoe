@@ -12,9 +12,10 @@ dependencies {
     implementation project(':capacitor-app')
     implementation project(':capacitor-local-notifications')
     implementation project(':capacitor-share')
-
+    implementation "androidx.lifecycle:lifecycle-runtime:2.4.+"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.+"
 }
-
+apply from: "../../node_modules/cordova-plugin-background-fetch/src/android/build.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

@@ -72,7 +72,7 @@ const VideoPlayerPage = ({ match }) => {
                                         data_to_share={{
                                             title: video.video_title,
                                             text: video.video_title,
-                                            url: video.video_fullText.match(/src="(https:\/\/[^"]+)"/)[1].replace('embed', ''),
+                                            url: video.video_fullText.match(/src="(https:\/\/[^"]+)"/)[1],
                                         }}
                                     />
                                 </div>

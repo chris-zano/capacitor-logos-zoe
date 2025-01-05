@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import getCategoryById from "../../data/explore/get_category_by_id.js";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faArrowLeft, faShareNodes } from '@fortawesome/free-solid-svg-icons';
+import ShareApi from '../../NativeApis/Share.jsx';
 
 const CategoryArticle = () => {
     const { id } = useParams();
@@ -54,7 +55,17 @@ const CategoryArticle = () => {
                     <section className="top-header">
                         <div className="date-time">
                             <p>{new Date(updatedAt).toLocaleDateString('en-UK', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                            <FontAwesomeIcon icon={faHeart} style={{ color: 'var(--text)' }} />
+                            <span style={{ display: 'flex', gap: '2rem' }}>
+                                <ShareApi
+                                    button_text={<FontAwesomeIcon icon={faShareNodes} style={{ color: "var(--text)" }} />}
+                                    data_to_share={{
+                                        title: category_name,
+                                        text: category_fullText,
+                                        url: "https://chris-zano.github.io/store.logos/",
+                                    }}
+                                />
+                                <FontAwesomeIcon icon={faHeart} style={{ color: "var(--text)" }} />
+                            </span>
                         </div>
                         <div className="article-title" id="article-title">{category_introText}</div>
                         <div className="author">

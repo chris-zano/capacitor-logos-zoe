@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { App as CapacitorApp } from "@capacitor/app"
 import WelcomePage from "./Pages/Welcome/WelcomePage.jsx";
@@ -31,6 +31,18 @@ import VideoPlayerPage from "./Pages/Videos/VideoPlayerPage.jsx";
 import NotificationApi from "./NativeApis/Notifications.jsx";
 
 function App() {
+  useEffect(() => {
+    // Listen for the backButton event
+    CapacitorApp.addListener("backButton", (event) => {
+      // Prevent app from closing on back press
+      window.history.back();
+    });
+
+    // Clean up the event listener when component unmounts
+    return () => {
+      CapacitorApp.removeAllListeners();
+    };
+  }, []);
   return (
     <Router>
       <NotificationApi />

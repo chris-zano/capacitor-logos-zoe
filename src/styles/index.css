@@ -1094,3 +1094,27 @@ section.related-section {
   color: #ff4d4d;
   margin-bottom: 15px;
 }
+
+.related-videos-grid {
+  display: grid;
+  gap: 0.3rem;
+  width: 100%;
+}
+.video-card {
+  width: 100%;
+  background-color: var(--white);
+  text-decoration: none;
+  border-radius: 1ch;
+  color: inherit;
+  display: block;
+}
+.video-thumbnail {
+  border-radius: 1ch;
+  position: relative;
+}
+.video-thumbnail img {
+  border-radius: 1ch;
+  width: 100%;
+  height: auto;
+  display: block;
+}

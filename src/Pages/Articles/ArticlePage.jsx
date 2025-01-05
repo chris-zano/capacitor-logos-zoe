@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faArrowLeft, faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import getArticleById from "../../data/articles/get_article_by_id.js";
+import ShareApi from "../../NativeApis/Share.jsx";
 
 const ArticlePage = () => {
   const { id } = useParams();
@@ -52,7 +53,17 @@ const ArticlePage = () => {
                     year: "numeric",
                   }).format(new Date(article.updatedAt))}
                 </p>
-                <FontAwesomeIcon icon={faHeart} style={{ color: "var(--text)" }} />
+                <span style={{display: 'flex', gap: '2rem'}}>
+                  <ShareApi 
+                    button_text={<FontAwesomeIcon icon={faShareNodes} style={{ color: "var(--text)" }} />}
+                    data_to_share={{
+                      title: article.article_title,
+                      text: article.article_fullText,
+                      url: "https://chris-zano.github.io/store.logos/",
+                    }}
+                  />
+                  <FontAwesomeIcon icon={faHeart} style={{ color: "var(--text)" }} />
+                </span>
               </div>
               <div className="article-title" id="article-title">
                 {article.article_title}
@@ -70,7 +81,7 @@ const ArticlePage = () => {
             </section>
 
             <section className="message">
-              <p id="article-message" dangerouslySetInnerHTML={{__html:article.article_fullText}}></p>
+              <p id="article-message" dangerouslySetInnerHTML={{ __html: article.article_fullText }}></p>
             </section>
           </article>
 

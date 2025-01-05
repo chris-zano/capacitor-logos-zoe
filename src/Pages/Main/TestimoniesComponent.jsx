@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import getVideosByCategoryName from '../../data/videos/get_videos_by_category_name.js';
+import { NavLink } from 'react-router-dom';
 
 const TestimoniesComponent = () => {
     const [testimonies, setTestimonies] = useState([]);
@@ -26,7 +27,7 @@ const TestimoniesComponent = () => {
             </div>
 
             {testimonies.map((testimony) => (
-                <a key={testimony._id} className="testimonial-card">
+                <NavLink to={`/videos/video/${testimony._id}/${testimony.category}`} key={testimony._id} className="testimonial-card">
                     <div id={testimony._id} className="testimony-item">
                         <div className="p-image">
                             <img src={testimony.video_image} alt={testimony.video_title} />
@@ -45,7 +46,7 @@ const TestimoniesComponent = () => {
                             </span>
                         </div>
                     </div>
-                </a>
+                </NavLink>
             ))}
         </div>
     );

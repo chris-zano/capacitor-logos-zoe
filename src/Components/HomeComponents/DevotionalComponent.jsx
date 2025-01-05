@@ -70,7 +70,7 @@ function DevotionalComponent() {
                                 {
                                     title: "Todays Devotional",
                                     text: `Start Your day with the Word of God`,
-                                    url: `${BASEURL}/devotionals/devotional/${devotional._id}`,
+                                    url: `https://chris-zano.github.io/store.logos/`,
                                     dialogTitle: "Share with friends",
                                 }
                             }
