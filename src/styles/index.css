@@ -1053,20 +1053,20 @@ section.related-section {
   margin-bottom: 1rem;
 }
 
-.input-group {
+.verification-container .input-group {
   margin-bottom: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.input-group label {
+.verification-container .input-group label {
   display: block;
   margin-bottom: 5px;
   color: #555555;
 }
 
-.input-group input {
+.verification-container .input-group input {
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #dddddd;
@@ -1075,7 +1075,7 @@ section.related-section {
   font-family: Raleway;
 }
 
-.input-group input:focus {
+.verification-container .input-group input:focus {
   border-color: #4CAF50;
 }
 

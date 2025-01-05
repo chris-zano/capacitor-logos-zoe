@@ -60,6 +60,7 @@ const VerifyCodePage = () => {
             placeholder="Enter your code"
             value={verificationCode}
             onChange={(e) => setVerificationCode(e.target.value)}
+            style={{}}
             required
           />
         </div>
