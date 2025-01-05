@@ -1,0 +1,72 @@
+div.years {
+    width: 70%;
+    margin: 1ch auto 0;
+    padding: 1ch 2ch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-weight: bold;
+    color: var(--text);
+}
+
+div.years select {
+    border-radius: 2ch;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    outline: none;
+    border: none;
+    background-color: var(--white);
+    padding: 1ch 2ch;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.year-section ul {
+    padding: 0;
+    margin: 0;
+}
+
+.year-section ul li {
+    background-color: var(--white);
+    box-shadow: 0px 3px 30px #d1d1d07a;
+    margin-bottom: 2ch;
+    padding: 2ch;
+    width: 80%;
+    margin-inline: auto;
+    border-radius: 2ch;
+}
+
+.year-section ul li a {
+    display: flex;
+    gap: 1rem;
+}
+
+.year-section ul li a img {
+    height: 75px;
+    width: 70px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2ch;
+}
+
+.year-section ul li a div  p {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.year-section ul li a div button {
+    outline: none;
+    border: none;
+    border-radius: 2ch;
+    padding: 1ch 2ch;
+    background-color: var(--purple);
+    color: var(--white);
+    text-align: center;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}

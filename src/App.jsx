@@ -19,18 +19,25 @@ import Landing from "./Components/ShopComponents/LandingComponent.jsx";
 import Details from "./Components/ShopComponents/DetailsComponent.jsx";
 import Checkout from "./Components/ShopComponents/CheckoutComponent.jsx";
 import DonationPage from "./Components/DonateComponents/DonationComponent.jsx";
+import DevotionalPage from "./Pages/Devotional/DevotionalPage.jsx";
+import CategoryChapter from "./Pages/Categories/CategoriesChaptes.jsx";
+import CategoryContent from "./Pages/Categories/CategoryContent.jsx";
+import CategoryArticle from "./Pages/Categories/CategoryArticle.jsx";
+import ArticlePage from "./Pages/Articles/ArticlePage.jsx";
+import PrayerRequestForm from "./Pages/PrayerCenter/PrayerCenter.jsx";
+import Devotionals from "./Pages/Devotional/Devotionals.jsx";
 
 function App() {
   return (
     <Router>
       <Routes>
         {/* Welcome Route */}
-        <Route path="/welcome" element={<WelcomePage />} />
 
         {/* Auth Routes */}
         <Route path="/auth">
-          <Route path="sign-in" element={<SignInPage />} />
-          <Route path="sign-up" element={<SignUpPage />} />
+          <Route path="welcome" element={<WelcomePage />} />
+          <Route path="login" element={<SignInPage />} />
+          <Route path="register" element={<SignUpPage />} />
           <Route path="forgot-password" element={<ForgotPasswordPage />} />
           <Route path="verify-code" element={<VerifyCodePage />} />
           <Route path="verify-email" element={<VerifyEmailPage />} />
@@ -59,7 +66,15 @@ function App() {
           <Route path="profile" element={<ProfilePage />} />
           <Route path="search" element={<SearchPage />} />
         </Route>
-          <Route path="donations/donate" element={<DonationPage />} />
+        <Route path="donations/donate" element={<DonationPage />} />
+        <Route path="/devotionals/devotional/:id" element={<DevotionalPage />} />
+        <Route path="/categories/:id" element={<CategoryContent />} />
+        <Route path="/categories/article/:id" element={<CategoryArticle />} />
+        <Route path="/categories/chapters/:id" element={<CategoryChapter />} />
+        <Route path="/articles/article/:id" element={<ArticlePage />} />
+        <Route path="/prayer-center" element={<PrayerRequestForm />} />
+        <Route path="/devotionals" element={<Devotionals />} />
+        
 
         {/* <Route path="/broadcast"  /> */}
 

@@ -1,9 +1,4 @@
 .shop_container {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    bottom: 80px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;

@@ -24,7 +24,7 @@ const Symbols = () => {
             <div className="podcast-header">
                 <h2 className="section-title">Dream Symbols & Meanings</h2>
                 <div>
-                    <a href="/categories/category/6738d8443f1e3fb8e113c0b9">
+                    <a href="/explore">
                         <span>See More</span>
                         <i className="fa-solid fa-arrow-right"></i>
                     </a>

@@ -1,10 +1,106 @@
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import getSearchData from '../../data/search/search.js'; // Import your search data fetching function
 
 const SearchPage = () => {
-    return (
-      <div>
-        <h1>Search Page</h1>
-      </div>
+  const [searchResults, setSearchResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    const fetchSearchData = async () => {
+      try {
+        const data = await getSearchData();
+        setSearchResults(data.search_data);
+        setFilteredResults(data.search_data);
+        setLoading(false);
+      } catch (err) {
+        setError('Error loading search results');
+        setLoading(false);
+      }
+    };
+
+    fetchSearchData();
+  }, []);
+
+  const handleSearch = (event) => {
+    const input = event.target.value.toLowerCase();
+    setQuery(input);
+
+    const filtered = searchResults.filter(result =>
+      result.title.toLowerCase().includes(input) || result.content.toLowerCase().includes(input)
     );
+
+    setFilteredResults(filtered);
   };
-  
-  export default SearchPage;
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  return (
+    <>
+      {/* Search Bar */}
+      <div style={{ position: 'relative' }}>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={query}
+          onChange={handleSearch}
+          style={{
+            width: '90vw',
+            margin: '10px',
+            padding: '1rem 0',
+            fontSize: '16px',
+            textIndent: '1ch',
+            borderRadius: '50px',
+            outline: 'none',
+            border: '1px solid #ccc'
+          }}
+        />
+      </div>
+
+      {/* Search Results */}
+      {query && (
+        <div style={{ marginTop: '20px' }}>
+          {filteredResults.length === 0 ? (
+            <p>No results found</p>
+          ) : (
+            filteredResults.map(result => (
+              <div key={result.id} style={{ marginBottom: '15px' }}>
+                <NavLink to={`/${result.type}s/${result.type}/${result.id}`} style={{ textDecoration: 'none', color: '#000' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: '10px',
+                      width: '90vw',
+                      backgroundColor: '#fff',
+                      borderRadius: '2ch'
+                    }}
+                  >
+                    <img src={result.image} alt={result.title} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
+                    <div>
+                      <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>
+                        {result.title.length > 20 ? `${result.title.slice(0, 20)}...` : result.title}
+                      </h3>
+                      <p style={{ margin: 0, fontSize: '14px', color: '#555' }} dangerouslySetInnerHTML={{ __html: result.content.length > 50 ? `${result.content.slice(0, 50)}...` : result.content }}></p>
+                    </div>
+                  </div>
+                </NavLink>
+              </div>
+            ))
+          )}
+        </div>
+      )}
+    </>
+  );
+};
+
+export default SearchPage;

@@ -32,7 +32,7 @@ const PodcastComponent = () => {
             <div className="podcast-header">
                 <h2 className="section-title">Listen Now</h2>
                 <div>
-                    <a href="/podcasts">
+                    <a href="/broadcast">
                         <span>View All</span>
                         <FontAwesomeIcon icon={faArrowRight} />
                     </a>

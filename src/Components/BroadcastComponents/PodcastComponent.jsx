@@ -11,7 +11,7 @@ const Podcasts = ({data_source}) => {
     const fetchPodcasts = async () => {
       try {
         const data = await data_source();
-        setPodcasts(data.podcasts ? data.podcasts : data.word);
+        setPodcasts(data.podcasts ? data.podcasts : data.word.reverse());
       } catch (error) {
         console.error('Failed to fetch podcasts:', error);
       }

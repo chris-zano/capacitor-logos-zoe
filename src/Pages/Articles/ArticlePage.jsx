@@ -1,10 +1,192 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import getArticleById from "../../data/articles/get_article_by_id.js";
 
 const ArticlePage = () => {
-    return (
+  const { id } = useParams();
+  const [articleData, setArticleData] = useState(null);
+
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const data = await getArticleById(id);
+        console.log(data);
+        setArticleData(data);
+      } catch (error) {
+        console.error("Error fetching article data:", error);
+      }
+    };
+    fetchArticle();
+  }, [id]);
+
+  if (!articleData) {
+    return <p>Loading...</p>;
+  }
+
+  const { article, comments, relatedArticles } = articleData;
+  console.log(article);
+
+  return (
+    <>
+      <header>
+        <div id="read-appbar">
+          <div className="row">
+            <button onClick={() => window.history.back()}>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+          </div>
+        </div>
+      </header>
       <div>
-        <h1>Article Page</h1>
+        {/* Article Section */}
+        <main>
+          <article className="a-chapter">
+            <section className="top-header">
+              <div className="date-time">
+                <p>
+                  {new Intl.DateTimeFormat("en-UK", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  }).format(new Date(article.updatedAt))}
+                </p>
+                <FontAwesomeIcon icon={faHeart} style={{ color: "var(--text)" }} />
+              </div>
+              <div className="article-title" id="article-title">
+                {article.article_title}
+              </div>
+              <div className="author">
+                <div className="circle-avatar">
+                  <img src={article.article_image} alt="Author Avatar" />
+                </div>
+                <div className="author-name">Rev. Alex Buaben Korsah</div>
+              </div>
+            </section>
+
+            <section className="image">
+              <img src={article.article_image} alt="Article" />
+            </section>
+
+            <section className="message">
+              <p id="article-message" dangerouslySetInnerHTML={{__html:article.article_fullText}}></p>
+            </section>
+          </article>
+
+          {/* Comment Section
+      <section className="comment-section" style={{ paddingInline: "2ch", marginTop: "2ch" }}>
+        <h4>Leave a Comment</h4>
+        <form
+          method="post"
+          action={`/comment-article/${article._id}`}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <input
+            type="text"
+            name="comment"
+            placeholder="Add a comment"
+            style={{
+              marginBottom: "1ch",
+              padding: "1.2rem 2ch",
+              borderRadius: "2ch",
+              outline: "unset",
+              border: "1px solid var(--theme-icon)",
+              fontFamily: "Inter",
+            }}
+            required
+          />
+          <button
+            type="submit"
+            style={{
+              background: "var(--primary)",
+              border: "1ch solid var(--primary)",
+              color: "var(--white)",
+              padding: "1ch 2ch",
+              borderRadius: "2ch",
+            }}
+          >
+            Post
+          </button>
+        </form>
+      </section> */}
+
+          {/* Comments List */}
+          {/* <section className="comments-list">
+        {comments && comments.length > 0 ? (
+          <>
+            <div className="comments-header">
+              <h3>Comments</h3>
+              <p>
+                {comments.length} comment{comments.length > 1 ? "s" : ""}
+              </p>
+            </div>
+            {comments.map((comment, index) => (
+              <div className="comment" key={index}>
+                <div className="comment-author">
+                  <div className="circle-avatar">
+                    <img src="/default-avatar.jpg" alt="avatar" />
+                  </div>
+                  <div className="author-name">{comment.author || "Anonymous"}</div>
+                </div>
+                <div className="comment-message">
+                  <p>{comment.message}</p>
+                </div>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className="no-comments">
+            <p>No comments yet. Be the first to leave one!</p>
+          </div>
+        )}
+      </section> */}
+        </main>
+
+        {/* Recommended Readings */}
+        <section id="recommended-readings">
+          {relatedArticles && relatedArticles.length > 0 ? (
+            <>
+              <h2>Continue Reading</h2>
+              <div className="reading-articles">
+                {relatedArticles.map((related, index) => (
+                  <a
+                    href={`/articles/article/${related._id}/`}
+                    className="reading-card"
+                    key={index}
+                  >
+                    <div className="r-card-img">
+                      <img src={related.article_image} alt="reading-card" />
+                    </div>
+                    <div className="card-info">
+                      <div className="rc-title">
+                        {related.article_title.length > 20
+                          ? related.article_title.substring(0, 25) + "..."
+                          : related.article_title}
+                      </div>
+                      <div className="rc-author-datetime">
+                        <small>
+                          {new Date(related.updatedAt).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </small>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </>
+          ) : (
+            <a href="/donate" style={{ textDecoration: "underline", color: "blue" }}>
+              Support our mission with a donation
+            </a>
+          )}
+        </section>
       </div>
-    );
-  };
-  
-  export default ArticlePage;
+    </>
+  );
+};
+
+export default ArticlePage;

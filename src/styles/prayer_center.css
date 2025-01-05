@@ -1,0 +1,125 @@
+header div#read-appbar {
+    background-color: var(--pink);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.2rem;
+    padding: 0 1ch;
+    z-index: 10001;
+}
+
+header div#read-appbar div.row {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 2ch;
+}
+
+header div#read-appbar div.row button {
+    outline: none;
+    border: none;
+    background-color: unset;
+    background: unset;
+    font-size: 22px;
+    color: var(--white);
+}
+
+body {
+    background-color: var(--white);
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+#prayer-req-form {
+    margin-top: 3.3rem;
+    width: 90%;
+    padding: 0 0 0 1ch;
+}
+
+h1 {
+    text-align: center;
+    font-size: 25px;
+    color: var(--text);
+}
+
+#prayer-req-form .form-group {
+    margin-bottom: 15px;
+}
+
+#prayer-req-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#prayer-req-form input[type="text"],
+#prayer-req-form input[type="email"] {
+    background-color: var(--white);
+    color: var(--text);
+    width: 95%;
+    height: 45px;
+    text-indent: 1ch;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Raleway;
+}
+
+#prayer-req-form input[type="submit"] {
+    margin-top: 2ch;
+    border-radius: 1ch;
+    width: 90%;
+    height: 2rem;
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 500;
+}
+
+#prayer-req-form select {
+    background-color: var(--white);
+    color: var(--text);
+    height: 45px;
+    width: 95%;
+    text-indent: 1ch;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Raleway;
+}
+
+#prayer-req-form textarea {
+    background-color: var(--white);
+    color: var(--text);
+    width: 95%;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+#prayer-req-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+}
+
+#prayer-req-form .checkbox-group label {
+    font-size: 14px;
+}
+
+#prayer-req-form input[type='submit'] {
+    background-color: var(--pink);
+    color: var(--white);
+    width: 95%;
+    height: 45px;
+    text-indent: 1ch;
+    border: 1px solid transparent;
+    border-radius: 1ch;
+    font-size: 1rem;
+    font-family: Raleway;
+}

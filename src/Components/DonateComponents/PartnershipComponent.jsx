@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 
+import girl from '/src/assets/images/girl-in-hoodie-2.jpg'
+import manInbarCode from '/src/assets/images/man-in-barcode.jpg'
+import mangreyedOut from '/src/assets/images/man-greyed-out.jpg'
+import online from '/src/assets/images/online-discipleship.jpg'
+import intercessory from '/src/assets/images/intercessory-prayer.jpg'
+import website from '/src/assets/images/website-translation.jpg'
+import country from '/src/assets/images/country-specific.jpg'
+import podcast from '/src/assets/images/podcast-production.jpg'
+
+
 const Partnership = () => {
   const [activeTab, setActiveTab] = useState("Partnership");
 
@@ -32,7 +42,7 @@ const Partnership = () => {
         <section className="partnership">
           <div className="articles-group">
             <Article
-              imgSrc="/src/assets/images/girl-in-hoodie-2.jpg"
+              imgSrc={girl}
               imgAlt="why partner"
               title="Why Partner With The Logos Zoe"
               content={
@@ -60,7 +70,7 @@ const Partnership = () => {
               }
             />
             <Article
-              imgSrc="/src/assets/images/man-in-barcode.jpg"
+              imgSrc={manInbarCode}
               imgAlt="how to partner"
               title="How To Partner"
               content={
@@ -76,7 +86,7 @@ const Partnership = () => {
               }
             />
             <Article
-              imgSrc="/src/assets/images/man-greyed-out.jpg"
+              imgSrc={mangreyedOut}
               imgAlt="blessings of partnership"
               title="The Blessings Of The Partnership"
               content={
@@ -119,7 +129,7 @@ const Partnership = () => {
             </div>
             <ul>
               <Option
-                imgSrc="/src/assets/images/online-discipleship.jpg"
+                imgSrc={online}
                 imgAlt="partner option"
                 title="Online Discipleship"
                 content={
@@ -148,7 +158,7 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc="/src/assets/images/intercessory-prayer.jpg"
+                imgSrc={intercessory}
                 imgAlt="partner option"
                 title="Intercessory Prayer For Souls"
                 content={
@@ -178,7 +188,7 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc="/src/assets/images/website-translation.jpg"
+                imgSrc={website}
                 imgAlt="partner option"
                 title="Website Translation And Distribution"
                 content={
@@ -195,7 +205,7 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc="/src/assets/images/country-specific.jpg"
+                imgSrc={country}
                 imgAlt="partner option"
                 title="Country Specific Partnership"
                 content={
@@ -223,7 +233,7 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc="/src/assets/images/podcast-production.jpg"
+                imgSrc={podcast}
                 imgAlt="partner option"
                 title="Broadcast Production & Distribution"
                 content={
@@ -269,7 +279,7 @@ const Partnership = () => {
             </div>
             <ul>
               <Option
-                imgSrc="/src/assets/images/online-discipleship.jpg"
+                imgSrc={online}
                 imgAlt="partner option"
                 title="Online Discipleship"
                 content={
@@ -282,7 +292,7 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc="/src/assets/images/intercessory-prayer.jpg"
+                imgSrc={intercessory}
                 imgAlt="partner option"
                 title="Intercessory Prayer For Souls"
                 content={
@@ -295,7 +305,7 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc="/src/assets/images/website-translation.jpg"
+                imgSrc={website}
                 imgAlt="partner option"
                 title="Website Translation And Distribution"
                 content={
@@ -308,7 +318,7 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc="/src/assets/images/country-specific.jpg"
+                imgSrc={country}
                 imgAlt="partner option"
                 title="Country Specific Partnership"
                 content={
@@ -321,7 +331,7 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc="/src/assets/images/podcast-production.jpg"
+                imgSrc={podcast}
                 imgAlt="partner option"
                 title="Broadcast Production & Distribution"
                 content={
