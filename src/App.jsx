@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { App as CapacitorApp } from "@capacitor/app"
 import WelcomePage from "./Pages/Welcome/WelcomePage.jsx";
 import SignInPage from "./Pages/Auth/SignInPage.jsx";
 import SignUpPage from "./Pages/Auth/SignUpPage.jsx";
@@ -26,10 +27,13 @@ import CategoryArticle from "./Pages/Categories/CategoryArticle.jsx";
 import ArticlePage from "./Pages/Articles/ArticlePage.jsx";
 import PrayerRequestForm from "./Pages/PrayerCenter/PrayerCenter.jsx";
 import Devotionals from "./Pages/Devotional/Devotionals.jsx";
+import VideoPlayerPage from "./Pages/Videos/VideoPlayerPage.jsx";
+import NotificationApi from "./NativeApis/Notifications.jsx";
 
 function App() {
   return (
     <Router>
+      <NotificationApi />
       <Routes>
         {/* Welcome Route */}
 
@@ -38,7 +42,7 @@ function App() {
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="login" element={<SignInPage />} />
           <Route path="register" element={<SignUpPage />} />
-          <Route path="forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="forgot-password" element={<VerifyEmailPage />} />
           <Route path="verify-code" element={<VerifyCodePage />} />
           <Route path="verify-email" element={<VerifyEmailPage />} />
           <Route path="new-password" element={<ResetPasswordPage />} />
@@ -74,7 +78,9 @@ function App() {
         <Route path="/articles/article/:id" element={<ArticlePage />} />
         <Route path="/prayer-center" element={<PrayerRequestForm />} />
         <Route path="/devotionals" element={<Devotionals />} />
-        
+        <Route path="/videos/video/:id/:category" element={<VideoPlayerPage />} />
+
+
 
         {/* <Route path="/broadcast"  /> */}
 

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">LogosZoeReactApp</string>
-    <string name="title_activity_main">LogosZoeReactApp</string>
+    <string name="app_name">Logos Zoe</string>
+    <string name="title_activity_main">Logos Zoe</string>
     <string name="package_name">com.niico.logoszoe</string>
     <string name="custom_url_scheme">com.niico.logoszoe</string>
 </resources>

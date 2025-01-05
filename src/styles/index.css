@@ -958,3 +958,139 @@ a.reading-card div.card-info {
 .rc-author-datetime small {
   color: #5d809ccc;
 }
+
+main#video-player-main {
+  height: fit-content;
+  scroll-behavior: smooth;
+  margin-top: 45px;
+  margin-bottom: 80px;
+  padding: 1ch;
+  padding-bottom: 100px;
+  scroll-behavior: smooth;
+  background: url('/images/bg_main.jpg');
+  background-size: contain;
+}
+
+.video-player .iframe-container {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  margin-bottom: 1ch;
+  height: 0;
+}
+.video-player .iframe-container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 1ch;
+}
+
+.player-des {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: 1ch;
+  border-radius: 1ch;
+  box-shadow: 0px 1px 12px #9797973a;
+}
+
+.player-des h1 {
+  width: calc(100% - 10ch);
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  line-height: 1.5;
+  max-height: calc(2 * 1.2em); 
+}
+
+.share-btn {
+  border: 1px solid var(--purple);
+  outline: unset;
+  background: unset;
+  background-color: unset;
+  background-color: transparent;
+  padding: 1.5ch 4ch;
+  border-radius: 50px;
+  color: var(--text);
+}
+
+.share-btn > small, .share-btn i {
+  font-size: 12px;
+  color: var(--text);
+  /* font-family:inherit; */
+}
+
+section.related-section {
+  /* padding: 1ch; */
+  border-radius: 1ch;
+  margin-top: 1ch;
+}
+
+.related-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.3rem;
+}
+
+.verification-container {
+  font-family: Raleway;
+  background-color: var(--white);
+  padding: 1ch;
+  margin: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.verification-container h3 {
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555555;
+}
+
+.input-group input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #dddddd;
+  border-radius: 1ch;
+  outline: none;
+  font-family: Raleway;
+}
+
+.input-group input:focus {
+  border-color: #4CAF50;
+}
+
+.submit-btn {
+  background-color: var(--pink);
+  color: var(--white);
+  border: none;
+  font-size: 1rem;
+  width: 4rem;
+  height: 2rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: #ff4d4d;
+  margin-bottom: 15px;
+}
