@@ -60,7 +60,7 @@ const CategoryArticle = () => {
                                     button_text={<FontAwesomeIcon icon={faShareNodes} style={{ color: "var(--text)" }} />}
                                     data_to_share={{
                                         title: category_name,
-                                        text: category_fullText,
+                                        text: `${category_banner}`,
                                         url: "https://chris-zano.github.io/store.logos/",
                                     }}
                                 />

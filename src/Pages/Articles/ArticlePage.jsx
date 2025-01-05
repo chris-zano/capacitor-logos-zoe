@@ -58,7 +58,7 @@ const ArticlePage = () => {
                     button_text={<FontAwesomeIcon icon={faShareNodes} style={{ color: "var(--text)" }} />}
                     data_to_share={{
                       title: article.article_title,
-                      text: article.article_fullText,
+                      text: `${article.article_image}`,
                       url: "https://chris-zano.github.io/store.logos/",
                     }}
                   />

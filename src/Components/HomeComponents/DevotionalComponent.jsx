@@ -66,14 +66,13 @@ function DevotionalComponent() {
                         <FontAwesomeIcon icon={regularBookmark} />
                         <ShareApi
                             button_text={<FontAwesomeIcon icon={faShareNodes} />}
-                            data_to_share={
-                                {
-                                    title: "Todays Devotional",
-                                    text: `Start Your day with the Word of God`,
-                                    url: `https://chris-zano.github.io/store.logos/`,
-                                    dialogTitle: "Share with friends",
-                                }
-                            }
+                            data_to_share={{
+                                title: "Today's Devotional",
+                                text: `Start your day with the Word of God`,
+                                url: "https://chris-zano.github.io/store.logos/",
+                                files: [devotional.theme_picture_url],
+                                dialogTitle: "Share with friends",
+                            }}
                         />
                     </span>
                 </div>
