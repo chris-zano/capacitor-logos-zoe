@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronLeft, faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-
-const Podcasts = ({data_source}) => {
+const Podcasts = ({ data_source }) => {
   const [podcasts, setPodcasts] = useState([]);
   const [currentPodcast, setCurrentPodcast] = useState(null);
 
@@ -44,6 +43,15 @@ const Podcasts = ({data_source}) => {
     const prevIndex = (currentIndex - 1 + podcasts.length) % podcasts.length;
     playPodcast(podcasts[prevIndex]);
   };
+
+  useEffect(() => {
+    const audio = document.getElementById('audio1');
+    if (audio) {
+      const handleEnded = () => playNextPodcast();
+      audio.addEventListener('ended', handleEnded);
+      return () => audio.removeEventListener('ended', handleEnded);
+    }
+  }, [currentPodcast, podcasts]);
 
   return (
     <div className="music-player">

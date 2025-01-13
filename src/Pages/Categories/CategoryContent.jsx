@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faHeart, faHome } from "@fortawesome/free-solid-svg-icons";
 import getCategoryById from "../../data/explore/get_category_by_id.js";
 
 const CategoryContent = () => {
+    const navigate = useNavigate()
     const { id } = useParams();
     const [categoryInfo, setCategoryInfo] = useState(null);
     const [articles, setArticles] = useState([]);
@@ -41,9 +42,12 @@ const CategoryContent = () => {
         <>
             <header>
                 <div id="read-appbar">
-                    <div className="row">
+                    <div className="row" style={{display:'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch'}}>
                         <button onClick={() => window.history.back()}>
                             <FontAwesomeIcon icon={faArrowLeft} />
+                        </button>
+                        <button onClick={() => navigate('/')}>
+                            <FontAwesomeIcon icon={faHome} />
                         </button>
                     </div>
                 </div>

@@ -9,18 +9,20 @@ const ResetPasswordPage = () => {
     setErrorMessage("");
 
     try {
-      const response = await fetch(`${BASEURL}/auth/verify-email`, {
+      const email = sessionStorage.getItem("temp-email");
+      const response = await fetch(`${BASEURL}/auth/change-password`, {
+      // const response = await fetch(`http://localhost:3123/auth/change-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ email, password }),
       });
 
       const result = await response.json();
+      console.log({result});
 
       if (response.ok) {
-        setErrorMessage(`${result.message}. A confirmation code has been sent to your email.`);
         localStorage.setItem("reset", "true");
       } else {
         setErrorMessage(result.message);

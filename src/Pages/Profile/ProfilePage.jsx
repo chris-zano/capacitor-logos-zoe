@@ -6,7 +6,10 @@ import {
   faRightFromBracket,
   faTrash,
   faBookmark,
+  faBell,
 } from "@fortawesome/free-solid-svg-icons";
+import { LocalNotifications } from "@capacitor/local-notifications";
+import avatar1 from "../../assets/images/avatar1.jpg";
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
@@ -33,6 +36,66 @@ const ProfilePage = () => {
     navigate("/auth/welcome");
   };
 
+  const checkNotificationPermissions = async () => {
+    const { display } = await LocalNotifications.checkPermissions();
+    return display === 'granted';
+  };
+
+  const requestNotificationPermissions = async () => {
+    const { display } = await LocalNotifications.requestPermissions();
+    return display === 'granted';
+  };
+
+  const scheduleDailyNotification = async () => {
+    const now = new Date();
+    const nextSixAM = new Date();
+    nextSixAM.setHours(6, 0, 0, 0);
+
+    if (now > nextSixAM) {
+      nextSixAM.setDate(nextSixAM.getDate() + 1);
+    }
+
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          id: 1,
+          title: "Good Morning!",
+          body: "Today's devotional is ready for you.",
+          schedule: { at: nextSixAM },
+          sound: "default",
+        },
+      ],
+    });
+
+    console.log("Daily notification scheduled for:", nextSixAM);
+  };
+
+  const enableNotifications = async () => {
+    const hasPermission = await checkNotificationPermissions();
+    console.log({hasPermission});
+
+    if (hasPermission) {
+      alert("Notifications are already enabled!");
+      return;
+    }
+
+    const userConfirmed = window.confirm(
+      "Do you want to enable daily notifications?"
+    );
+    if (!userConfirmed) return;
+
+    const permissionGranted = await requestNotificationPermissions();
+    if (!permissionGranted) {
+      alert("Notifications permission denied. Please enable it in settings.");
+      return;
+    }
+
+    await LocalNotifications.cancel({ notifications: [{ id: 1 }] });
+    await scheduleDailyNotification();
+    alert("Daily notifications enabled!");
+  };
+
+
   if (!userData) return null;
 
   const obfuscatedEmail = `**********${userData.email.substring(
@@ -44,9 +107,10 @@ const ProfilePage = () => {
       <div className="profile-header">
         <img
           id="profile-picture"
-          src={userData.profilePicture || "/images/user.png"}
+          src={userData.profilePicture || avatar1}
           alt="Profile Picture"
           className="profile-picture"
+          onClick={() => navigate("/avatars")}
         />
         <div className="user-details">
           <div id="u-name">
@@ -72,6 +136,13 @@ const ProfilePage = () => {
       ) : null}
 
       <ul className="action-list">
+        <li onClick={enableNotifications}>
+          <FontAwesomeIcon icon={faBell} style={{ color: "var(--text)" }} />
+          <a href="#">Notifications</a>
+          <br />
+          <small>Enable push notifications.</small>
+        </li>
+
         <li>
           <FontAwesomeIcon icon={faKey} style={{ color: "var(--text)" }} />
           <a href="/auth/verify-email">Change Password</a>

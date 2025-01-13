@@ -11,6 +11,7 @@ const VerifyEmailPage = () => {
 
     try {
       const response = await fetch(`${BASEURL}/auth/verify-email`, {
+      // const response = await fetch(`http://localhost:3123/auth/verify-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,9 +22,6 @@ const VerifyEmailPage = () => {
       const result = await response.json();
 
       if (response.ok) {
-        setErrorMessage(
-          `${result.message}. A confirmation code has been sent to your email`
-        );
         localStorage.setItem("reset", "true");
         sessionStorage.setItem("temp-email", email);
         window.location.href = "/auth/verify-code";

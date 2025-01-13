@@ -160,8 +160,20 @@ const DevotionalPage = ({ styles }) => {
               className="listen"
               onClick={() => (window.location.href = "/broadcast")}
             >
-              <FontAwesomeIcon icon={faCirclePlay} />
-              <span>Listen to podcast discussion</span>
+              {
+                devotional.type === 'old' ?
+                  (
+                    <>
+                      <FontAwesomeIcon icon={faCirclePlay} />
+                      <span>Listen to podcast discussion</span>
+                    </>
+                  ) :
+                  (
+                    <>
+                      <span> <strong>THEME:</strong> {devotional.title}</span>
+                    </>
+                  )
+              }
             </div>
             <div className="bookmark-share">
               <FontAwesomeIcon
@@ -194,7 +206,25 @@ const DevotionalPage = ({ styles }) => {
 
         {/* Message Section */}
         <section className="message">
-          <p id="article-message" dangerouslySetInnerHTML={{ __html: devotional.content }}></p>
+
+          <div dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.scripture : '' }} ></div>
+          <div dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.questions : '' }} ></div>
+
+          <div>
+            {devotional.type === 'new' && 
+              <>
+                <hr style={{backgroundColor: 'green', border: '1px solid #233654'}} />
+              </>
+            }
+          </div>  
+          
+          <div id="article-message" dangerouslySetInnerHTML={{ __html: devotional.content }}></div>
+          {devotional.type === 'new' &&
+            <>
+              <span className="poppins-bold">By:</span> <br />
+              <span className="poppins-regular">{devotional.author}</span>
+            </>
+          }
         </section>
       </article>
 
@@ -206,9 +236,9 @@ const DevotionalPage = ({ styles }) => {
               <button
                 onClick={() =>
                   setCurrentDate((prev) => {
-                    const newDate = new Date(prev); // Create a copy of the current date
-                    newDate.setDate(1); // Set to the 1st to avoid overflow issues
-                    newDate.setMonth(prev.getMonth() - 1); // Subtract one month
+                    const newDate = new Date(prev);
+                    newDate.setDate(1);
+                    newDate.setMonth(prev.getMonth() - 1);
                     return newDate;
                   })
                 }
@@ -221,9 +251,9 @@ const DevotionalPage = ({ styles }) => {
               <button
                 onClick={() =>
                   setCurrentDate((prev) => {
-                    const newDate = new Date(prev); // Create a copy of the current date
-                    newDate.setDate(1); // Set to the 1st to avoid overflow issues
-                    newDate.setMonth(prev.getMonth() + 1); // Add one month
+                    const newDate = new Date(prev);
+                    newDate.setDate(1);
+                    newDate.setMonth(prev.getMonth() + 1);
                     return newDate;
                   })
                 }

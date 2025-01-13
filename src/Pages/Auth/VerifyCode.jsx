@@ -13,6 +13,7 @@ const VerifyCodePage = () => {
     try {
       // Make a POST request to the verification endpoint
       const response = await fetch(`${BASEURL}/auth/verify-code`, {
+      // const response = await fetch(`http://localhost:3123/auth/verify-code`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,7 +22,6 @@ const VerifyCodePage = () => {
       });
 
       const result = await response.json();
-
       if (response.ok) {
         // Code verification was successful
         alert("Verification successful!");

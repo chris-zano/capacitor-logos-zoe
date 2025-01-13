@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faArrowLeft, faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faArrowLeft, faShareNodes, faHome } from "@fortawesome/free-solid-svg-icons";
 import getArticleById from "../../data/articles/get_article_by_id.js";
 import ShareApi from "../../NativeApis/Share.jsx";
 
 const ArticlePage = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [articleData, setArticleData] = useState(null);
 
@@ -32,13 +33,16 @@ const ArticlePage = () => {
   return (
     <>
       <header>
-        <div id="read-appbar">
-          <div className="row">
-            <button onClick={() => window.history.back()}>
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </button>
-          </div>
-        </div>
+      <div id="read-appbar">
+                    <div className="row" style={{display:'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch'}}>
+                        <button onClick={() => window.history.back()}>
+                            <FontAwesomeIcon icon={faArrowLeft} />
+                        </button>
+                        <button onClick={() => navigate('/')}>
+                            <FontAwesomeIcon icon={faHome} />
+                        </button>
+                    </div>
+                </div>
       </header>
       <div>
         {/* Article Section */}
@@ -58,8 +62,8 @@ const ArticlePage = () => {
                     button_text={<FontAwesomeIcon icon={faShareNodes} style={{ color: "var(--text)" }} />}
                     data_to_share={{
                       title: article.article_title,
-                      text: `${article.article_image}`,
-                      url: "https://chris-zano.github.io/store.logos/",
+                      files: [article.article_image],
+                      url: article.article_image,
                     }}
                   />
                   <FontAwesomeIcon icon={faHeart} style={{ color: "var(--text)" }} />

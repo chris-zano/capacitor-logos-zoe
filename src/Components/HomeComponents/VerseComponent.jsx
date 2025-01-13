@@ -61,7 +61,7 @@ const VerseComponent = () => {
                     {
                         title: "Verse of the Day",
                         text: `${dailyVerse.text} - ${dailyVerse.reference} (${dailyVerse.version})`,
-                        url: `${baseUrl}/`,
+                        url: `${dailyVerse.verseurl}/`,
                         dialogTitle: "Share with friends",
                     }
                 } />

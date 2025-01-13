@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark as regularBookmark, faShareNodes } from '@fortawesome/free-solid-svg-icons';
-import getTodaysDevotional from '../../data/devotionals/get_todays_devotional.js'; // Assuming this is the correct path
+import getTodaysDevotional from '../../data/devotionals/get_todays_devotional.js';
 import ShareApi from '../../NativeApis/Share.jsx';
 import { NavLink } from 'react-router-dom';
 import BASEURL from '../../baseUrl.js';
+import { Share } from '@capacitor/share';
 
 function DevotionalComponent() {
     const [devotional, setDevotional] = useState(null);
@@ -12,7 +13,7 @@ function DevotionalComponent() {
     useEffect(() => {
         const fetchDevotional = async () => {
             const data = await getTodaysDevotional();
-            setDevotional(data.devotional); // Set the devotional data to state
+            setDevotional(data.devotional);
         };
 
         fetchDevotional();
@@ -22,12 +23,12 @@ function DevotionalComponent() {
         return <p>Loading...</p>;
     }
 
-    // Formatting the date
+
     const date = new Date(devotional.year, new Date(`${devotional.month} 1`).getMonth(), devotional.day);
     const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
     const formattedDate = date.toLocaleDateString('en-US', options);
 
-    // Extract the content, similar to the logic in EJS
+
     const content = String(devotional.content);
     const lowerContent = content.toLowerCase();
     const themeIndex = lowerContent.indexOf('theme');
@@ -36,6 +37,22 @@ function DevotionalComponent() {
         themeIndex !== -1 && endIndex !== -1 && themeIndex < endIndex
             ? content.substring(themeIndex, endIndex) + '...'
             : content.substring(95, 200) + '...';
+
+    const handleShare = async () => {
+        if (!devotional) return;
+
+        try {
+            await Share.share({
+                title: "Today's Devotional",
+                text: `Start your day with the Word of God. Here's today's devotional:...`,
+                url: devotional.theme_picture_url,
+                files: [devotional.theme_picture_url],
+                dialogTitle: "Share Today's Devotional",
+            });
+        } catch (error) {
+            console.error("Error sharing devotional:", error);
+        }
+    }
 
     return (
         <div>
@@ -64,16 +81,19 @@ function DevotionalComponent() {
                     <span className="read-now">Devotional of the Day</span>
                     <span className="actions">
                         <FontAwesomeIcon icon={regularBookmark} />
-                        <ShareApi
-                            button_text={<FontAwesomeIcon icon={faShareNodes} />}
-                            data_to_share={{
-                                title: "Today's Devotional",
-                                text: `Start your day with the Word of God`,
-                                url: "https://chris-zano.github.io/store.logos/",
-                                files: [devotional.theme_picture_url],
-                                dialogTitle: "Share with friends",
+                        <button
+                            onClick={handleShare}
+                            style={{
+                                border: "none",
+                                background: "none",
+                                cursor: "pointer",
+                                padding: 0,
+                                marginLeft: "10px",
                             }}
-                        />
+                            aria-label="Share Today's Devotional"
+                        >
+                            <FontAwesomeIcon icon={faShareNodes} />
+                        </button>
                     </span>
                 </div>
             </div>

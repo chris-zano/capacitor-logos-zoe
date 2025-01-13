@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBuilding, faEnvelope } from "@fortawesome/free-solid-svg-icons"; // Import specific icons
+import { faBible, faBuilding, faEnvelope } from "@fortawesome/free-solid-svg-icons"; // Import specific icons
 import getCategories from "../../data/explore/get_categories.js";
 import "../../styles/explore.css";
 
@@ -79,15 +79,15 @@ const ExplorePage = () => {
         <div className="grid-card"  style={{
                 animation: `fadeInUp 0.5s ease-out 2.2s 1 forwards`,
               }} data-url="/devotionals">
-          <a href="/devotionals">
+          <a href="/bible">
             <div className="card-icon">
-              <FontAwesomeIcon icon={faEnvelope} style={{ color: "blue" }} />
+              <FontAwesomeIcon icon={faBible} style={{ color: "blue" }} />
             </div>
             <div className="card-title">
-              <p>Scepter of Power Archives</p>
+              <p>Bible</p>
             </div>
             <div className="card-description">
-              <p>Daily Devotional</p>
+              <p>Explore the timeless wisdom and teachings of the word of God</p>
             </div>
           </a>
         </div>

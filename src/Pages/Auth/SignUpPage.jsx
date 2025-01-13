@@ -16,6 +16,7 @@ const SignUpPage = () => {
 
     try {
       const response = await fetch(`${BASEURL}/auth/register`, {
+      // const response = await fetch(`http://localhost:3123/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

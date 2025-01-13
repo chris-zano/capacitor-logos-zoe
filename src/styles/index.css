@@ -1,3 +1,113 @@
+
+.poppins-thin {
+  font-family: "Poppins", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
 @font-face {
   font-family: robotoSlab;
   src: url("/src/assets/fonts/Roboto_Slab.ttf");
@@ -53,7 +163,7 @@
   --blue: #233654;
   --indigo: #b79a62;
   --purple: #673ab7;
-  --pink: #1aa4e0;
+  --primary: #1aa4e0;
   --red: #dc3545;
   --orange: #fd7e14;
   --yellow: #ffbe00;
@@ -192,6 +302,16 @@ header#header_top_navbar {
   justify-content: center;
 }
 
+#the {
+  font-weight: bold;
+  color: #007bff !important;
+}
+
+#t-title {
+  font-weight: bold;
+  color: white;
+}
+
 .header_actions {
   grid-column: 12 / 13;
   display: flex;
@@ -209,11 +329,6 @@ header#header_top_navbar {
   font-weight: bold;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--pink);
-}
-
-.title span {
-  color: var(--white);
 }
 
 .header_actions>* {
@@ -603,7 +718,7 @@ font-size: 1rem;
 }
 
 header div#read-appbar {
-  background-color: var(--pink);
+  background-color: var(--primary);
   position: fixed;
   top: 0;
   left: 0;
@@ -1080,7 +1195,7 @@ section.related-section {
 }
 
 .submit-btn {
-  background-color: var(--pink);
+  background-color: var(--primary);
   color: var(--white);
   border: none;
   font-size: 1rem;

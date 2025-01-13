@@ -12,7 +12,9 @@ const AppBarComponent = () => {
         </a>
         <NavLink to="/" className="logo-title">
           <img src={logoImage} alt="Logo" className="logo" />
-          <h1 className="title">THE <span>LOGOS-ZOE</span></h1>
+          <h1 className="title">
+          <span id='the' >THE</span> <span id='t-title'>LOGOS-ZOE</span>
+          </h1>
         </NavLink>
         <div className="header_actions">
           <a href="/search" className="search-icon">

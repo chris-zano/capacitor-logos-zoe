@@ -29,6 +29,9 @@ import PrayerRequestForm from "./Pages/PrayerCenter/PrayerCenter.jsx";
 import Devotionals from "./Pages/Devotional/Devotionals.jsx";
 import VideoPlayerPage from "./Pages/Videos/VideoPlayerPage.jsx";
 import NotificationApi from "./NativeApis/Notifications.jsx";
+import BibleContents from "./Pages/Bible/BibleContents.jsx";
+import ChooseProfileAvatar from "./Pages/Profile/UploadProfilePicture.jsx";
+import Bookmarks from "./Pages/Profile/Bookmarks.jsx";
 
 function App() {
   useEffect(() => {
@@ -45,7 +48,7 @@ function App() {
   }, []);
   return (
     <Router>
-      <NotificationApi />
+      {/* <NotificationApi /> */}
       <Routes>
         {/* Welcome Route */}
 
@@ -81,6 +84,8 @@ function App() {
           <Route path="donate" element={<DonatePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="search" element={<SearchPage />} />
+          <Route path="avatars" element={<ChooseProfileAvatar />} />
+          <Route path="bookmarks" element={<Bookmarks />} />
         </Route>
         <Route path="donations/donate" element={<DonationPage />} />
         <Route path="/devotionals/devotional/:id" element={<DevotionalPage />} />
@@ -90,6 +95,7 @@ function App() {
         <Route path="/articles/article/:id" element={<ArticlePage />} />
         <Route path="/prayer-center" element={<PrayerRequestForm />} />
         <Route path="/devotionals" element={<Devotionals />} />
+        <Route path="/bible" element={<BibleContents />} />
         <Route path="/videos/video/:id/:category" element={<VideoPlayerPage />} />
 
 
