@@ -52,7 +52,7 @@ const CategoryContent = () => {
                     </div>
                 </div>
             </header>
-            <div className="article-page">
+            <div className="article-page mt-5 mx-2">
                 {/* Landing Page Article */}
                 <article className="chapter">
                     <section className="top-header">

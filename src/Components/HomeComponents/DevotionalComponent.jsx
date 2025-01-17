@@ -6,6 +6,7 @@ import ShareApi from '../../NativeApis/Share.jsx';
 import { NavLink } from 'react-router-dom';
 import BASEURL from '../../baseUrl.js';
 import { Share } from '@capacitor/share';
+import { addDays, formatDate } from "date-fns";
 
 function DevotionalComponent() {
     const [devotional, setDevotional] = useState(null);
@@ -23,20 +24,10 @@ function DevotionalComponent() {
         return <p>Loading...</p>;
     }
 
-
-    const date = new Date(devotional.year, new Date(`${devotional.month} 1`).getMonth(), devotional.day);
-    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
+    const _formattedDate = formatDate(`${devotional.year}-${devotional.month}-${devotional.day}`, "PPPP")
 
 
     const content = String(devotional.content);
-    const lowerContent = content.toLowerCase();
-    const themeIndex = lowerContent.indexOf('theme');
-    const endIndex = lowerContent.indexOf('</p>');
-    const extractedContent =
-        themeIndex !== -1 && endIndex !== -1 && themeIndex < endIndex
-            ? content.substring(themeIndex, endIndex) + '...'
-            : content.substring(95, 200) + '...';
 
     const handleShare = async () => {
         if (!devotional) return;
@@ -56,9 +47,7 @@ function DevotionalComponent() {
 
     return (
         <div>
-            <div className="podcast-header">
-                <h2 className="section-title">Today's Devotional</h2>
-            </div>
+            
             <div className="devotional-daily">
                 <NavLink
                     to={`/devotionals/devotional/${devotional._id}`}
@@ -66,13 +55,14 @@ function DevotionalComponent() {
                     {/* Display the theme picture */}
                     <img src={devotional.theme_picture_url} alt="devotional" />
                     <div className="devotional-details">
-                        <div className="date">{formattedDate}</div>
+                        <div className="date">{_formattedDate}</div>
+                        {devotional.title && <div className='font-bold'>{devotional.title}</div>}
 
                         {/* Display the intro paragraph */}
                         <div
                             className="intro-paragraph"
                             id="intro-paragraph"
-                            dangerouslySetInnerHTML={{ __html: extractedContent }}
+                            dangerouslySetInnerHTML={{ __html: content.substring(0, 75) + "..." }}
                         ></div>
                     </div>
                 </NavLink>

@@ -1,22 +1,33 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BASEURL from "../../baseUrl.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignUpPage = () => {
+  const [step, setStep] = useState(1);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleNext = () => {
+    if (email && password) {
+      setStep(2);
+    } else {
+      setErrorMessage("Please fill in both email and password.");
+    }
+  };
+
+  const handleSignUp = async (e) => {
     e.preventDefault();
     setErrorMessage(""); // Reset error message
 
     try {
       const response = await fetch(`${BASEURL}/auth/register`, {
-      // const response = await fetch(`http://localhost:3123/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,61 +55,78 @@ const SignUpPage = () => {
 
         {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-        <form className="login-form" onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="firstname">First name</label>
-            <input
-              type="text"
-              placeholder="John"
-              id="firstname"
-              className="input-field"
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="lastname">Last name</label>
-            <input
-              type="text"
-              placeholder="Doe"
-              id="lastname"
-              className="input-field"
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              placeholder="Email"
-              id="email"
-              className="input-field"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              placeholder="Password"
-              id="password"
-              className="input-field"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-group">
-            <button type="submit" className="login-btn">
-              Continue
+        {step === 1 && (
+          <div className="step-one">
+            <div className="input-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                className="input-field"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-group relative">
+              <label htmlFor="password">Password</label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  id="password"
+                  className="input-field"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <span
+                  className="absolute right-[2.5ch] bottom-[2.5ch] flex items-center"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    className="toggle-icon"
+                  />
+                </span>
+            </div>
+            <button onClick={handleNext} className="login-btn">
+              Next
             </button>
           </div>
-        </form>
+        )}
+
+        {step === 2 && (
+          <form className="step-two" onSubmit={handleSignUp}>
+            <div className="input-group">
+              <label htmlFor="firstname">First Name</label>
+              <input
+                type="text"
+                placeholder="John"
+                id="firstname"
+                className="input-field"
+                value={firstname}
+                onChange={(e) => setFirstname(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="lastname">Last Name</label>
+              <input
+                type="text"
+                placeholder="Doe"
+                id="lastname"
+                className="input-field"
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="login-btn">
+              Sign Up
+            </button>
+          </form>
+        )}
 
         <div className="login-footer">
           <p>

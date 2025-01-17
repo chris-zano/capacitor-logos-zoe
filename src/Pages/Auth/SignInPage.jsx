@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import userImage from '../../assets/images/user.png'
 import BASEURL from "../../baseUrl.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -76,18 +79,27 @@ const SignInPage = () => {
               required
             />
           </div>
-          <div className="input-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              placeholder="Password"
-              id="password"
-              className="input-field"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+            <div className="input-group relative">
+              <label htmlFor="password">Password</label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  id="password"
+                  className="input-field"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <span
+                  className="absolute right-[2.5ch] bottom-[2.5ch] flex items-center"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    className="toggle-icon"
+                  />
+                </span>
+            </div>
           <div className="input-group">
             <button type="submit" className="login-btn">
               Login

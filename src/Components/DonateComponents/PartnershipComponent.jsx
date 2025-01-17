@@ -188,51 +188,6 @@ const Partnership = () => {
                 }
               />
               <Option
-                imgSrc={website}
-                imgAlt="partner option"
-                title="Website Translation And Distribution"
-                content={
-                  <>
-                    <p>
-                      The vision of the project is to reach all nations, tribes, tongues etc. We can only achieve
-                      this
-                      vision if our work is packaged in the languages of the nations of the world.
-
-                      With your partnership, we are able to hire the best translators to undertake quality
-                      translations of our videos, audios and articles.
-                    </p>
-                  </>
-                }
-              />
-              <Option
-                imgSrc={country}
-                imgAlt="partner option"
-                title="Country Specific Partnership"
-                content={
-                  <>
-                    <p>
-                      The Logos Zoe is a Christian missionary organisation. Our goal is to reach out to the
-                      entire world with the message of the gospel and discipleship that transforms nations.
-
-                      There are many Christians who would have wished to be in the missionary field. However, due
-                      to
-                      work and family obligations, this has not been possible, and this has been a disappointment
-                      for
-                      them.
-
-                      Your partnership with us under this option enables you to choose the country where your
-                      sponsorship should focus. Part of our team will be assigned to that specific country to
-                      bring
-                      our work there for results.
-
-                      Your partnership means a lot to The Logos Zoe and the gospel reaching the nations of
-                      the
-                      world
-                    </p>
-                  </>
-                }
-              />
-              <Option
                 imgSrc={podcast}
                 imgAlt="partner option"
                 title="Broadcast Production & Distribution"
@@ -299,32 +254,6 @@ const Partnership = () => {
                   <>
                     <p>
                       To win the world, we must constantly intercede for the world...
-                      (Additional content truncated for brevity)
-                    </p>
-                  </>
-                }
-              />
-              <Option
-                imgSrc={website}
-                imgAlt="partner option"
-                title="Website Translation And Distribution"
-                content={
-                  <>
-                    <p>
-                      The vision of the project is to reach all nations, tribes, tongues...
-                      (Additional content truncated for brevity)
-                    </p>
-                  </>
-                }
-              />
-              <Option
-                imgSrc={country}
-                imgAlt="partner option"
-                title="Country Specific Partnership"
-                content={
-                  <>
-                    <p>
-                      The Logos Zoe is a Christian missionary organization...
                       (Additional content truncated for brevity)
                     </p>
                   </>

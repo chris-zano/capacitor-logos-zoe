@@ -47,7 +47,7 @@ const ArticlePage = () => {
       <div>
         {/* Article Section */}
         <main>
-          <article className="a-chapter">
+          <article className="a-chapter mt-3">
             <section className="top-header">
               <div className="date-time">
                 <p>

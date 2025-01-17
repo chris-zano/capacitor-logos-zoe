@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
@@ -15,6 +15,7 @@ import ShareApi from "../../NativeApis/Share.jsx";
 import BASEURL from "../../baseUrl.js";
 
 const DevotionalPage = ({ styles }) => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [devotional, setDevotional] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -141,14 +142,14 @@ const DevotionalPage = ({ styles }) => {
 
   return (
     <>
-      <article className="d-chapter">
+      <article className="d-chapter bg-white">
         {/* Image Section */}
         <section className="image">
           <img src={devotional.theme_picture_url} alt="" />
           <div className="close-page-btn">
             <FontAwesomeIcon
               icon={faCircleXmark}
-              onClick={() => window.history.back()}
+              onClick={() => navigate('/')}
             />
           </div>
         </section>
@@ -170,7 +171,7 @@ const DevotionalPage = ({ styles }) => {
                   ) :
                   (
                     <>
-                      <span> <strong>THEME:</strong> {devotional.title}</span>
+                      <span>{devotional.title}</span>
                     </>
                   )
               }
@@ -195,7 +196,7 @@ const DevotionalPage = ({ styles }) => {
 
         {/* Date Section */}
         <section className="date-section" style={{ margin: "20px 0", textAlign: "center" }}>
-          <button id="current-date" onClick={() => setModalOpen(true)}>
+          <button id="current-date" className="my-4" onClick={() => setModalOpen(true)}>
             <div className="calendar-icon">
               <FontAwesomeIcon icon={faCalendarDays} />
             </div>
@@ -205,20 +206,23 @@ const DevotionalPage = ({ styles }) => {
         </section>
 
         {/* Message Section */}
-        <section className="message">
+        <section className="p-4 ">
+          
+          <strong>{devotional.type === 'new' ? "THEME SCRIPTURE:" :""}</strong>
+          <div className="mb-6" dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.scripture : '' }} ></div>
 
-          <div dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.scripture : '' }} ></div>
-          <div dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.questions : '' }} ></div>
+          <strong className="mt-4">{devotional.type === 'new' ? "PREPARATORY QUESTION:" :""}</strong>
+          <div className="mb-6"  dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.questions : '' }} ></div>
 
           <div>
             {devotional.type === 'new' && 
               <>
-                <hr style={{backgroundColor: 'green', border: '1px solid #233654'}} />
+                <hr  className="my-8 border-[2px] border-blue-950 rounded" />
               </>
             }
           </div>  
           
-          <div id="article-message" dangerouslySetInnerHTML={{ __html: devotional.content }}></div>
+          <div id="article-message" className="leading-[1.6]" dangerouslySetInnerHTML={{ __html: devotional.content }}></div>
           {devotional.type === 'new' &&
             <>
               <span className="poppins-bold">By:</span> <br />

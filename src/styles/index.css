@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .poppins-thin {
   font-family: "Poppins", serif;
@@ -240,7 +243,7 @@ body {
   color: var(--text);
 }
 
-main#container-main, main {
+main#container-main {
   height: fit-content;
   scroll-behavior: smooth;
   margin-top: 3.2rem;
@@ -263,6 +266,20 @@ blockquote {
 
 *>i {
   color: var(--white);
+}
+
+table {
+  padding: 1ch;
+  margin: 1ch 0;
+}
+
+table, th, tr, td {
+  border: 1px solid grey;
+}
+
+td, td * {
+  padding: 3px;
+  font-style: normal !important;
 }
 
 /* app-bar  */

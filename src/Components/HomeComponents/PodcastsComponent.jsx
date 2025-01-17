@@ -55,7 +55,7 @@ const PodcastComponent = () => {
                         <div className="p-title">
                             <p>{podcast.title}</p>
                         </div>
-                        <div className="p-description">
+                        <div className="p-description mt-2">
                             <p>
                                 {podcast.description.length > 55
                                     ? podcast.description.substring(0, 55) + '...'
