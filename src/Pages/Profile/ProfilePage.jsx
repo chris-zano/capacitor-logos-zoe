@@ -7,9 +7,12 @@ import {
   faTrash,
   faBookmark,
   faBell,
+  faPeopleLine,
+  faArrowUpFromWaterPump,
 } from "@fortawesome/free-solid-svg-icons";
 import { LocalNotifications } from "@capacitor/local-notifications";
 import avatar1 from "../../assets/images/avatar1.jpg";
+import { faChurch } from "@fortawesome/free-solid-svg-icons/faChurch";
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
@@ -144,6 +147,12 @@ const ProfilePage = () => {
         </li>
 
         <li>
+          <FontAwesomeIcon icon={faBookmark} style={{ color: "var(--text)" }} />
+          <a href="/bookmarks">Bookmarks</a>
+          <br />
+          <small>View a list of items you have saved</small>
+        </li>
+        <li>
           <FontAwesomeIcon icon={faKey} style={{ color: "var(--text)" }} />
           <a href="/auth/verify-email">Change Password</a>
           <br />
@@ -159,16 +168,10 @@ const ProfilePage = () => {
           <small>End your current session</small>
         </li>
         <li>
-          <FontAwesomeIcon icon={faTrash} style={{ color: "var(--text)" }} />
-          <a href="/delete-account">Delete Account</a>
+          <FontAwesomeIcon icon={faChurch} style={{ color: "var(--text)" }} />
+          <a href="/about-us">About Us</a>
           <br />
-          <small>Deactivate your account temporarily</small>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faBookmark} style={{ color: "var(--text)" }} />
-          <a href="/bookmarks">Bookmarks</a>
-          <br />
-          <small>View a list of items you have saved</small>
+          <small>Learn more about the LOGOS ZOE</small>
         </li>
       </ul>
     </div>

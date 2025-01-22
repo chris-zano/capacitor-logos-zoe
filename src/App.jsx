@@ -32,6 +32,7 @@ import NotificationApi from "./NativeApis/Notifications.jsx";
 import BibleContents from "./Pages/Bible/BibleContents.jsx";
 import ChooseProfileAvatar from "./Pages/Profile/UploadProfilePicture.jsx";
 import Bookmarks from "./Pages/Profile/Bookmarks.jsx";
+import AboutUsPage from "./Pages/Profile/AboutPage.jsx";
 
 function App() {
   useEffect(() => {
@@ -97,6 +98,7 @@ function App() {
         <Route path="/prayer-center" element={<PrayerRequestForm />} />
         <Route path="/devotionals" element={<Devotionals />} />
         <Route path="/bible" element={<BibleContents />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/videos/video/:id/:category" element={<VideoPlayerPage />} />
 
 

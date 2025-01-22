@@ -14,7 +14,6 @@ const VerseComponent = () => {
         verseurl: '#',
         notice: 'Loading...'
     });
-    const [liked, setLiked] = useState(false);
 
     useEffect(() => {
         const fetchDailyVerse = async () => {
@@ -29,10 +28,6 @@ const VerseComponent = () => {
 
         fetchDailyVerse();
     }, []);
-
-    const toggleLike = () => {
-        setLiked(!liked);
-    };
 
     return (
         <section id="daily-verse">
@@ -54,9 +49,6 @@ const VerseComponent = () => {
                 <p className="verse" id="verse-text">{dailyVerse.text}</p>
             </div>
             <div className="verse-actions">
-                <button type="button" onClick={toggleLike} aria-pressed={liked}>
-                    <FontAwesomeIcon icon={liked ? regularHeart : solidHeart} style={{ color: liked ? 'red' : 'black' }} />
-                </button>
                 <ShareApi button_text={<FontAwesomeIcon icon={faShareNodes} />} data_to_share={
                     {
                         title: "Verse of the Day",
