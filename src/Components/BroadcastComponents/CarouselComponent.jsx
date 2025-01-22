@@ -18,6 +18,13 @@ const Carousel = ({ currentRoute }) => {
       >
         Word of Faith
       </Link>
+      
+      <Link
+        to="prayers"
+        className={`btn-wrap ${currentRoute === 'prayers' ? 'active' : ''}`}
+      >
+        Prayers
+      </Link>
 
       <Link
         to="wisdom-nuggets"

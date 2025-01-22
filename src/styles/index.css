@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 .poppins-thin {
   font-family: "Poppins", serif;
@@ -110,7 +110,6 @@
   font-style: italic;
 }
 
-
 @font-face {
   font-family: robotoSlab;
   src: url("/src/assets/fonts/Roboto_Slab.ttf");
@@ -150,8 +149,6 @@
   font-family: RalewayItalic;
   src: url("/src/assets/fonts/Raleway-MediumItalic.ttf");
 }
-
-
 
 :root {
   --theme-background: #f1f3ef;
@@ -231,7 +228,8 @@ div.container_wrapper_main {
 }
 
 body {
-  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
   -webkit-user-select: none;
@@ -264,7 +262,7 @@ blockquote {
   line-height: 2.5ch;
 }
 
-*>i {
+* > i {
   color: var(--white);
 }
 
@@ -273,11 +271,15 @@ table {
   margin: 1ch 0;
 }
 
-table, th, tr, td {
+table,
+th,
+tr,
+td {
   border: 1px solid grey;
 }
 
-td, td * {
+td,
+td * {
   padding: 3px;
   font-style: normal !important;
 }
@@ -348,11 +350,10 @@ header#header_top_navbar {
   font-weight: 500;
 }
 
-.header_actions>* {
+.header_actions > * {
   font-size: 25px;
   color: var(--white);
 }
-
 
 h2.section-title {
   font-size: 1rem !important;
@@ -371,23 +372,36 @@ h2.section-title {
 #bottom-navigation-list {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 0;
+  justify-content: space-between;
+  padding: 1.3ch 1.7ch;
   height: 3.2rem;
-  margin: 0.5ch 1ch;
-  background-color: var(--blue);
-  border-radius: 50px;
+  margin: 0;
+  background-color: var(--white);
+  border-top: 1px solid #d4d3d3ac;
+  border-top-left-radius: 1.5ch;
+  border-top-right-radius: 1.5ch;
 }
 
 .nav-item a {
-  color: var(--white);
+  color: #6c6c6cea;
   font-size: 1.35rem;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 0.5ch;
+  gap: 0.7ch;
+}
+
+.nav-item a small {
+  font-size: 0.8rem;
+  font-family: Poppins;
 }
 
 .nav-btn-active a svg {
+  color: var(--green);
+}
+
+.nav-btn-active a small {
   color: var(--green);
 }
 
@@ -451,7 +465,6 @@ h2.section-title {
   font-weight: bold;
   font-family: inter;
 }
-
 
 .login-page-overlay {
   position: fixed;
@@ -540,7 +553,6 @@ input.input-field {
   color: var(--text);
 }
 
-
 .login-btn {
   font-weight: 500;
   text-indent: 1ch;
@@ -597,7 +609,6 @@ input.input-field {
   color: red;
 }
 
-
 .profile-container {
   margin: 0 auto;
 }
@@ -624,7 +635,7 @@ input.input-field {
 }
 
 #u-name {
-font-size: 1rem;   
+  font-size: 1rem;
 }
 
 #sign-in {
@@ -681,6 +692,11 @@ font-size: 1rem;
   margin-left: 3.5ch;
 }
 
+#cat-chapters {
+  padding-top: 3.2rem;
+  margin-top: 1rem;
+}
+
 #cat-chapters ul {
   padding: 0;
   margin: 0;
@@ -720,7 +736,11 @@ font-size: 1rem;
 }
 
 #cat-chapters ul li div a {
-  width: 60px;
+  width: 70px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   outline: none;
   border: none;
   border-radius: 2ch;
@@ -837,7 +857,7 @@ article.chapter #message-overview {
   padding: 0 2ch;
 }
 
-article.chapter #message>* {
+article.chapter #message > * {
   line-height: 2.1ch;
   font-family: "Raleway" !important;
   font-size: 1.8ch;
@@ -964,7 +984,6 @@ article.r-chapter section.r-image img {
   font-size: 12px;
 }
 
-
 .a-chapter section.top-header {
   padding: 1ch 2ch;
   display: flex;
@@ -1008,8 +1027,6 @@ div.author .circle-avatar img {
   border-radius: 50px;
 }
 
-
-
 .a-chapter .message {
   margin: 2ch 0.5ch;
   padding: 0ch 2ch;
@@ -1052,7 +1069,6 @@ section#recommended-readings {
   border-radius: 2ch;
   background-color: var(--white);
 }
-
 
 section#recommended-readings div.reading-articles {
   display: flex;
@@ -1099,7 +1115,7 @@ main#video-player-main {
   padding: 1ch;
   padding-bottom: 100px;
   scroll-behavior: smooth;
-  background: url('/images/bg_main.jpg');
+  background: url("/images/bg_main.jpg");
   background-size: contain;
 }
 
@@ -1138,7 +1154,7 @@ main#video-player-main {
   text-overflow: ellipsis;
   word-break: break-word;
   line-height: 1.5;
-  max-height: calc(2 * 1.2em); 
+  max-height: calc(2 * 1.2em);
 }
 
 .share-btn {
@@ -1152,7 +1168,8 @@ main#video-player-main {
   color: var(--text);
 }
 
-.share-btn > small, .share-btn i {
+.share-btn > small,
+.share-btn i {
   font-size: 12px;
   color: var(--text);
   /* font-family:inherit; */
@@ -1208,7 +1225,7 @@ section.related-section {
 }
 
 .verification-container .input-group input:focus {
-  border-color: #4CAF50;
+  border-color: #4caf50;
 }
 
 .submit-btn {

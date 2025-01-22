@@ -47,7 +47,7 @@ function DevotionalComponent() {
 
     return (
         <div>
-            
+
             <div className="devotional-daily">
                 <NavLink
                     to={`/devotionals/devotional/${devotional._id}`}
@@ -56,11 +56,12 @@ function DevotionalComponent() {
                     <img src={devotional.theme_picture_url} alt="devotional" />
                     <div className="devotional-details">
                         <div className="date">{_formattedDate}</div>
-                        {devotional.title && <div className='font-bold'>{devotional.title}</div>}
+                        {devotional.title && <strong style={{fontWeight: '600'}}>{devotional.title}</strong>}
 
                         {/* Display the intro paragraph */}
                         <div
                             className="intro-paragraph"
+                            style={{fontFamily: 'Poppins', lineHeight: '2ch'}}
                             id="intro-paragraph"
                             dangerouslySetInnerHTML={{ __html: content.substring(0, 75) + "..." }}
                         ></div>
@@ -70,7 +71,7 @@ function DevotionalComponent() {
                 <div className="bottom-row">
                     <span className="read-now">Devotional of the Day</span>
                     <span className="actions">
-                        <FontAwesomeIcon icon={regularBookmark} />
+                        
                         <button
                             onClick={handleShare}
                             style={{

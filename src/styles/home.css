@@ -99,11 +99,12 @@ span#notice {
 .podcast-header div a {
     background-color: white;
     padding: 1ch 1.2ch;
-    border: 1px solid var(--theme-background);
+    border: 1px solid #b4b4b4b8;
     border-radius: 1ch;
     text-decoration: none;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1ch;
 }
 
@@ -118,7 +119,7 @@ span#notice {
 }
 
 .podcast-list .podcast-item svg {
-    color: #0087f5;
+    color: #032879;
 }
 
 @media screen and (max-width: 380px) {
@@ -368,7 +369,7 @@ section#testimonies {
 }
 
 .testimony-list .testimony-item svg {
-    color: #0087f5;
+    color: #032879;
 }
 
 
@@ -379,7 +380,6 @@ section#testimonies {
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     border-radius: 2ch;
   }
   
@@ -393,7 +393,7 @@ section#testimonies {
   }
   
   .devotional-daily .devotional-details {
-    padding: 0 1ch 2ch 1ch;
+    padding: 0 2ch;
   }
   
   .devotional-daily span.top-text {
@@ -412,18 +412,17 @@ section#testimonies {
   }
   
   .devotional-daily .bottom-row {
-    padding: 0 1ch 2ch 1ch;
+    padding: 1ch 2ch 2ch;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   
   .devotional-daily span.read-now {
-    font-family: inter;
     margin-top: 0.6rem;
     font-size: 14px;
     font-weight: 500;
-    color: var(--gray-dark);
+    color: #989595;
   }
   
   .devotional-daily .actions {

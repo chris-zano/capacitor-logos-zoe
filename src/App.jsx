@@ -70,6 +70,7 @@ function App() {
           <Route path="/broadcast" element={<BroadcastPage />}>
             <Route path="podcasts" element={<BroadcastPage />} />
             <Route path="word-of-power" element={<BroadcastPage />} />
+            <Route path="prayers" element={<BroadcastPage />} />
             <Route path="wisdom-nuggets" element={<BroadcastPage />} />
             <Route path="motivationals" element={<BroadcastPage />} />
             <Route path="inspirational" element={<BroadcastPage />} />

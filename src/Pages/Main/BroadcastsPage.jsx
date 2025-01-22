@@ -7,6 +7,7 @@ import getDevotionalsPodcasts from '../../data/podcasts/get_devotional_podcasts.
 import getWofPodcasts from '../../data/podcasts/get_wof_podcasts.js';
 import getVideosByCategoryName from '../../data/videos/get_videos_by_category_name.js';
 import VideosComponent from '../../Components/BroadcastComponents/VideosComponent.jsx';
+import getPrayersPodcasts from '../../data/podcasts/get_prayers_podcasts.js';
 
 
 const BroadcastPage = () => {
@@ -22,6 +23,7 @@ const BroadcastPage = () => {
         {fileUrl === 'broadcast' && <Podcasts data_source={getDevotionalsPodcasts}/>}
         {fileUrl === 'podcasts' && <Podcasts  data_source={getDevotionalsPodcasts} />}
         {fileUrl === 'word-of-power' && <Podcasts  data_source={getWofPodcasts} />}
+        {fileUrl === 'prayers' && <Podcasts  data_source={getPrayersPodcasts} />}
         {fileUrl === 'wisdom-nuggets' && <VideosComponent data_source={getVideosByCategoryName} category={fileUrl}/>}
         {fileUrl === 'motivationals' && <VideosComponent data_source={getVideosByCategoryName} category={fileUrl}/>}
         {fileUrl === 'inspirational' && <VideosComponent data_source={getVideosByCategoryName} category={fileUrl}/>}

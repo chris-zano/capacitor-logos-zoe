@@ -5,7 +5,6 @@ import { faCircleChevronLeft, faCircleChevronRight } from '@fortawesome/free-sol
 const Podcasts = ({ data_source }) => {
   const [podcasts, setPodcasts] = useState([]);
   const [currentPodcast, setCurrentPodcast] = useState(null);
-  const [activePodcastId, setActivePodcastId] = useState(null);
 
   useEffect(() => {
     const fetchPodcasts = async () => {
@@ -21,7 +20,6 @@ const Podcasts = ({ data_source }) => {
   }, []);
 
   const playPodcast = (podcast) => {
-    setActivePodcastId(podcast._id);
     setCurrentPodcast(podcast);
     const audio = document.getElementById('audio1');
     if (audio) {
@@ -57,7 +55,7 @@ const Podcasts = ({ data_source }) => {
 
   return (
     <div className="music-player">
-      <div className="music-player__toolbar music-toolbar h-fit ">
+      <div className="music-player__toolbar music-toolbar">
         <div className="music-player__sound-wave">
           {Array(20)
             .fill(null)
@@ -95,18 +93,16 @@ const Podcasts = ({ data_source }) => {
             <div
               key={podcast._id}
               id={podcast._id}
-              className={`bg-white px-2 py-2 rounded-[2ch] transition-all duration-200  ${activePodcastId === podcast._id ? "border-2 border-green-500" : "border-2 border-transparent"
-                }`}
+              className={`podcast-item ${currentPodcast?._id === podcast._id ? 'selected' : ''}`}
               onClick={() => playPodcast(podcast)}
               data-audio-url={podcast.fileUrl}
               data-audio-title={podcast.title}
             >
-              <div className="">
-                <div className={`font-semibold pl-2  ${activePodcastId === podcast._id ? "text-green-600" : "border-2 border-transparent"
-                  }`}>
+              <div className="podcast-details">
+                <div className="p-title">
                   <p>{podcast.title.substring(0, 40)}</p>
                 </div>
-                <div className="text-xs font-medium pl-2">
+                <div className="p-description">
                   <p>
                     {podcast.description.length > 55
                       ? podcast.description.substring(0, 48) + '...'

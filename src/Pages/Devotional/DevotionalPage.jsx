@@ -45,7 +45,7 @@ const DevotionalPage = ({ styles }) => {
       try {
         setLoading(true);
         const data = await getDevotionalById(id);
-        console.log(data);
+        
         setDevotional(data.devotional);
       } catch (err) {
         setError("Failed to load the devotional. Please try again.");
@@ -76,7 +76,7 @@ const DevotionalPage = ({ styles }) => {
         console.error("Error fetching devotionals:", error);
       }
     };
-
+    
     fetchDevotionals();
   }, []);
 
@@ -159,15 +159,14 @@ const DevotionalPage = ({ styles }) => {
           <div className="row-column">
             <div
               className="listen"
-              onClick={() => (window.location.href = "/broadcast")}
             >
               {
                 devotional.type === 'old' ?
                   (
-                    <>
+                    <div onClick={() => (window.location.href = "/broadcast")}>
                       <FontAwesomeIcon icon={faCirclePlay} />
                       <span>Listen to podcast discussion</span>
-                    </>
+                    </div>
                   ) :
                   (
                     <>
@@ -206,23 +205,30 @@ const DevotionalPage = ({ styles }) => {
         </section>
 
         {/* Message Section */}
-        <section className="p-4 ">
-          
-          <strong>{devotional.type === 'new' ? "THEME SCRIPTURE:" :""}</strong>
-          <div className="mb-6" dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.scripture : '' }} ></div>
+        <section className="message-sect">
 
-          <strong className="mt-4">{devotional.type === 'new' ? "PREPARATORY QUESTION:" :""}</strong>
-          <div className="mb-6"  dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.questions : '' }} ></div>
+          <strong className="theme-scripture-header">
+            {devotional.type === 'new' ? "THEME SCRIPTURE:" : ""}
+          </strong>
+          <div className="theme-scripture"
+            dangerouslySetInnerHTML={{
+              __html: devotional.type === 'new'
+                ? devotional.scripture
+                : ''
+            }} ></div>
+
+          <strong className="theme-scripture-header">{devotional.type === 'new' ? "PREPARATORY QUESTION:" : ""}</strong>
+          <div className="theme-scripture" dangerouslySetInnerHTML={{ __html: devotional.type === 'new' ? devotional.questions : '' }} ></div>
 
           <div>
-            {devotional.type === 'new' && 
+            {devotional.type === 'new' &&
               <>
-                <hr  className="my-8 border-[2px] border-blue-950 rounded" />
+                <hr className="hr-divider" />
               </>
             }
-          </div>  
-          
-          <div id="article-message" className="leading-[1.6]" dangerouslySetInnerHTML={{ __html: devotional.content }}></div>
+          </div>
+
+          <div id="article-message" className="message" dangerouslySetInnerHTML={{ __html: devotional.content }}></div>
           {devotional.type === 'new' &&
             <>
               <span className="poppins-bold">By:</span> <br />

@@ -6,8 +6,8 @@ div.explore-title {
     padding: 0.5ch 1ch;
 }
 
-div.explore-title h2 {
-    font-size: 1.5rem;
+div.explore-title h2.section-title {
+    display: none;
 }
 
 div.explore-grid {
@@ -20,7 +20,7 @@ div.explore-grid div.grid-card {
     height: 135px;
     background-color: var(--white);
     border-radius: 1ch;
-    padding: 1.5ch 1ch;
+    padding: 2.5ch 1.5ch;
     border-radius: 2ch;
     background-color: var(--white);
 }

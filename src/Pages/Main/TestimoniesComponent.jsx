@@ -30,7 +30,7 @@ const TestimoniesComponent = () => {
                 <NavLink to={`/videos/video/${testimony._id}/${testimony.category}`} key={testimony._id} className="testimonial-card">
                     <div id={testimony._id} className="testimony-item">
                         <div className="p-image">
-                            <img src={testimony.video_image} alt={testimony.video_title} />
+                            <img src={testimony.video_image} alt={testimony.video_title}  width='100px'/>
                         </div>
                         <div className="testimony-details">
                             <div className="p-title">

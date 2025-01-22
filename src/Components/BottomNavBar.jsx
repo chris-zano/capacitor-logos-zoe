@@ -27,6 +27,7 @@ const BottomNavBarComponent = () => {
                     >
                         <NavLink to={item.path}>
                             <FontAwesomeIcon icon={['fas', item.icon]} />
+                            <small>{item.name}</small>
                         </NavLink>
                     </li>
                 ))}
