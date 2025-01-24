@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faArrowLeft, faShareNodes, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faArrowLeft, faShareNodes, faHome, faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import getArticleById from "../../data/articles/get_article_by_id.js";
 import ShareApi from "../../NativeApis/Share.jsx";
+import { Share } from "@capacitor/share";
 
 const ArticlePage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [articleData, setArticleData] = useState(null);
+  const [isHidden, setHiddenState] = useState(true);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -28,25 +30,62 @@ const ArticlePage = () => {
   }
 
   const { article, comments, relatedArticles } = articleData;
-  console.log(article);
+
+  const toggleHiddenState = () => {
+    setHiddenState(!isHidden)
+  }
 
   return (
     <>
-      <header>
-      <div id="read-appbar">
-                    <div className="row" style={{display:'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch'}}>
-                        <button onClick={() => window.history.back()}>
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                        </button>
-                        <button onClick={() => navigate('/')}>
-                            <FontAwesomeIcon icon={faHome} />
-                        </button>
-                    </div>
-                </div>
+      <header style={{ position: 'relative' }}>
+        <div id="read-appbar">
+          <div className="row" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch' }}>
+            <button onClick={() => window.history.back()}>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+            <button onClick={toggleHiddenState}>
+              <FontAwesomeIcon icon={faEllipsis} />
+            </button>
+          </div>
+        </div>
+        <div
+          className={`drop-down-home-share`}
+          style={{ display: `${isHidden ? 'none' : 'block'}` }}
+        >
+          <div className="drop-down-wrapper">
+            <div className="drop-down-item">
+              <button
+                id="navigate-home-btn"
+                onClick={() => navigate('/')}
+              >
+                <FontAwesomeIcon icon={faHome} />
+                <span>Home</span>
+              </button>
+            </div>
+            <div className="drop-down-item">
+              <button
+                // onClick={ async () => {
+                //   const shareData = {
+                //     title: article.article_title,
+                //     text: article.article_fullText,
+                //     // url: window.location.href,
+                //   };
+                  
+                //   await Share.share(shareData);
+
+                // }}
+              >
+                <FontAwesomeIcon icon={faShareNodes} />
+                <span>Share</span>
+              </button>
+            </div>
+            <div className="drop-down-item"></div>
+          </div>
+        </div>
       </header>
       <div>
         {/* Article Section */}
-        <main>
+        <main style={{ marginTop: '3.27rem' }}>
           <article className="a-chapter mt-3">
             <section className="top-header">
               <div className="date-time">
@@ -57,17 +96,6 @@ const ArticlePage = () => {
                     year: "numeric",
                   }).format(new Date(article.updatedAt))}
                 </p>
-                <span style={{display: 'flex', gap: '2rem'}}>
-                  <ShareApi 
-                    button_text={<FontAwesomeIcon icon={faShareNodes} style={{ color: "var(--text)" }} />}
-                    data_to_share={{
-                      title: article.article_title,
-                      files: [article.article_image],
-                      url: article.article_image,
-                    }}
-                  />
-                  <FontAwesomeIcon icon={faHeart} style={{ color: "var(--text)" }} />
-                </span>
               </div>
               <div className="article-title" id="article-title">
                 {article.article_title}

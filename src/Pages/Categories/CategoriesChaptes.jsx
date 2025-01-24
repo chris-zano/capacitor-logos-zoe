@@ -42,9 +42,6 @@ const CategoryChapter = () => {
                         <button onClick={() => window.history.back()}>
                             <FontAwesomeIcon icon={faArrowLeft} />
                         </button>
-                        <button onClick={() => navigate('/')}>
-                            <FontAwesomeIcon icon={faHome} />
-                        </button>
                     </div>
                 </div>
             </header>

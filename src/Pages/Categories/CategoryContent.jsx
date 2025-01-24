@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faHeart, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faEllipsis, faHeart, faHome, faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import getCategoryById from "../../data/explore/get_category_by_id.js";
 
 const CategoryContent = () => {
@@ -10,6 +10,11 @@ const CategoryContent = () => {
     const [categoryInfo, setCategoryInfo] = useState(null);
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isHidden, setHiddenState] = useState(true);
+
+    const toggleHiddenState = () => {
+        setHiddenState(!isHidden)
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,19 +45,53 @@ const CategoryContent = () => {
 
     return (
         <>
-            <header>
+            <header style={{ position: 'relative' }}>
                 <div id="read-appbar">
-                    <div className="row" style={{display:'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch'}}>
+                    <div className="row" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch' }}>
                         <button onClick={() => window.history.back()}>
                             <FontAwesomeIcon icon={faArrowLeft} />
                         </button>
-                        <button onClick={() => navigate('/')}>
-                            <FontAwesomeIcon icon={faHome} />
+                        <button onClick={toggleHiddenState}>
+                            <FontAwesomeIcon icon={faEllipsis} />
                         </button>
                     </div>
                 </div>
+                <div
+                    className={`drop-down-home-share`}
+                    style={{ display: `${isHidden ? 'none' : 'block'}` }}
+                >
+                    <div className="drop-down-wrapper">
+                        <div className="drop-down-item">
+                            <button
+                                id="navigate-home-btn"
+                                onClick={() => navigate('/')}
+                            >
+                                <FontAwesomeIcon icon={faHome} />
+                                <span>Home</span>
+                            </button>
+                        </div>
+                        <div className="drop-down-item">
+                            <button
+                            // onClick={ async () => {
+                            //   const shareData = {
+                            //     title: article.article_title,
+                            //     text: article.article_fullText,
+                            //     // url: window.location.href,
+                            //   };
+
+                            //   await Share.share(shareData);
+
+                            // }}
+                            >
+                                <FontAwesomeIcon icon={faShareNodes} />
+                                <span>Share</span>
+                            </button>
+                        </div>
+                        <div className="drop-down-item"></div>
+                    </div>
+                </div>
             </header>
-            <div className="article-page mt-5 mx-2">
+            <div className="article-page mt-5 mx-2" style={{ marginTop: '3.27rem' }}>
                 {/* Landing Page Article */}
                 <article className="chapter">
                     <section className="top-header">
@@ -64,7 +103,6 @@ const CategoryContent = () => {
                                     year: "numeric",
                                 })}
                             </p>
-                            <FontAwesomeIcon icon={faHeart} />
                         </div>
                         <section className="category-title">
                             <p style={{ fontSize: "1.4rem", fontWeight: 600 }}>{category_introText}</p>

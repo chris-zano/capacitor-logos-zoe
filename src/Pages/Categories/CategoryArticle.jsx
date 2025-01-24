@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import getCategoryById from "../../data/explore/get_category_by_id.js";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faArrowLeft, faShareNodes, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faArrowLeft, faShareNodes, faHome, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import ShareApi from '../../NativeApis/Share.jsx';
 
 const CategoryArticle = () => {
@@ -13,7 +13,11 @@ const CategoryArticle = () => {
     const [article, setArticle] = useState(null);
     const [relatedArticles, setRelatedArticles] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isHidden, setHiddenState] = useState(true);
 
+    const toggleHiddenState = () => {
+        setHiddenState(!isHidden)
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,35 +46,58 @@ const CategoryArticle = () => {
     const { category_name, category_introText, updatedAt, category_banner, category_fullText } = article
     return (
         <>
-            <header>
-            <div id="read-appbar">
-                    <div className="row" style={{display:'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch'}}>
+            <header style={{ position: 'relative' }}>
+                <div id="read-appbar">
+                    <div className="row" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch' }}>
                         <button onClick={() => window.history.back()}>
                             <FontAwesomeIcon icon={faArrowLeft} />
                         </button>
-                        <button onClick={() => navigate('/')}>
-                            <FontAwesomeIcon icon={faHome} />
+                        <button onClick={toggleHiddenState}>
+                            <FontAwesomeIcon icon={faEllipsis} />
                         </button>
                     </div>
                 </div>
+                <div
+                    className={`drop-down-home-share`}
+                    style={{ display: `${isHidden ? 'none' : 'block'}` }}
+                >
+                    <div className="drop-down-wrapper">
+                        <div className="drop-down-item">
+                            <button
+                                id="navigate-home-btn"
+                                onClick={() => navigate('/')}
+                            >
+                                <FontAwesomeIcon icon={faHome} />
+                                <span>Home</span>
+                            </button>
+                        </div>
+                        <div className="drop-down-item">
+                            <button
+                            // onClick={ async () => {
+                            //   const shareData = {
+                            //     title: article.article_title,
+                            //     text: article.article_fullText,
+                            //     // url: window.location.href,
+                            //   };
+
+                            //   await Share.share(shareData);
+
+                            // }}
+                            >
+                                <FontAwesomeIcon icon={faShareNodes} />
+                                <span>Share</span>
+                            </button>
+                        </div>
+                        <div className="drop-down-item"></div>
+                    </div>
+                </div>
             </header>
-            <main>
+            <main style={{ marginTop: '3.27rem' }}>
                 <div className="a-chapter">
                     {/* Article Header */}
                     <section className="top-header">
                         <div className="date-time">
                             <p>{new Date(updatedAt).toLocaleDateString('en-UK', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                            <span style={{ display: 'flex', gap: '2rem' }}>
-                                <ShareApi
-                                    button_text={<FontAwesomeIcon icon={faShareNodes} style={{ color: "var(--text)" }} />}
-                                    data_to_share={{
-                                        title: category_name,
-                                        text: `${category_banner}`,
-                                        url: "https://chris-zano.github.io/store.logos/",
-                                    }}
-                                />
-                                <FontAwesomeIcon icon={faHeart} style={{ color: "var(--text)" }} />
-                            </span>
                         </div>
                         <div className="article-title" id="article-title">{category_introText}</div>
                         <div className="author">

@@ -284,6 +284,10 @@ td * {
   font-style: normal !important;
 }
 
+.about-us-wrapper-main {
+  background-color: #cecece;
+}
+
 /* app-bar  */
 header#header_top_navbar {
   background-color: var(--primary);
@@ -1266,4 +1270,39 @@ section.related-section {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.drop-down-home-share {
+  background-color: white;
+  border: 1px solid grey;
+  position: absolute;
+  top: 0.3ch;
+  right: 2ch;
+  border-radius: 1ch;
+}
+
+.drop-down-wrapper {
+  width: 140px;
+}
+
+.drop-down-item {
+  width: 100%;
+}
+
+.drop-down-item button {
+  height: 100%;
+  width: 100%;
+  padding: 2ch 2ch;
+  margin: 0.3ch 0;
+  background-color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1.1ch;
+  font-size: 1.15rem;
+}
+
+.drop-down-item button#navigate-home-btn {
+  border-bottom: 1px solid grey;
 }
