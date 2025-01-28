@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import getBibleBooks from '../../data/bible/get_books.js';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavLink } from 'react-router-dom';
 
 function BibleContents() {
     const [bibleContents, setBibleContents] = useState([]);
@@ -7,15 +11,11 @@ function BibleContents() {
     useEffect(() => {
         const fetchBibleContents = async () => {
             try {
-                const response = await fetch('https://bible-api.com/books');
-                if (!response.ok) {
-                    throw new Error(`Error fetching Bible contents: ${response.statusText}`);
-                }
-                const data = await response.json();
-
+                const data = await getBibleBooks();
+                console.log({ data });
                 // Assuming the API provides an array of books with "name" and "chapters" fields
-                if (data.books) {
-                    setBibleContents(data.books);
+                if (data && data.books) {
+                    setBibleContents(Array.from(data.books).sort((a, b) => a > b ? 1 : -1));
                 } else {
                     throw new Error('Unexpected data format from API.');
                 }
@@ -27,26 +27,67 @@ function BibleContents() {
         fetchBibleContents();
     }, []);
 
+    console.log({ bibleContents });
+
     return (
         <>
-            <h1 className="poppins-regular">Bible App</h1>
-            {error ? (
-                <p className="error">{error}</p>
-            ) : (
-                <div className="bible-contents">
-                    {bibleContents.length === 0 ? (
-                        <p>Loading contents...</p>
-                    ) : (
-                        <ul>
-                            {bibleContents.map((book, index) => (
-                                <li key={index}>
-                                    <strong>{book.name}</strong> - {book.chapters.length} chapters
-                                </li>
-                            ))}
-                        </ul>
-                    )}
+            <header>
+                <div id="read-appbar">
+                    <div className="row" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch' }}>
+                        <button onClick={() => window.history.back()}>
+                            <FontAwesomeIcon icon={faArrowLeft} />
+                            <span
+                            className='poppins-regular'
+                            style={{
+                                marginLeft: '1ch',
+                            }}
+                            >Books</span>
+                        </button>
+                    </div>
                 </div>
-            )}
+            </header>
+            <main style={{
+                marginTop: '3.2rem',
+                // padding: '0 1.5ch',
+            }}>
+
+                {error ? (
+                    <p className="error">{error}</p>
+                ) : (
+                    <div className="bible-contents">
+                        {bibleContents.length === 0 ? (
+                            <p>Loading contents...</p>
+                        ) : (
+                            <ul
+                                style={{
+                                    padding: 'unset',
+                                    margin: 'unset',
+                                }}
+                            >
+                                {bibleContents.map((book, index) => (
+                                    <li key={index}
+                                    className='poppins-regular'
+                                        style={{
+                                            padding: '1.5rem',
+                                            borderBottom: '1px solid rgb(210 209 209 / 36%)',
+                                            cursor: 'pointer',
+                                            transition: 'background-color 0.3s ease',
+                                            fontWeight: '500',
+                                            fontSize: '1.2rem',
+                                            listStyle: 'none',
+                                        }}
+                                    >
+                                        <NavLink to="/">
+                                            <span>{book}</span>
+                                        </NavLink>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                )}
+            </main>
+
         </>
     );
 }
