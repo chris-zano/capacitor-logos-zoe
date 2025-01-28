@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BASEURL from "../../baseUrl.js";
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
@@ -11,7 +12,6 @@ const ResetPasswordPage = () => {
     try {
       const email = sessionStorage.getItem("temp-email");
       const response = await fetch(`${BASEURL}/auth/change-password`, {
-      // const response = await fetch(`http://localhost:3123/auth/change-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,8 +20,7 @@ const ResetPasswordPage = () => {
       });
 
       const result = await response.json();
-      console.log({result});
-
+      
       if (response.ok) {
         localStorage.setItem("reset", "true");
       } else {

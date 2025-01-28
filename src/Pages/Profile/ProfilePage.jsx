@@ -9,10 +9,12 @@ import {
   faBell,
   faPeopleLine,
   faArrowUpFromWaterPump,
+  faShield,
 } from "@fortawesome/free-solid-svg-icons";
 import { LocalNotifications } from "@capacitor/local-notifications";
 import avatar1 from "../../assets/images/avatar1.jpg";
 import { faChurch } from "@fortawesome/free-solid-svg-icons/faChurch";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons/faQuestionCircle";
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
@@ -75,7 +77,7 @@ const ProfilePage = () => {
 
   const enableNotifications = async () => {
     const hasPermission = await checkNotificationPermissions();
-    console.log({hasPermission});
+    console.log({ hasPermission });
 
     if (hasPermission) {
       alert("Notifications are already enabled!");
@@ -110,7 +112,7 @@ const ProfilePage = () => {
       <div className="profile-header">
         <img
           id="profile-picture"
-          src={userData.profilePicture || avatar1}
+          src={userData.profilePicture === '/images/user.png' ? avatar1 : userData.profilePicture}
           alt="Profile Picture"
           className="profile-picture"
           onClick={() => navigate("/avatars")}
@@ -139,18 +141,35 @@ const ProfilePage = () => {
       ) : null}
 
       <ul className="action-list">
+        <li>
+          <FontAwesomeIcon icon={faBookmark} style={{ color: "var(--text)" }} />
+          <a href="/bookmarks">Bookmarks</a>
+          <br />
+          <small>View a list of items you have saved</small>
+        </li>
         <li onClick={enableNotifications}>
           <FontAwesomeIcon icon={faBell} style={{ color: "var(--text)" }} />
           <a href="#">Notifications</a>
           <br />
           <small>Enable push notifications.</small>
         </li>
-
         <li>
-          <FontAwesomeIcon icon={faBookmark} style={{ color: "var(--text)" }} />
-          <a href="/bookmarks">Bookmarks</a>
+          <FontAwesomeIcon icon={faChurch} style={{ color: "var(--text)" }} />
+          <a href="/about-us">About Us</a>
           <br />
-          <small>View a list of items you have saved</small>
+          <small>Learn more about the LOGOS ZOE</small>
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faShield} style={{ color: "var(--text)" }} />
+          <a href="/about-us">Privacy Policy</a>
+          <br />
+          <small>Learn about how we store and handle your data</small>
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faQuestionCircle} style={{ color: "var(--text)" }} />
+          <a href="/about-us">FAQs</a>
+          <br />
+          <small>Discover answers to most asked questions</small>
         </li>
         <li>
           <FontAwesomeIcon icon={faKey} style={{ color: "var(--text)" }} />
@@ -166,12 +185,6 @@ const ProfilePage = () => {
           <a>Logout</a>
           <br />
           <small>End your current session</small>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faChurch} style={{ color: "var(--text)" }} />
-          <a href="/about-us">About Us</a>
-          <br />
-          <small>Learn more about the LOGOS ZOE</small>
         </li>
       </ul>
     </div>

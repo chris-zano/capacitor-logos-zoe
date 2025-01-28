@@ -1,3 +1,4 @@
+import { faBookmark, faTrash } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +8,10 @@ import ShareApi from "../../NativeApis/Share.jsx";
 import { Share } from "@capacitor/share";
 import userImage from '../../assets/images/logo.png'
 import BASEURL from "../../baseUrl.js";
+import getUserNameFromLocalStorage from "../../data/user/get_user_name.js";
+import { formatDate } from "date-fns";
+import addToBookmarks from '../../data/user/add_to_bookmarks.js';
+
 
 const ArticlePage = () => {
   const navigate = useNavigate();
@@ -16,36 +21,52 @@ const ArticlePage = () => {
   const [comments, setComments] = useState([]);
   const [commentValue, setCommentValue] = useState("");
 
+  const fetchComments = async () => {
+    try {
+      const response = await fetch(`${BASEURL}/articles/${articleData.article._id}/comments`);
+      const data = await response.json();
+      console.log({ comments: data });
+      setComments(data.comments.reverse());
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
+
+  const fetchArticle = async () => {
+    try {
+      const data = await getArticleById(id);
+      console.log({ data });
+      setArticleData(data);
+    } catch (error) {
+      console.error("Error fetching article data:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const data = await getArticleById(id);
-        console.log({ data });
-        setArticleData(data);
-      } catch (error) {
-        console.error("Error fetching article data:", error);
-      }
-    };
     fetchArticle();
   }, [id]);
 
   useEffect(() => {
     if (articleData) {
-      const fetchComments = async () => {
-        try {
-          const response = await fetch(`${BASEURL}/articles/${articleData.article._id}/comments`);
-          const data = await response.json();
-          setComments(data.comments);
-        } catch (error) {
-          console.error("Error fetching comments:", error);
-        }
-      };
       fetchComments();
     }
   }, [articleData]);
 
-  const postComment = async () => {
+  const postComment = async (e) => {
+    e.preventDefault();
     try {
+      const _username = getUserNameFromLocalStorage();
+      if (!_username) {
+        alert('You must be logged in to post a comment.');
+        setCommentValue("");
+        fetchComments();
+        return;
+      }
+      if (commentValue.trim() === "") {
+        alert('Comment cannot be empty.');
+        fetchComments();
+        return;
+      }
       const response = await fetch(`${BASEURL}/articles/${articleData.article._id}/comments/add`, {
         method: 'POST',
         headers: {
@@ -53,11 +74,14 @@ const ArticlePage = () => {
         },
         body: JSON.stringify({
           comment: commentValue,
-          username: 'XXXXXXXXXX',
+          username: _username,
         }),
       });
-      const data = await response.json();
-      console.log(data);
+      await response.json();
+
+      setCommentValue("");
+      fetchComments();
+
     } catch (error) {
       console.error("Error posting comment:", error);
     }
@@ -107,22 +131,28 @@ const ArticlePage = () => {
             </div>
             <div className="drop-down-item">
               <button
-              // onClick={ async () => {
-              //   const shareData = {
-              //     title: article.article_title,
-              //     text: article.article_fullText,
-              //     // url: window.location.href,
-              //   };
+                onClick={async () => {
+                  const shareData = {
+                    title: article.article_title,
+                    text: article.article_fullText,
+                    url: article.article_image
+                  };
 
-              //   await Share.share(shareData);
-
-              // }}
+                  await Share.share(shareData);
+                }}
               >
                 <FontAwesomeIcon icon={faShareNodes} />
                 <span>Share</span>
               </button>
             </div>
-            <div className="drop-down-item"></div>
+            <div className="drop-down-item">
+              <button type="button"
+                onClick={() => addToBookmarks({ item_id: article._id, item_type: 'article' })}
+              >
+                <FontAwesomeIcon icon={faBookmark} />
+                <span>Save</span>
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -145,14 +175,18 @@ const ArticlePage = () => {
               </div>
               <div className="author">
                 <div className="circle-avatar">
-                  <img src={article.article_image} alt="Author Avatar" />
+                  <img src={article.article_image} alt="Author Avatar" style={{
+                    border: '1px solid #ccccde'
+                  }} />
                 </div>
                 <div className="author-name">Rev. Alex Buaben Korsah</div>
               </div>
             </section>
 
             <section className="image">
-              <img src={article.article_image} alt="Article" />
+              <img src={article.article_image} alt="Article" style={{
+                border: '1px solid #ccccde'
+              }} />
             </section>
 
             <section className="message">
@@ -207,7 +241,6 @@ const ArticlePage = () => {
           <h4>Leave a Comment</h4>
           <form
             method="post"
-            // action={`/comment-article/${article._id}`}
             style={{ display: "flex", flexDirection: "column" }}
             onSubmit={postComment}
           >
@@ -256,27 +289,57 @@ const ArticlePage = () => {
                 <div style={{
                   padding: '1ch 2ch',
                   marginBottom: '.5ch',
-                  border: '1px solid #ccccde'
+                  border: '1px solid #ccccde',
+                  borderRadius: '1ch'
                 }} key={index}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '1ch'
+                    justifyContent: 'space-between',
+                    gap: '1ch',
                   }}>
                     <div style={{
-                      width: '2.5rem',
-                      height: '2.5rem',
-                      borderRadius: '50%',
-                      overflow: 'hidden',
-                      border: '1px solid #ccccde'
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '1ch',
                     }}>
-                      <img src={userImage} alt="avatar" style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'contain',
-                      }} />
+                      <div style={{
+                        width: '2.5rem',
+                        height: '2.5rem',
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        border: '1px solid #ccccde'
+                      }}>
+                        <img src={userImage} alt="avatar" style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                        }} />
+                      </div>
+                      <div className="author-name">
+                        <span style={{ fontSize: '0.87rem', fontFamily: 'Poppins' }}>{comment.username || "Anonymous"}</span><br />
+                        <small style={{ fontSize: '0.67rem', fontFamily: 'Poppins' }}>{`${formatDate(new Date(comment.date).toISOString(), "PPP")}`}</small>
+                      </div>
                     </div>
-                    <div className="author-name">{comment.username || "Anonymous"}</div>
+                    {comment.username === getUserNameFromLocalStorage() ? (
+                      <div className="comment-actions">
+                        <button
+                          onClick={async () => {
+                            const response = await fetch(`${BASEURL}/articles/${articleData.article._id}/comments/${comment.date}/delete?user=${comment.username}`, {
+                              method: 'DELETE',
+                            });
+                            await response.json();
+                            fetchComments();
+                          }}
+                          style={{
+                            backgroundColor: 'unset',
+                            border: 'none'
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                      </div>
+                    ) : null}
                   </div>
                   <div className="comment-message">
                     <p>{comment.comment}</p>

@@ -288,7 +288,7 @@ td * {
 }
 
 .about-us-wrapper-main {
-  background-color: #cecece;
+  background-color: #e6e5e5;
 }
 
 /* app-bar  */
@@ -1276,16 +1276,18 @@ section.related-section {
 }
 
 .drop-down-home-share {
+  z-index: 10001;
   background-color: white;
-  border: 1px solid grey;
-  position: absolute;
-  top: 0.3ch;
+  border: 1px solid rgb(231, 231, 231);
+  position: fixed;
+  top: 3.3rem;
   right: 2ch;
-  border-radius: 1ch;
+  border-radius: 1.5ch;
+  box-shadow: 0px 3px 20px #9e9e9e67;
 }
 
 .drop-down-wrapper {
-  width: 140px;
+  width: 130px;
 }
 
 .drop-down-item {
@@ -1293,19 +1295,22 @@ section.related-section {
 }
 
 .drop-down-item button {
+  background-color: white;
   height: 100%;
   width: 100%;
-  padding: 2ch 2ch;
-  margin: 0.3ch 0;
-  background-color: white;
   border: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
   gap: 1.1ch;
   font-size: 1.15rem;
+  font-family: Poppins;
+  display: flex;
+  align-items: center;
+  padding: 1ch;
+  border-radius: 1.5ch;
+
 }
 
 .drop-down-item button#navigate-home-btn {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgba(223, 223, 223, 0.726);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }

@@ -69,7 +69,9 @@ const SignUpPage = () => {
                 required
               />
             </div>
-            <div className="input-group relative">
+            <div className="input-group relative" style={{
+              position: 'relative'
+            }}>
               <label htmlFor="password">Password</label>
                 <input
                   type={showPassword ? "text" : "password"}
@@ -83,6 +85,12 @@ const SignUpPage = () => {
                 <span
                   className="absolute right-[2.5ch] bottom-[2.5ch] flex items-center"
                   onClick={() => setShowPassword((prev) => !prev)}
+                  style={{
+                    position: 'absolute',
+                    right: '2.5ch',
+                    bottom: '2.5ch',
+                    cursor: 'pointer',
+                  }}
                 >
                   <FontAwesomeIcon
                     icon={showPassword ? faEyeSlash : faEye}

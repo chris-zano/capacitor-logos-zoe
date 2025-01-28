@@ -1,78 +1,69 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom"; // Assuming you're using React Router
+import getUserBookmarks from "../../data/user/get_user_bookmarks.js";
 
 function Bookmarks() {
   const [bookmarks, setBookmarks] = useState([]);
 
   useEffect(() => {
-    // Fetch bookmarks from localStorage
-    const userData = JSON.parse(localStorage.getItem("user-data"));
-    if (userData && userData.bookmarks) {
-      setBookmarks(userData.bookmarks);
-    } else {
-      setBookmarks([]);
-    }
+    const fetchBookmarks = async () => {
+      const userBookmarks = await getUserBookmarks();
+      setBookmarks(userBookmarks);
+    };
+    fetchBookmarks();
   }, []);
+
+  const getRedirectUrl = ({ type, id }) => {
+    switch (type) {
+      case 'article':
+        return `/articles/article/${id}`;
+      case 'devotional':
+        return `/devotionals/devotional/${id}`;
+      default:
+        return '/';
+    }
+  }
 
   return (
     <div
       style={{
-        padding: "20px",
         textAlign: "center",
       }}
     >
-      <h1 style={{ fontSize: "24px", marginBottom: "20px" }}>Your Bookmarks</h1>
+      <p style={{ fontSize: "1.2rem", paddingLeft: '1ch', textAlign: 'left', fontWeight: '400', fontFamily: 'Poppins', marginBottom: "1ch" }}>Bookmarks</p>
       {bookmarks.length > 0 ? (
         <ul
           style={{
             listStyle: "none",
             padding: 0,
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "20px",
+            margin: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
           }}
         >
           {bookmarks.map((bookmark, index) => (
-            <li
-              key={index}
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                overflow: "hidden",
-                textAlign: "left",
-                backgroundColor: "#fff",
-                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <img
-                src={bookmark.image}
-                alt={bookmark.title}
-                style={{
-                  width: "100%",
-                  height: "150px",
-                  objectFit: "cover",
-                }}
-              />
-              <div
-                style={{
-                  padding: "10px",
-                }}
-              >
-                <h2
-                  style={{
-                    fontSize: "16px",
-                    margin: "0 0 10px",
-                    color: "#333",
-                  }}
-                >
-                  {bookmark.title}
-                </h2>
+            <a key={index} href={getRedirectUrl({type: bookmark.type, id: bookmark.id})} style={{
+              padding: '1ch',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1ch',
+              fontFamily: 'Poppins',
+            }}>
+              <img src={bookmark.image} alt={bookmark.title} style={{
+                borderRadius: '.7ch',
+                border: '1px solid #ccccde'
+              }} />
+              <div className="article-details" sty>
+                <p>{bookmark.title}</p>
               </div>
-            </li>
+            </a>
           ))}
         </ul>
       ) : (
         <p style={{ fontSize: "18px", color: "#666" }}>
-          No bookmarks found. Start saving your favorite items!
+          No bookmarks found. Start saving your favorite items! <br />
+          loading...
         </p>
       )}
     </div>
