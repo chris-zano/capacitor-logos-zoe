@@ -5,18 +5,22 @@ import { faHeart, faArrowLeft, faShareNodes, faHome, faEllipsis } from "@fortawe
 import getArticleById from "../../data/articles/get_article_by_id.js";
 import ShareApi from "../../NativeApis/Share.jsx";
 import { Share } from "@capacitor/share";
+import userImage from '../../assets/images/logo.png'
+import BASEURL from "../../baseUrl.js";
 
 const ArticlePage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [articleData, setArticleData] = useState(null);
   const [isHidden, setHiddenState] = useState(true);
+  const [comments, setComments] = useState([]);
+  const [commentValue, setCommentValue] = useState("");
 
   useEffect(() => {
     const fetchArticle = async () => {
       try {
         const data = await getArticleById(id);
-        console.log(data);
+        console.log({ data });
         setArticleData(data);
       } catch (error) {
         console.error("Error fetching article data:", error);
@@ -25,11 +29,50 @@ const ArticlePage = () => {
     fetchArticle();
   }, [id]);
 
+  useEffect(() => {
+    if (articleData) {
+      const fetchComments = async () => {
+        try {
+          const response = await fetch(`${BASEURL}/articles/${articleData.article._id}/comments`);
+          const data = await response.json();
+          setComments(data.comments);
+        } catch (error) {
+          console.error("Error fetching comments:", error);
+        }
+      };
+      fetchComments();
+    }
+  }, [articleData]);
+
+  const postComment = async () => {
+    try {
+      const response = await fetch(`${BASEURL}/articles/${articleData.article._id}/comments/add`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          comment: commentValue,
+          username: 'XXXXXXXXXX',
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error posting comment:", error);
+    }
+  }
+
   if (!articleData) {
     return <p>Loading...</p>;
   }
 
-  const { article, comments, relatedArticles } = articleData;
+  const { article, relatedArticles } = articleData;
+
+
+  const updateCommentValue = (e) => {
+    setCommentValue(e.target.value)
+  }
 
   const toggleHiddenState = () => {
     setHiddenState(!isHidden)
@@ -64,16 +107,16 @@ const ArticlePage = () => {
             </div>
             <div className="drop-down-item">
               <button
-                // onClick={ async () => {
-                //   const shareData = {
-                //     title: article.article_title,
-                //     text: article.article_fullText,
-                //     // url: window.location.href,
-                //   };
-                  
-                //   await Share.share(shareData);
+              // onClick={ async () => {
+              //   const shareData = {
+              //     title: article.article_title,
+              //     text: article.article_fullText,
+              //     // url: window.location.href,
+              //   };
 
-                // }}
+              //   await Share.share(shareData);
+
+              // }}
               >
                 <FontAwesomeIcon icon={faShareNodes} />
                 <span>Share</span>
@@ -116,74 +159,6 @@ const ArticlePage = () => {
               <p id="article-message" dangerouslySetInnerHTML={{ __html: article.article_fullText }}></p>
             </section>
           </article>
-
-          {/* Comment Section
-      <section className="comment-section" style={{ paddingInline: "2ch", marginTop: "2ch" }}>
-        <h4>Leave a Comment</h4>
-        <form
-          method="post"
-          action={`/comment-article/${article._id}`}
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          <input
-            type="text"
-            name="comment"
-            placeholder="Add a comment"
-            style={{
-              marginBottom: "1ch",
-              padding: "1.2rem 2ch",
-              borderRadius: "2ch",
-              outline: "unset",
-              border: "1px solid var(--theme-icon)",
-              fontFamily: "Inter",
-            }}
-            required
-          />
-          <button
-            type="submit"
-            style={{
-              background: "var(--primary)",
-              border: "1ch solid var(--primary)",
-              color: "var(--white)",
-              padding: "1ch 2ch",
-              borderRadius: "2ch",
-            }}
-          >
-            Post
-          </button>
-        </form>
-      </section> */}
-
-          {/* Comments List */}
-          {/* <section className="comments-list">
-        {comments && comments.length > 0 ? (
-          <>
-            <div className="comments-header">
-              <h3>Comments</h3>
-              <p>
-                {comments.length} comment{comments.length > 1 ? "s" : ""}
-              </p>
-            </div>
-            {comments.map((comment, index) => (
-              <div className="comment" key={index}>
-                <div className="comment-author">
-                  <div className="circle-avatar">
-                    <img src="/default-avatar.jpg" alt="avatar" />
-                  </div>
-                  <div className="author-name">{comment.author || "Anonymous"}</div>
-                </div>
-                <div className="comment-message">
-                  <p>{comment.message}</p>
-                </div>
-              </div>
-            ))}
-          </>
-        ) : (
-          <div className="no-comments">
-            <p>No comments yet. Be the first to leave one!</p>
-          </div>
-        )}
-      </section> */}
         </main>
 
         {/* Recommended Readings */}
@@ -225,6 +200,94 @@ const ArticlePage = () => {
             <a href="/donate" style={{ textDecoration: "underline", color: "blue" }}>
               Support our mission with a donation
             </a>
+          )}
+        </section>
+
+        <section className="comment-section" style={{ paddingInline: "2ch", marginTop: "2ch" }}>
+          <h4>Leave a Comment</h4>
+          <form
+            method="post"
+            // action={`/comment-article/${article._id}`}
+            style={{ display: "flex", flexDirection: "column" }}
+            onSubmit={postComment}
+          >
+            <input
+              type="text"
+              name="comment"
+              placeholder="Add a comment"
+              style={{
+                marginBottom: "1ch",
+                padding: "1.2rem 2ch",
+                borderRadius: "2ch",
+                outline: "unset",
+                border: "1px solid var(--theme-icon)",
+                fontFamily: "Inter",
+              }}
+              required
+              value={commentValue}
+              onChange={updateCommentValue}
+            />
+            <button
+              type="submit"
+              style={{
+                background: "var(--primary)",
+                border: "1ch solid var(--primary)",
+                color: "var(--white)",
+                padding: "1ch 2ch",
+                borderRadius: "2ch",
+              }}
+            >
+              Post
+            </button>
+          </form>
+        </section>
+
+        {/* Comments List */}
+        <section className="comments-list" style={{ padding: '1ch' }}>
+          {comments && comments.length > 0 ? (
+            <>
+              <div className="comments-header">
+                <h3>Comments</h3>
+                <p>
+                  {comments.length} comment{comments.length > 1 ? "s" : ""}
+                </p>
+              </div>
+              {comments.map((comment, index) => (
+                <div style={{
+                  padding: '1ch 2ch',
+                  marginBottom: '.5ch',
+                  border: '1px solid #ccccde'
+                }} key={index}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '1ch'
+                  }}>
+                    <div style={{
+                      width: '2.5rem',
+                      height: '2.5rem',
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      border: '1px solid #ccccde'
+                    }}>
+                      <img src={userImage} alt="avatar" style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'contain',
+                      }} />
+                    </div>
+                    <div className="author-name">{comment.username || "Anonymous"}</div>
+                  </div>
+                  <div className="comment-message">
+                    <p>{comment.comment}</p>
+                  </div>
+                </div>
+              ))}
+            </>
+          ) : (
+            <div className="no-comments">
+              <p>No comments yet. Be the first to leave one!</p>
+            </div>
           )}
         </section>
       </div>

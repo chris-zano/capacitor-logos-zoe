@@ -273,14 +273,17 @@ table {
 
 table,
 th,
-tr,
+tr{
+  /* border: 1px solid grey !important; */
+}
+
 td {
   border: 1px solid grey;
 }
 
 td,
 td * {
-  padding: 3px;
+  /* padding: 3px; */
   font-style: normal !important;
 }
 
