@@ -18,19 +18,24 @@ const BottomNavBarComponent = () => {
     return (
         <footer id="footer_bottom_navbar">
             <ul id="bottom-navigation-list">
-                {navItems.map(item => (
-                    <li
-                        key={item.name}
-                        className={`nav-item ${currentPath === item.path ? 'nav-btn-active' : ''}`}
-                        title={item.name}
-                        aria-current={currentPath === item.path ? 'page' : undefined}
-                    >
-                        <NavLink to={item.path}>
-                            <FontAwesomeIcon icon={['fas', item.icon]} />
-                            <small>{item.name}</small>
-                        </NavLink>
-                    </li>
-                ))}
+                {navItems.map(item => {
+                    const isBroadcastActive =
+                        item.name === 'Broadcast' && currentPath.startsWith('/broadcast');
+
+                    return (
+                        <li
+                            key={item.name}
+                            className={`nav-item ${currentPath === item.path || isBroadcastActive ? 'nav-btn-active' : ''}`}
+                            title={item.name}
+                            aria-current={currentPath === item.path || isBroadcastActive ? 'page' : undefined}
+                        >
+                            <NavLink to={item.path}>
+                                <FontAwesomeIcon icon={['fas', item.icon]} />
+                                <small>{item.name}</small>
+                            </NavLink>
+                        </li>
+                    );
+                })}
             </ul>
         </footer>
     );

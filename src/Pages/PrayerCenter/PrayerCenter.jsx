@@ -58,7 +58,7 @@ const PrayerRequestForm = () => {
         <div
           id="read-appbar"
           style={{
-            backgroundColor: 'var(--pink)',
+            backgroundColor: 'var(--primary)',
             position: 'fixed',
             top: 0,
             left: 0,
@@ -345,7 +345,7 @@ const PrayerRequestForm = () => {
               type="submit"
               value="Submit"
               style={{
-                backgroundColor: 'var(--pink)',
+                backgroundColor: 'var(--primary)',
                 color: 'var(--white)',
                 width: '95%',
                 height: '45px',

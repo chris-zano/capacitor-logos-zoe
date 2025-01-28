@@ -12,10 +12,8 @@ function BibleContents() {
         const fetchBibleContents = async () => {
             try {
                 const data = await getBibleBooks();
-                console.log({ data });
-                // Assuming the API provides an array of books with "name" and "chapters" fields
-                if (data && data.books) {
-                    setBibleContents(Array.from(data.books).sort((a, b) => a > b ? 1 : -1));
+                if (data) {
+                    setBibleContents(data);
                 } else {
                     throw new Error('Unexpected data format from API.');
                 }
@@ -27,7 +25,6 @@ function BibleContents() {
         fetchBibleContents();
     }, []);
 
-    console.log({ bibleContents });
 
     return (
         <>
@@ -77,7 +74,7 @@ function BibleContents() {
                                             listStyle: 'none',
                                         }}
                                     >
-                                        <NavLink to="/">
+                                        <NavLink to={`chapters/${book}`}>
                                             <span>{book}</span>
                                         </NavLink>
                                     </li>

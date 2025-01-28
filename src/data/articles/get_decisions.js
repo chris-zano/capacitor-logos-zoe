@@ -9,13 +9,11 @@ const getDecisions = async () => {
   
         // Check if the cached timestamp is the same as today's date
         if (timestamp === today) {
-          console.log('Returning cached decisions');
           return data;
         }
       }
   
       // Fetch new decisions if no valid cache is found
-      console.log('Fetching new decisions');
       const response = await fetch('https://logos-server-j2ld.onrender.com/articles/decisions');
       const data = await response.json();
   
@@ -30,7 +28,6 @@ const getDecisions = async () => {
   
       return data;
     } catch (error) {
-      console.error('Error fetching decisions:', error);
       throw error;
     }
   };

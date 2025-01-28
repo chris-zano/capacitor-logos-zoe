@@ -9,13 +9,11 @@ const getArticleById = async (id) => {
   
         // Check if the cached timestamp is the same as today's date
         if (timestamp === today) {
-          console.log(`Returning cached article for ID: ${id}`);
           return data;
         }
       }
   
       // Fetch new article if no valid cache is found
-      console.log(`Fetching new article for ID: ${id}`);
       const response = await fetch(`https://logos-server-j2ld.onrender.com/articles/article/${id}`);
       const data = await response.json();
   
@@ -30,7 +28,6 @@ const getArticleById = async (id) => {
   
       return data;
     } catch (error) {
-      console.error(`Error fetching article for ID ${id}:`, error);
       throw error;
     }
   };

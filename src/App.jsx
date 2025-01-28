@@ -33,6 +33,9 @@ import BibleContents from "./Pages/Bible/BibleContents.jsx";
 import ChooseProfileAvatar from "./Pages/Profile/UploadProfilePicture.jsx";
 import Bookmarks from "./Pages/Profile/Bookmarks.jsx";
 import AboutUsPage from "./Pages/Profile/AboutPage.jsx";
+import BibleChapters from "./Pages/Bible/BibleChapters.jsx";
+import BookContent from "./Pages/Bible/BookContent.jsx";
+import ScrollToTop from "./Components/ScrollToTop.jsx";
 
 function App() {
   useEffect(() => {
@@ -49,10 +52,9 @@ function App() {
   }, []);
   return (
     <Router>
-      {/* <NotificationApi /> */}
+        {/* scroll to top */}
+        <ScrollToTop />
       <Routes>
-        {/* Welcome Route */}
-
         {/* Auth Routes */}
         <Route path="/auth">
           <Route path="welcome" element={<WelcomePage />} />
@@ -98,6 +100,8 @@ function App() {
         <Route path="/prayer-center" element={<PrayerRequestForm />} />
         <Route path="/devotionals" element={<Devotionals />} />
         <Route path="/bible" element={<BibleContents />} />
+        <Route path="/bible/chapters/:book" element={<BibleChapters />} />
+        <Route path="/bible/verses/:book/:chapter" element={<BookContent />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/videos/video/:id/:category" element={<VideoPlayerPage />} />
 

@@ -377,8 +377,8 @@ h2.section-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.3ch 1.7ch;
-  height: 3.2rem;
+  padding: 0.9ch 1.4ch;
+  height: 2.7rem;
   margin: 0;
   background-color: var(--white);
   border-top: 1px solid #d4d3d3ac;
@@ -388,16 +388,16 @@ h2.section-title {
 
 .nav-item a {
   color: #6c6c6cea;
-  font-size: 1.35rem;
+  font-size: 1.17rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.7ch;
+  gap: 0.5ch;
 }
 
 .nav-item a small {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-family: Poppins;
 }
 

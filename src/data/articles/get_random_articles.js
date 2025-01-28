@@ -9,13 +9,11 @@ const getRecommendedArticles = async () => {
   
         // Check if the cached timestamp is the same as today's date
         if (timestamp === today) {
-          console.log('Returning cached recommended articles');
           return data;
         }
       }
   
       // Fetch new recommended articles if no valid cache is found
-      console.log('Fetching new recommended articles');
       const response = await fetch('https://logos-server-j2ld.onrender.com/articles/recommended');
       const data = await response.json();
   
@@ -30,7 +28,6 @@ const getRecommendedArticles = async () => {
   
       return data;
     } catch (error) {
-      console.error('Error fetching recommended articles:', error);
       throw error;
     }
   };
