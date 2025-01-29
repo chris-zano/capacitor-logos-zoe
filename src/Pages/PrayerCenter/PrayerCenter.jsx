@@ -1,6 +1,7 @@
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import BASEURL from '../../baseUrl.js';
 
 const PrayerRequestForm = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const PrayerRequestForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/requests/prayer', {
+      const response = await fetch(`${BASEURL}/prayers/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
