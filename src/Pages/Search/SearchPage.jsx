@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import getSearchData from '../../data/search/search.js'; // Import your search data fetching function
+import LoadingSpinner from '../../Components/Loaders/LoadingSpinner.jsx';
 
 const SearchPage = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -37,7 +38,7 @@ const SearchPage = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

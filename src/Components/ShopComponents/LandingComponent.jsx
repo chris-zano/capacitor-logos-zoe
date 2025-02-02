@@ -5,6 +5,7 @@ import hearing from "../../assets/images/hearing.jpg";
 import faith from "../../assets/images/faith.jpg";
 import ordered from "../../assets/images/ordered.jpg";
 import decisions from "../../assets/images/decisions.jpg";
+import LoadingSpinner from "../Loaders/LoadingSpinner.jsx";
 
 
 function Landing() {
@@ -29,7 +30,7 @@ function Landing() {
     }, []);
 
     if (loading) {
-        return <p>Loading products...</p>;
+        return <LoadingSpinner />;
     }
 
     if (error) {

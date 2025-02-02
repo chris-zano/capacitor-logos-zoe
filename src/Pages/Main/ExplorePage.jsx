@@ -26,7 +26,7 @@ const ExplorePage = () => {
           const isSpecialCategory =
             category.category_name === "Jesus Talk" ||
             category.category_name === "Spiritual Laws";
-          const animationDelay = `${index * 0.2}s`;
+          const animationDelay = `${( index / 3 ) * 0.2}s`;
 
           return (
             <div

@@ -1,8 +1,8 @@
 .nav-tabs {
     position: fixed;
     top: 4rem;
-    left: 2ch;
-    right: 2ch;
+    left: 1ch;
+    right: 1ch;
     border-radius: 1ch;
     padding: 0ch;
     display: flex;
@@ -43,13 +43,13 @@
 
 .partnership {
     margin-top: 4ch;
-    padding: 1ch;
+    padding: 1ch 0;
 }
 
 .articles-group .p-article {
     background-color: white;
-    border-radius: 2ch;
-    padding: 1ch 2ch;
+    border-radius: 1ch;
+    padding: 1ch 1ch;
     margin: 1ch;
     display: flex;
     gap: 1rem;
@@ -59,7 +59,7 @@
 .articles-group .p-article img {
     height: 4rem;
     width: 4rem;
-    border-radius: 2ch;
+    border-radius: 1ch;
     object-fit: cover;
     object-position: center;
 }
@@ -103,8 +103,8 @@ details {
 
 .options-group li {
     background-color: white;
-    border-radius: 2ch;
-    padding: 2ch;
+    border-radius: 1ch;
+    padding: 1ch;
     margin: 1ch 0;
     display: flex;
     gap: 1rem;
@@ -115,7 +115,7 @@ details {
 .options-group li img {
     height: 4rem;
     width: 4rem;
-    border-radius: 2ch;
+    border-radius: 1ch;
     object-fit: cover;
     object-position: center;
 }

@@ -87,7 +87,7 @@ const Podcasts = ({ data_source }) => {
 
       <div className="r-podcast-list">
         {podcasts.length === 0 ? (
-          <span>No podcasts here yet</span>
+          <span>Loading...</span>
         ) : (
           podcasts.map((podcast) => (
             <div

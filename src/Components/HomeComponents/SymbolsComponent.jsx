@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import getSymbols from '../../data/articles/get_symbols.js'; // Adjust path as needed
+import getSymbols from '../../data/articles/get_symbols.js';
 
 const Symbols = () => {
     const [symbols, setSymbols] = useState([]);
 
-    // Fetch symbols when the component mounts
+
     useEffect(() => {
         const fetchSymbols = async () => {
             const data = await getSymbols();
-            setSymbols(data); // Set the symbols data to state
+            setSymbols(data);
         };
 
         fetchSymbols();
-    }, []); // Empty array ensures this runs once after the initial render
+    }, []);
 
-    // If no symbols, render nothing or a loading message
+
     if (!symbols || symbols.length === 0) {
-        return null; // or a loading message if you prefer
+        return null;
     }
 
     return (

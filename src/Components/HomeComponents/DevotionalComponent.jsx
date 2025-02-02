@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import BASEURL from '../../baseUrl.js';
 import { Share } from '@capacitor/share';
 import { addDays, formatDate } from "date-fns";
+import LoadingSpinner from '../Loaders/LoadingSpinner.jsx';
 
 function DevotionalComponent() {
     const [devotional, setDevotional] = useState(null);
@@ -21,7 +22,7 @@ function DevotionalComponent() {
     }, []);
 
     if (!devotional) {
-        return <p>Loading...</p>;
+        return <LoadingSpinner />;
     }
 
     const _formattedDate = formatDate(`${devotional.year}-${devotional.month}-${devotional.day}`, "PPPP")

@@ -268,6 +268,14 @@ blockquote {
   color: var(--white);
 }
 
+* > *::-webkit-scrollbar {
+  display: none;
+}
+
+iframe > *::-webkit-scrollbar {
+  display: none;
+}
+
 table {
   padding: 1ch;
   margin: 1ch 0;

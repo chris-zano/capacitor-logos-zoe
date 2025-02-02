@@ -24,7 +24,7 @@ const DonateFrame = () => {
       try {
         const button = iframeContent.document.querySelector('.btn-main.opt-1.w-100');
         if (button) {
-          button.style.display = 'none'; // Hide the button
+          button.style.display = 'none';
           button.onclick = function () {
             window.location.href = 'your-app-url://';
           };
@@ -35,10 +35,10 @@ const DonateFrame = () => {
     };
   }, []);
 
-  return <iframe src="https://noahsproject.org/donate" style={styles.iframe}></iframe>;
+  return <iframe src="https://paystack.com/pay/3u3-xshikb" style={styles.iframe}></iframe>;
 };
 
-const DonationPage = () => {
+const OneTimeDonationPage = () => {
   const title = 'Donate'; // Replace with the dynamic value you want to pass
   return (
     <>
@@ -93,4 +93,4 @@ const styles = {
   },
 };
 
-export default DonationPage;
+export default OneTimeDonationPage;

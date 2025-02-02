@@ -36,6 +36,8 @@ import AboutUsPage from "./Pages/Profile/AboutPage.jsx";
 import BibleChapters from "./Pages/Bible/BibleChapters.jsx";
 import BookContent from "./Pages/Bible/BookContent.jsx";
 import ScrollToTop from "./Components/ScrollToTop.jsx";
+import OneTimeDonationPage from "./Components/DonateComponents/OneTimeDonation.jsx";
+import DonationDetailsPage from "./Components/DonateComponents/DonationDetailsPage.jsx";
 
 function App() {
   useEffect(() => {
@@ -92,6 +94,8 @@ function App() {
           <Route path="bookmarks" element={<Bookmarks />} />
         </Route>
         <Route path="donations/donate" element={<DonationPage />} />
+        <Route path="donations/one-time" element={<OneTimeDonationPage />} />
+        <Route path="donations/details" element={<DonationDetailsPage />} />
         <Route path="/devotionals/devotional/:id" element={<DevotionalPage />} />
         <Route path="/categories/:id" element={<CategoryContent />} />
         <Route path="/categories/article/:id" element={<CategoryArticle />} />

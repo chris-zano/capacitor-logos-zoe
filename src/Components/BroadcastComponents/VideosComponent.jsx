@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
+import LoadingSpinner from '../Loaders/LoadingSpinner.jsx';
 
 function VideosComponent({ data_source, category }) {
     console.log(category);
@@ -28,7 +29,7 @@ function VideosComponent({ data_source, category }) {
     }, [data_source]);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <LoadingSpinner />;
     }
 
     if (error) {

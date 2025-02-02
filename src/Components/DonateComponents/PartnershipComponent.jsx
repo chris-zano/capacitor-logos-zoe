@@ -8,14 +8,18 @@ import intercessory from '/src/assets/images/intercessory-prayer.jpg'
 import website from '/src/assets/images/website-translation.jpg'
 import country from '/src/assets/images/country-specific.jpg'
 import podcast from '/src/assets/images/podcast-production.jpg'
+import { useNavigate } from "react-router-dom";
 
 
 const Partnership = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Partnership");
 
   const switchTabs = (tabName) => {
     setActiveTab(tabName);
   };
+
+
 
   return (
     <div>
@@ -42,12 +46,12 @@ const Partnership = () => {
         <section className="partnership">
           <div className="articles-group">
             <Article
+              navigate={navigate}
               imgSrc={girl}
               imgAlt="why partner"
               title="Why Partner With The Logos Zoe"
               content={
-                <>
-                  <span>
+                `
                     If there was a time mankind needed God’s intervention, it is today.
 
                     If there was a time in which iniquity abounded, it is today.
@@ -65,33 +69,31 @@ const Partnership = () => {
                     will go a long way toward bringing this world the answer it seeks and the hope it needs, right
                     to its door. You can be the means by which the gospel (God’s power of salvation) reaches our
                     restless youth, ailing mothers and fathers, depressed society, and violent communities.
-                  </span>
-                </>
+                `
               }
             />
             <Article
+              navigate={navigate}
               imgSrc={manInbarCode}
               imgAlt="how to partner"
               title="How To Partner"
               content={
-                <>
-                  <span>
+                `
                     To partner with The Logos Zoe, you have options to choose from. You also have the
                     opportunity to decide an amount you can consistently give (either weekly or monthly) to enable
                     the project to fulfil the Great Commission with you. As a partner, you will get access to our
                     monthly statistics detailing how far we are reaching out and the impact this partnership is
                     having on souls around the world.
-                  </span>
-                </>
+                `
               }
             />
             <Article
+              navigate={navigate}
               imgSrc={mangreyedOut}
               imgAlt="blessings of partnership"
               title="The Blessings Of The Partnership"
               content={
-                <>
-                  <span>
+                `
                     The fear of the Lord is the beginning of wisdom (Proverbs 9:10), but he that wins a soul is wise
                     (Proverbs 11:30). If there is any great thing we can do for God, it is to use the means he has
                     given us to win a soul. The value of a soul is priceless, and the one who gives God such a
@@ -116,8 +118,7 @@ const Partnership = () => {
                     are perfect towards him (2 Chronicles 16:9). As your heart is tuned towards winning souls, your
                     heart is perfect towards God. This is why, with this partnership, God’s financial strength will
                     be your portion.
-                  </span>
-                </>
+                `
               }
             />
           </div>
@@ -233,7 +234,7 @@ const Partnership = () => {
               <h3 className="opt-title">Partnership Options</h3>
             </div>
             <ul>
-              <Option
+              <OneTime
                 imgSrc={online}
                 imgAlt="partner option"
                 title="Online Discipleship"
@@ -246,7 +247,7 @@ const Partnership = () => {
                   </>
                 }
               />
-              <Option
+              <OneTime
                 imgSrc={intercessory}
                 imgAlt="partner option"
                 title="Intercessory Prayer For Souls"
@@ -259,7 +260,7 @@ const Partnership = () => {
                   </>
                 }
               />
-              <Option
+              <OneTime
                 imgSrc={podcast}
                 imgAlt="partner option"
                 title="Broadcast Production & Distribution"
@@ -280,14 +281,27 @@ const Partnership = () => {
   );
 };
 
-const Article = ({ imgSrc, imgAlt, title, content }) => (
-  <article className="p-article">
+const Article = ({ imgSrc, imgAlt, title, content, navigate }) => (
+  <article className="p-article"
+    onClick={() => {
+      navigate(
+        `/donations/details`,
+        {
+          state: {
+            category: title,
+            imgSrc: imgSrc,
+            content: content,
+          },
+        }
+      );
+    }
+    }
+  >
     <div className="p-img">
       <img src={imgSrc} alt={imgAlt} />
     </div>
     <div className="expandable">
       <span className="p-title">{title}</span>
-      <details>{content}</details>
     </div>
   </article>
 );
@@ -300,6 +314,21 @@ const Option = ({ imgSrc, imgAlt, title, content }) => (
     <div className="expandable">
       <span className="li-title">{title}</span>
       <a href="/donations/donate" className="donate-btn">
+        Donate
+      </a>
+      <details>{content}</details>
+    </div>
+  </li>
+);
+
+const OneTime = ({ imgSrc, imgAlt, title, content }) => (
+  <li>
+    <div className="li-image">
+      <img src={imgSrc} alt={imgAlt} />
+    </div>
+    <div className="expandable">
+      <span className="li-title">{title}</span>
+      <a href="/donations/one-time" className="donate-btn">
         Donate
       </a>
       <details>{content}</details>

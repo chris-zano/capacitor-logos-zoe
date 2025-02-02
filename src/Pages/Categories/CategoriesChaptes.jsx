@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faHome } from "@fortawesome/free-solid-svg-icons";
 import getCategoryById from "../../data/explore/get_category_by_id";
+import LoadingSpinner from '../../Components/Loaders/LoadingSpinner.jsx';
 
 const CategoryChapter = () => {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ const CategoryChapter = () => {
         fetchCategory();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return<LoadingSpinner />;
     if (error) return <p>Error: {error}</p>;
 
     return (

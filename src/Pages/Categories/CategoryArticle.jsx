@@ -6,6 +6,7 @@ import getCategoryById from "../../data/explore/get_category_by_id.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faArrowLeft, faShareNodes, faHome, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import ShareApi from '../../NativeApis/Share.jsx';
+import LoadingSpinner from '../../Components/Loaders/LoadingSpinner.jsx';
 
 const CategoryArticle = () => {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const CategoryArticle = () => {
     }, [id]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <LoadingSpinner />;
     }
 
     if (!article) {

@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faEllipsis, faHeart, faHome, faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import getCategoryById from "../../data/explore/get_category_by_id.js";
+import LoadingSpinner from "../../Components/Loaders/LoadingSpinner.jsx";
 
 const CategoryContent = () => {
     const navigate = useNavigate()
@@ -34,7 +35,7 @@ const CategoryContent = () => {
     }, [id]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <LoadingSpinner />
     }
 
     if (!categoryInfo) {

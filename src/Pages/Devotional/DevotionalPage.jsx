@@ -13,6 +13,7 @@ import getDevotionalById from "../../data/devotionals/get_devotional_by_id.js";
 import '../../styles/devotional_page.css';
 import ShareApi from "../../NativeApis/Share.jsx";
 import BASEURL from "../../baseUrl.js";
+import LoadingSpinner from "../../Components/Loaders/LoadingSpinner.jsx";
 
 const DevotionalPage = ({ styles }) => {
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ const DevotionalPage = ({ styles }) => {
   }, []);
 
   if (loading) {
-    return <p>Loading devotional...</p>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

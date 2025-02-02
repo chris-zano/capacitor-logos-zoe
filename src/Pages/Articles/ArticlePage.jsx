@@ -10,6 +10,7 @@ import BASEURL from "../../baseUrl.js";
 import getUserNameFromLocalStorage from "../../data/user/get_user_name.js";
 import { formatDate } from "date-fns";
 import addToBookmarks from '../../data/user/add_to_bookmarks.js';
+import LoadingSpinner from '../../Components/Loaders/LoadingSpinner.jsx';
 
 
 const ArticlePage = () => {
@@ -87,7 +88,7 @@ const ArticlePage = () => {
   }
 
   if (!articleData) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
 
   const { article, relatedArticles } = articleData;

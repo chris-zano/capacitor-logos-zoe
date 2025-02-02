@@ -8,6 +8,7 @@ import {
 import ShareApi from "../../NativeApis/Share.jsx";
 import getVideoById from "../../data/videos/get_video_by_id.js";
 import { useParams } from "react-router-dom";
+import LoadingSpinner from "../../Components/Loaders/LoadingSpinner.jsx";
 
 const VideoPlayerPage = ({ match }) => {
     const params = useParams();
@@ -42,7 +43,7 @@ const VideoPlayerPage = ({ match }) => {
                             style={{ color: "var(--white)", fontFamily: "Inter" }}
                             className="article_title-p"
                         >
-                            {video ? (video.video_title.length > 20 ? video.video_title.substring(0, 20) + "..." : video.video_title) : "Loading..."}
+                            {video ? (video.video_title.length > 20 ? video.video_title.substring(0, 20) + "..." : video.video_title) : <LoadingSpinner />}
                         </h3>
                     </div>
                 </div>

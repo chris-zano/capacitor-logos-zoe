@@ -5,6 +5,7 @@ import hearing from "../../assets/images/hearing.jpg";
 import faith from "../../assets/images/faith.jpg";
 import ordered from "../../assets/images/ordered.jpg";
 import decisions from "../../assets/images/decisions.jpg";
+import LoadingSpinner from "../Loaders/LoadingSpinner.jsx";
 
 function Details() {
     const { id } = useParams();
@@ -29,7 +30,7 @@ function Details() {
     }, []);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <LoadingSpinner />;
     }
 
     if (error) {
@@ -83,8 +84,8 @@ function Details() {
                     <strong>Availability:</strong> {product.status}
                 </div>
                 <div className="price">${product.price}</div>
-                <button>Add to Cart</button>
-                <button>Add to Wishlist</button>
+                <button type="button" disabled>Add to Cart</button>
+                <button type="button" disabled>Add to Wishlist</button>
             </div>
 
             <div className="related-products">
