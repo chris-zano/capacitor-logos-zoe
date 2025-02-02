@@ -2,12 +2,10 @@ import { faBookmark, faTrash } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faArrowLeft, faShareNodes, faHome, faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faShareNodes, faHome, faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import getArticleById from "../../data/articles/get_article_by_id.js";
-import ShareApi from "../../NativeApis/Share.jsx";
 import { Share } from "@capacitor/share";
 import userImage from '../../assets/images/logo.png'
-import tarbenacleImage from '../../assets/images/tarbenacleImage.jpg'
 import BASEURL from "../../baseUrl.js";
 import getUserNameFromLocalStorage from "../../data/user/get_user_name.js";
 import { formatDate } from "date-fns";

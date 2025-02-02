@@ -1289,7 +1289,7 @@ section.related-section {
 }
 
 .drop-down-wrapper {
-  width: 130px;
+  width: 140px;
 }
 
 .drop-down-item {
@@ -1308,11 +1308,4 @@ section.related-section {
   align-items: center;
   padding: 1ch;
   border-radius: 1.5ch;
-
-}
-
-.drop-down-item button#navigate-home-btn {
-  border-bottom: 1px solid rgba(223, 223, 223, 0.726);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
