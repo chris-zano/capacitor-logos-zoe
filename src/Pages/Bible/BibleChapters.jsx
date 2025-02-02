@@ -51,7 +51,9 @@ function BibleChapters() {
               key={index}
               className='poppins-regular'
               style={{
-                padding: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                padding: '0.8rem 1.2rem',
                 borderBottom: '1px solid rgb(210 209 209 / 36%)',
                 cursor: 'pointer',
                 transition: 'background-color 0.3s ease',
@@ -59,8 +61,8 @@ function BibleChapters() {
                 fontSize: '1.2rem',
               }}
             >
-              <NavLink to={`/bible/verses/${book}/${index + 1}`}>
-                <span>Chapter {index + 1}</span>
+              <NavLink to={`/bible/verses/${book}/${index + 1}`} style={{width: '100%'}}>
+                <span style={{width: '100%'}}>Chapter {index + 1}</span>
               </NavLink>
             </div>
           )

@@ -65,17 +65,20 @@ function BibleContents() {
                                     <li key={index}
                                     className='poppins-regular'
                                         style={{
-                                            padding: '1.5rem',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            padding: '0.7rem 1.2rem',
                                             borderBottom: '1px solid rgb(210 209 209 / 36%)',
                                             cursor: 'pointer',
                                             transition: 'background-color 0.3s ease',
                                             fontWeight: '500',
                                             fontSize: '1.2rem',
                                             listStyle: 'none',
+                                            width: '90%',
                                         }}
                                     >
-                                        <NavLink to={`chapters/${book}`}>
-                                            <span>{book}</span>
+                                        <NavLink to={`chapters/${book}`} style={{width: '100%'}}>
+                                            <span style={{width: '100%'}}>{book}</span>
                                         </NavLink>
                                     </li>
                                 ))}

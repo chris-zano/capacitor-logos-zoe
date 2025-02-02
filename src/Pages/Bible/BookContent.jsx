@@ -57,6 +57,8 @@ function BookContent() {
                 <li key={index}
                   className='poppins-regular'
                   style={{
+                    display: 'flex',
+                    alignItems: 'center',
                     padding: '0.6rem 1rem',
                     fontWeight: '400',
                     fontSize: '1.2rem',
