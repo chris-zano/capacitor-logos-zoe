@@ -386,9 +386,9 @@ h2.section-title {
   height: 2.7rem;
   margin: 0;
   background-color: var(--white);
-  border-top: 1px solid #d4d3d3ac;
-  border-top-left-radius: 1.5ch;
-  border-top-right-radius: 1.5ch;
+  border-top: 1px solid #eeeeeeac;
+  border-top-left-radius: 1ch;
+  border-top-right-radius: 1ch;
 }
 
 .nav-item a {

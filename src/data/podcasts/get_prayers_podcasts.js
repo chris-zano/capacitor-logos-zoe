@@ -2,29 +2,29 @@ const getPrayersPodcasts = async () => {
     try {
         const key = 'prayers';
         const cachedData = localStorage.getItem(key);
-        const today = new Date().toISOString().split('T')[0]; // Get today's date in 'YYYY-MM-DD' format
+        const now = new Date().getTime(); // Get current time in milliseconds
 
         if (cachedData) {
             const { data, timestamp } = JSON.parse(cachedData);
 
-            // Check if the cached timestamp is the same as today's date
-            if (timestamp === today) {
+            // Check if the cached data is still within the last hour
+            if (now - timestamp < 3600000) {
                 console.log('Returning cached prayers podcasts');
                 return data;
             }
         }
 
-        // Fetch new WOF podcasts if no valid cache is found
+        // Fetch new prayers podcasts if no valid cache is found
         console.log('Fetching new prayers podcasts');
         const response = await fetch('https://logos-server-j2ld.onrender.com/podcasts/prayers');
         const data = await response.json();
 
-        // Store the new WOF podcasts with today's timestamp in local storage
+        // Store the new prayers podcasts with the current timestamp in local storage
         localStorage.setItem(
             key,
             JSON.stringify({
                 data,
-                timestamp: today,
+                timestamp: now, // Store the current time
             })
         );
 

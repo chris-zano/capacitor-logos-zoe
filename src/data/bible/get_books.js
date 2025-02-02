@@ -4,9 +4,9 @@ const getBibleBooksChronological = async () => {
     try {
         const key = "bible_books_chronological";
         const cachedData = localStorage.getItem(key);
-        const today = new Date().toISOString().split('T')[0];
+        const now = new Date().getTime();
+        const oneWeek = 604800000;
 
-        // Reference list for chronological order (canonical sequence)
         const chronologicalOrder = [
             "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
             "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
@@ -27,7 +27,7 @@ const getBibleBooksChronological = async () => {
         if (cachedData) {
             const { data, timestamp } = JSON.parse(cachedData);
 
-            if (timestamp === today) {
+            if (now - timestamp < oneWeek) {
                 console.log('Returning cached bible books (chronological)');
                 return data;
             }
@@ -37,7 +37,6 @@ const getBibleBooksChronological = async () => {
         const response = await fetch(`${BASEURL}/bible/books`);
         const data = await response.json();
 
-        console.log({data: data.books});
         const sortedData = data.books.sort((a, b) => {
             return chronologicalOrder.indexOf(a) - chronologicalOrder.indexOf(b);
         });
@@ -46,7 +45,7 @@ const getBibleBooksChronological = async () => {
             key,
             JSON.stringify({
                 data: sortedData,
-                timestamp: today,
+                timestamp: now,
             })
         );
         return sortedData;
