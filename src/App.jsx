@@ -41,21 +41,21 @@ import DonationDetailsPage from "./Components/DonateComponents/DonationDetailsPa
 
 function App() {
   useEffect(() => {
-    // Listen for the backButton event
     CapacitorApp.addListener("backButton", (event) => {
-      // Prevent app from closing on back press
-      window.history.back();
+      if (window.location.pathname === "/auth/welcome" || window.location.pathname === "/") {
+        CapacitorApp.exitApp();
+      } else {
+        window.history.back();
+      }
     });
-
-    // Clean up the event listener when component unmounts
     return () => {
       CapacitorApp.removeAllListeners();
     };
   }, []);
   return (
     <Router>
-        {/* scroll to top */}
-        <ScrollToTop />
+      {/* scroll to top */}
+      <ScrollToTop />
       <Routes>
         {/* Auth Routes */}
         <Route path="/auth">
