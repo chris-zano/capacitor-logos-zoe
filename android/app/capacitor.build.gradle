@@ -13,6 +13,7 @@ dependencies {
     implementation project(':capacitor-browser')
     implementation project(':capacitor-local-notifications')
     implementation project(':capacitor-share')
+    implementation project(':capacitor-splash-screen')
     implementation "androidx.lifecycle:lifecycle-runtime:2.4.+"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.+"
 }

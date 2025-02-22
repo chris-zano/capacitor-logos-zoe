@@ -2,7 +2,7 @@ Write-Output "Building Capacitor Android App..."
 
 # Install dependencies
 Write-Output "Installing Node.js dependencies..."
-npm install
+npm install --legacy-peer-deps
 
 # Sync the app with Capacitor
 Write-Output "Syncing Capacitor..."
