@@ -38,6 +38,8 @@ import BookContent from "./Pages/Bible/BookContent.jsx";
 import ScrollToTop from "./Components/ScrollToTop.jsx";
 import OneTimeDonationPage from "./Components/DonateComponents/OneTimeDonation.jsx";
 import DonationDetailsPage from "./Components/DonateComponents/DonationDetailsPage.jsx";
+import FaqPage from "./Pages/Profile/FaqPage.jsx";
+import PrivacyPolicyPage from "./Pages/Profile/PrivacyPolicyPage.jsx";
 
 function App() {
   useEffect(() => {
@@ -107,6 +109,8 @@ function App() {
         <Route path="/bible/chapters/:book" element={<BibleChapters />} />
         <Route path="/bible/verses/:book/:chapter" element={<BookContent />} />
         <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/faqs" element={<FaqPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/videos/video/:id/:category" element={<VideoPlayerPage />} />
 
 

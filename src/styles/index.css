@@ -680,7 +680,7 @@ input.input-field {
 
 .action-list li {
   border: 1px solid transparent;
-  padding: 1ch 1.1ch;
+  padding: 1ch 1ch;
 }
 
 .action-list li:hover,
@@ -699,7 +699,7 @@ input.input-field {
   color: var(--green) !important;
 }
 
-.action-list li a {
+.action-list li span {
   font-weight: bold;
   margin-left: 1ch;
 }
