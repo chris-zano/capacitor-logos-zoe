@@ -27,7 +27,7 @@ function Bookmarks() {
   return (
     <div
     >
-      <p style={{ fontSize: "1.2rem", paddingLeft: '1ch', textAlign: 'left', fontWeight: '400', fontFamily: 'Poppins', marginBottom: "1ch" }}>Bookmarks</p>
+      <p style={{ fontSize: "1.2rem", paddingLeft: '1ch', textAlign: 'left', fontWeight: '400', fontFamily: 'Poppins', marginBottom: "1ch" }}>Bookmarks {bookmarks.length > 0 ? `(${bookmarks.length})` : null}</p>
       {bookmarks.length > 0 ? (
         <ul
           style={{
@@ -54,8 +54,8 @@ function Bookmarks() {
               padding: '1ch 1.3ch',
             }}>
               <img src={bookmark.image} alt={bookmark.title} style={{
-                borderRadius: '.7ch',
-                border: '1px solid #ccccde'
+                borderRadius: '50%',
+                border: '1px solid var(--light-gray)'
               }} />
               <div className="article-details" sty>
                 <p>{bookmark.title.length > 21 ? bookmark.title.substring(0, 31)+ '...' : bookmark.title}</p>
