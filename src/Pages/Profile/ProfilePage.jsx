@@ -221,9 +221,10 @@ const ProfileListItem = ({ route, icon, title, handler, subtitle }) => {
           icon={icon}
           style={{ color: "var(--text)" }}
         />
-        <span>{title}</span>
-        <br />
-        <small>{subtitle}</small>
+        <div>
+          <span>{title}</span>
+          <small>{subtitle}</small>
+        </div>
       </a>
     </li>
   )

@@ -189,9 +189,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --theme-background: #121212;
-    --background-light: #1a1a1a;
-    --modal-background: #1e1e1e;
-    --card-background: #1b1b1b;
+    --background-light: #1b1b1b;
+    --modal-background: #2e2e2e;
+    --card-background: #303030;
     --theme-icon: #d1d1d1;
     --light-gray: #2c2c2c;
     --text: #eaeaea;
@@ -686,14 +686,13 @@ input.input-field {
   display: flex;
   align-items: center;
   gap: 1rem;
-  border-bottom: 1px solid #c7c7c750;
 }
 
 .profile-picture {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid #c7c7c750;
+  border: 2px solid var(--light-gray);
   object-fit: cover;
 }
 
@@ -730,8 +729,35 @@ input.input-field {
 }
 
 .action-list li {
+  background-color: var(--card-background);
+  border-radius: 1.5ch;
   border: 1px solid transparent;
-  padding: 1ch 1ch;
+  padding: 1ch 1.3ch;
+}
+
+.action-list li a {
+  display: flex;
+  align-items: start;
+  gap: 1.5ch;
+}
+
+.action-list li a svg {
+  color: var(--theme-icon);
+  font-size: 1.3rem;
+}
+
+.action-list li a div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5ch;
+}
+
+.action-list li a div span {
+  font-weight: bold;
+}
+
+.action-list li a div small {
+  opacity: 0.7;
 }
 
 .action-list li:hover,
@@ -750,15 +776,6 @@ input.input-field {
   color: var(--green) !important;
 }
 
-.action-list li span {
-  font-weight: bold;
-  margin-left: 1ch;
-}
-
-.action-list li small {
-  opacity: 0.7;
-  margin-left: 3.5ch;
-}
 
 #cat-chapters {
   padding-top: 3.2rem;
