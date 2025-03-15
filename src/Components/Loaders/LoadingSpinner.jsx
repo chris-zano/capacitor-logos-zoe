@@ -11,7 +11,7 @@ const LoadingSpinner = () => (
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "rgba(255, 255, 255)",
+        backgroundColor: "var(--modal-background)",
         zIndex: 999999
     }}>
         <div style={{

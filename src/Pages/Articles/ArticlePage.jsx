@@ -336,7 +336,7 @@ const ArticlePage = () => {
                             border: 'none'
                           }}
                         >
-                          <FontAwesomeIcon icon={faTrash} />
+                          <FontAwesomeIcon icon={faTrash} style={{ color: 'var(--theme-icon)' }} />
                         </button>
                       </div>
                     ) : null}
