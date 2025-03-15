@@ -50,7 +50,8 @@ function DonationDetailsPage() {
 
 const styles = {
     appBar: {
-        backgroundColor: 'var(--primary)',
+        backgroundColor: 'var(--theme-background)',
+        borderBottom: '1px solid var(--light-gray)',
         position: 'fixed',
         top: 0,
         left: 0,
@@ -69,11 +70,12 @@ const styles = {
         border: 'none',
         backgroundColor: 'unset',
         fontSize: '22px',
-        color: 'var(--white)',
+        color: 'var(--text)',
     },
     title: {
-        color: 'var(--white)',
+        color: 'var(--text)',
         fontSize: '1.15rem',
+        fontWeight: '500',
         fontFamily: 'Poppins',
         overflow: 'hidden',
         textOverflow: 'ellipsis',

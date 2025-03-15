@@ -54,12 +54,13 @@ const PrayerRequestForm = () => {
   };
 
   return (
-    <div style={{ backgroundColor: 'var(--white)' }}>
+    <div style={{ backgroundColor: 'var(--theme-background)' }}>
       <header>
         <div
           id="read-appbar"
           style={{
-            backgroundColor: 'var(--primary)',
+            backgroundColor: 'var(--theme-background)',
+            borderBottom: '1px solid var(--light-gray)',
             position: 'fixed',
             top: 0,
             left: 0,
@@ -85,7 +86,7 @@ const PrayerRequestForm = () => {
                 border: 'none',
                 background: 'unset',
                 fontSize: '22px',
-                color: 'var(--white)',
+                color: 'var(--text)',
               }}
             >
               <FontAwesomeIcon icon={faArrowLeft} />
@@ -94,7 +95,7 @@ const PrayerRequestForm = () => {
               className="article_title-p"
               style={{
                 fontSize: '1.2rem',
-                color: 'var(--white)',
+                color: 'var(--text)',
               }}
             >
               Submit A Prayer Request
@@ -130,6 +131,7 @@ const PrayerRequestForm = () => {
                 marginBottom: '5px',
                 fontSize: '16px',
                 fontWeight: 600,
+                color: 'var(--text)',
               }}
             >
               Your Name (Optional)
@@ -163,6 +165,7 @@ const PrayerRequestForm = () => {
                 marginBottom: '5px',
                 fontSize: '16px',
                 fontWeight: 600,
+                color: 'var(--text)',
               }}
             >
               Your Email Address (Optional)
@@ -175,7 +178,7 @@ const PrayerRequestForm = () => {
               onChange={handleChange}
               placeholder="Enter your email"
               style={{
-                backgroundColor: 'var(--white)',
+                backgroundColor: 'var(--modal-background)',
                 color: 'var(--text)',
                 width: '95%',
                 height: '45px',
@@ -209,7 +212,7 @@ const PrayerRequestForm = () => {
               required
               placeholder="Enter prayer title"
               style={{
-                backgroundColor: 'var(--white)',
+                backgroundColor: 'var(--modal-background)',
                 color: 'var(--text)',
                 width: '95%',
                 height: '45px',
@@ -230,6 +233,7 @@ const PrayerRequestForm = () => {
                 marginBottom: '5px',
                 fontSize: '16px',
                 fontWeight: 600,
+                color: 'var(--text)',
               }}
             >
               Prayer Topic

@@ -62,7 +62,7 @@ function Landing() {
                         />
                         <div>
                             <h3>{product.product_title}</h3>
-                            <div dangerouslySetInnerHTML={{__html:product.product_description.substring(0, 100)}} >
+                            <div dangerouslySetInnerHTML={{__html:product.product_description.substring(0, 100) + '...'}} >
                             </div>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <button type="button">

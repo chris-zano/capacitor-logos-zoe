@@ -61,7 +61,7 @@ const DevotionalPage = ({ styles }) => {
   useEffect(() => {
     const fetchDevotionals = async () => {
       try {
-        const response = await fetch("https://logos-server-j2ld.onrender.com/devotionals/calendar/list");
+        const response = await fetch(`${BASEURL}/devotionals/calendar/list`);
         const data = await response.json();
         setDevotionals(
           data.sort((a, b) => {
@@ -143,7 +143,7 @@ const DevotionalPage = ({ styles }) => {
 
   return (
     <>
-      <article className="d-chapter bg-white">
+      <article className="d-chapter">
         {/* Image Section */}
         <section className="image">
           <img src={devotional.theme_picture_url} alt="" />

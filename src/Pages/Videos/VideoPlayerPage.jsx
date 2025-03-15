@@ -40,7 +40,7 @@ const VideoPlayerPage = ({ match }) => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                         </button>
                         <h3
-                            style={{ color: "var(--white)", fontFamily: "Inter" }}
+                            style={{ color: "var(--text)", fontFamily: "Inter" }}
                             className="article_title-p"
                         >
                             {video ? (video.video_title.length > 20 ? video.video_title.substring(0, 20) + "..." : video.video_title) : <LoadingSpinner />}

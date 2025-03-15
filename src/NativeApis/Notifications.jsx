@@ -49,6 +49,57 @@ function NotificationApi() {
     }
   };
 
+  async function scheduleDailyDevotionalReminder() {
+    // Request permission first
+    const permissionStatus = await LocalNotifications.requestPermissions();
+    
+    if (permissionStatus.display === 'granted') {
+      // Get tomorrow at 6 AM
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(6, 0, 0, 0);
+
+      await LocalNotifications.schedule({
+        notifications: [
+          {
+            title: "Daily Devotional Reminder",
+            body: "It's time for your daily devotional reading!",
+            id: 1,
+            schedule: {
+              at: tomorrow, // First notification at 6 AM tomorrow
+              repeating: true,
+              every: 'day'
+            },
+            sound: 'default',
+            actionTypeId: 'OPEN_DEVOTIONAL',
+          }
+        ]
+      });
+    }
+  }
+
+  useEffect(() => {
+    LocalNotifications.addListener('localNotificationActionPerformed', (notification) => {
+      // Handle notification tap
+      if (notification.actionId === 'OPEN_DEVOTIONAL') {
+        // Navigate to devotional page
+        // You'll need to implement this based on your navigation setup
+        navigateToDevotional();
+      }
+    });
+  }, []);
+
+  async function checkExistingNotifications() {
+    const pendingNotifications = await LocalNotifications.getPending();
+    if (pendingNotifications.notifications.length === 0) {
+      await scheduleDailyDevotionalReminder();
+    }
+  }
+
+  useEffect(() => {
+    checkExistingNotifications();
+  }, []);
+
   return null; // No UI element needed
 }
 

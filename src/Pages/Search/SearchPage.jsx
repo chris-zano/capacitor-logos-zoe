@@ -62,7 +62,10 @@ const SearchPage = () => {
             textIndent: '1ch',
             borderRadius: '50px',
             outline: 'none',
-            border: '1px solid #ccc'
+            border: '1px solid var(--light-gray)',
+            fontFamily: 'Inter',
+            color: 'var(--text)',
+            backgroundColor: 'var(--card-background)',
           }}
         />
       </div>
@@ -71,27 +74,26 @@ const SearchPage = () => {
       {query && (
         <div style={{ marginTop: '20px' }}>
           {filteredResults.length === 0 ? (
-            <p>No results found</p>
+            <p style={{ color: 'var(--text)' }}>No results found</p>
           ) : (
             filteredResults.map(result => (
               <div key={result.id} style={{ marginBottom: '15px' }}>
-                <NavLink to={`/${result.type}s/${result.type}/${result.id}`} style={{ textDecoration: 'none', color: '#000' }}>
+                <NavLink to={`/${result.type}s/${result.type}/${result.id}`} style={{ textDecoration: 'none', color: 'var(--text)' }}>
                   <div
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       padding: '10px',
                       width: '90vw',
-                      backgroundColor: '#fff',
+                      backgroundColor: 'var(--card-background)',
                       borderRadius: '2ch'
                     }}
                   >
-                    <img src={result.image} alt={result.title} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
+                    <img src={result.image} alt={result.title} style={{ width: '50px', height: '50px', marginRight: '10px', borderRadius: '50%' }} />
                     <div>
                       <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>
                         {result.title.length > 20 ? `${result.title.slice(0, 20)}...` : result.title}
                       </h3>
-                      <p style={{ margin: 0, fontSize: '14px', color: '#555' }} dangerouslySetInnerHTML={{ __html: result.content.length > 50 ? `${result.content.slice(0, 50)}...` : result.content }}></p>
                     </div>
                   </div>
                 </NavLink>
