@@ -56,7 +56,7 @@ function PrivacyPolicyComponent() {
                 ref={iframeRef}
                 src="/privacy-policy.html"
                 title="Privacy Policy"
-                style={{ width: "100%", height: "100%", border: "none" }}
+                style={{ width: "100%", height: "100%", border: "none", color: "var(--text) !important" }}
             />
         </div>
     );
