@@ -41,7 +41,6 @@ function Bookmarks() {
         >
           {bookmarks.map((bookmark, index) => (
             <a key={index} href={getRedirectUrl({type: bookmark.type, id: bookmark.id})} style={{
-              padding: '1ch',
               display: 'flex',
               alignItems: 'center',
               gap: '1ch',
