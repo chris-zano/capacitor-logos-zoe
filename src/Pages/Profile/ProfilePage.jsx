@@ -162,59 +162,6 @@ const ProfilePage = () => {
     }
   ];
 
-
-  const profileItems = [
-    {
-      route: "/bookmarks",
-      icon: faBookmark,
-      title: "Bookmarks",
-      subtitle: "View a list of items you have saved",
-      handler: null
-    },
-    {
-      route: "#",
-      icon: faBell,
-      title: "Notifications",
-      subtitle: "Enable push notifications.",
-      handler: enableNotifications
-    },
-    {
-      route: "/about-us",
-      icon: faChurch,
-      title: "About Us",
-      subtitle: "Learn more about the LOGOS ZOE",
-      handler: null
-    },
-    {
-      route: "/privacy-policy",
-      icon: faShield,
-      title: "Privacy Policy",
-      subtitle: "Learn about how we store and handle your data",
-      handler: null
-    },
-    {
-      route: "/faqs",
-      icon: faQuestionCircle,
-      title: "FAQs",
-      subtitle: "Discover answers to most asked questions",
-      handler: null
-    },
-    {
-      route: "/auth/verify-email",
-      icon: faKey,
-      title: "Change Password",
-      subtitle: "Verify your email to change your password",
-      handler: null
-    },
-    {
-      route: "#",
-      icon: faRightFromBracket,
-      title: "Logout",
-      subtitle: "End your current session",
-      handler: logOut
-    }
-  ];
-
   return (
     <div className="profile-container">
       <div className="profile-header">
