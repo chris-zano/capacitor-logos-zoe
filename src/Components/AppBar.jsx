@@ -1,11 +1,11 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import logoImage from '/src/assets/images/logo.png';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logoImage from "/src/assets/images/logo.png";
+import { NavLink } from "react-router-dom";
 
 const AppBarComponent = () => {
   return (
-    <header id="header_top_navbar">
+    <header id="header_top_navbar" className="w-[1536px]">
       <div className="app-bar">
         <a href="/profile" className="user-icon-btn">
           <FontAwesomeIcon icon="circle-user" />
@@ -13,7 +13,7 @@ const AppBarComponent = () => {
         <NavLink to="/" className="logo-title">
           <img src={logoImage} alt="Logo" className="logo" />
           <h1 className="title">
-          <span id='the' >THE</span> <span id='t-title'>LOGOS-ZOE</span>
+            <span id="the">THE</span> <span id="t-title">LOGOS-ZOE</span>
           </h1>
         </NavLink>
         <div className="header_actions">

@@ -1,15 +1,15 @@
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import BASEURL from '../../baseUrl.js';
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import BASEURL from "../../baseUrl.js";
 
 const PrayerRequestForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    title: '',
-    topic: '',
-    request: '',
+    name: "",
+    email: "",
+    title: "",
+    topic: "",
+    request: "",
     anonymous: false,
   });
 
@@ -17,7 +17,7 @@ const PrayerRequestForm = () => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -26,66 +26,68 @@ const PrayerRequestForm = () => {
 
     try {
       const response = await fetch(`${BASEURL}/prayers/add`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        alert('Prayer request submitted successfully!');
+        alert("Prayer request submitted successfully!");
         setFormData({
-          name: '',
-          email: '',
-          title: '',
-          topic: '',
-          request: '',
+          name: "",
+          email: "",
+          title: "",
+          topic: "",
+          request: "",
           anonymous: false,
         });
       } else {
         const errorResponse = await response.json();
-        alert('Error: ' + errorResponse.message);
+        alert("Error: " + errorResponse.message);
       }
     } catch (error) {
-      console.error('Error submitting prayer request:', error);
-      alert('There was an error submitting your prayer request. Please try again.');
+      console.error("Error submitting prayer request:", error);
+      alert(
+        "There was an error submitting your prayer request. Please try again.",
+      );
     }
   };
 
   return (
-    <div style={{ backgroundColor: 'var(--white)' }}>
+    <div style={{ backgroundColor: "var(--white)" }}>
       <header>
         <div
           id="read-appbar"
           style={{
-            backgroundColor: 'var(--primary)',
-            position: 'fixed',
+            backgroundColor: "var(--primary)",
+            position: "fixed",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '3.2rem',
-            padding: '0 1ch',
+            width: "100%",
+            height: "3.2rem",
+            padding: "0 1ch",
             zIndex: 10001,
           }}
         >
           <div
             className="row"
             style={{
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              columnGap: '2ch',
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              columnGap: "2ch",
             }}
           >
             <button
               onClick={() => window.history.back()}
               style={{
-                outline: 'none',
-                border: 'none',
-                background: 'unset',
-                fontSize: '22px',
-                color: 'var(--white)',
+                outline: "none",
+                border: "none",
+                background: "unset",
+                fontSize: "22px",
+                color: "var(--white)",
               }}
             >
               <FontAwesomeIcon icon={faArrowLeft} />
@@ -93,8 +95,8 @@ const PrayerRequestForm = () => {
             <h2
               className="article_title-p"
               style={{
-                fontSize: '1.2rem',
-                color: 'var(--white)',
+                fontSize: "1.2rem",
+                color: "var(--white)",
               }}
             >
               Submit A Prayer Request
@@ -106,9 +108,9 @@ const PrayerRequestForm = () => {
       <div
         className="form-container"
         style={{
-          marginTop: '1rem',
-          display: 'flex',
-          justifyContent: 'center',
+          marginTop: "1rem",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <form
@@ -117,18 +119,18 @@ const PrayerRequestForm = () => {
           id="prayerRequestForm"
           onSubmit={handleSubmit}
           style={{
-            marginTop: '3.3rem',
-            width: '90%',
-            padding: '0 0 0 1ch',
+            marginTop: "3.3rem",
+            width: "90%",
+            padding: "0 0 0 1ch",
           }}
         >
-          <div className="form-group" style={{ marginBottom: '15px' }}>
+          <div className="form-group" style={{ marginBottom: "15px" }}>
             <label
               htmlFor="name"
               style={{
-                display: 'block',
-                marginBottom: '5px',
-                fontSize: '16px',
+                display: "block",
+                marginBottom: "5px",
+                fontSize: "16px",
                 fontWeight: 600,
               }}
             >
@@ -142,26 +144,26 @@ const PrayerRequestForm = () => {
               onChange={handleChange}
               placeholder="Enter your name"
               style={{
-                backgroundColor: 'var(--white)',
-                color: 'var(--text)',
-                width: '95%',
-                height: '45px',
-                textIndent: '1ch',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                fontSize: '16px',
-                fontFamily: 'Raleway',
+                backgroundColor: "var(--white)",
+                color: "var(--text)",
+                width: "95%",
+                height: "45px",
+                textIndent: "1ch",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontFamily: "Raleway",
               }}
             />
           </div>
 
-          <div className="form-group" style={{ marginBottom: '15px' }}>
+          <div className="form-group" style={{ marginBottom: "15px" }}>
             <label
               htmlFor="email"
               style={{
-                display: 'block',
-                marginBottom: '5px',
-                fontSize: '16px',
+                display: "block",
+                marginBottom: "5px",
+                fontSize: "16px",
                 fontWeight: 600,
               }}
             >
@@ -175,26 +177,26 @@ const PrayerRequestForm = () => {
               onChange={handleChange}
               placeholder="Enter your email"
               style={{
-                backgroundColor: 'var(--white)',
-                color: 'var(--text)',
-                width: '95%',
-                height: '45px',
-                textIndent: '1ch',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                fontSize: '16px',
-                fontFamily: 'Raleway',
+                backgroundColor: "var(--white)",
+                color: "var(--text)",
+                width: "95%",
+                height: "45px",
+                textIndent: "1ch",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontFamily: "Raleway",
               }}
             />
           </div>
 
-          <div className="form-group" style={{ marginBottom: '15px' }}>
+          <div className="form-group" style={{ marginBottom: "15px" }}>
             <label
               htmlFor="title"
               style={{
-                display: 'block',
-                marginBottom: '5px',
-                fontSize: '16px',
+                display: "block",
+                marginBottom: "5px",
+                fontSize: "16px",
                 fontWeight: 600,
               }}
             >
@@ -209,26 +211,26 @@ const PrayerRequestForm = () => {
               required
               placeholder="Enter prayer title"
               style={{
-                backgroundColor: 'var(--white)',
-                color: 'var(--text)',
-                width: '95%',
-                height: '45px',
-                textIndent: '1ch',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                fontSize: '16px',
-                fontFamily: 'Raleway',
+                backgroundColor: "var(--white)",
+                color: "var(--text)",
+                width: "95%",
+                height: "45px",
+                textIndent: "1ch",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontFamily: "Raleway",
               }}
             />
           </div>
 
-          <div className="form-group" style={{ marginBottom: '15px' }}>
+          <div className="form-group" style={{ marginBottom: "15px" }}>
             <label
               htmlFor="topic"
               style={{
-                display: 'block',
-                marginBottom: '5px',
-                fontSize: '16px',
+                display: "block",
+                marginBottom: "5px",
+                fontSize: "16px",
                 fontWeight: 600,
               }}
             >
@@ -241,15 +243,15 @@ const PrayerRequestForm = () => {
               onChange={handleChange}
               required
               style={{
-                backgroundColor: 'var(--white)',
-                color: 'var(--text)',
-                height: '45px',
-                width: '95%',
-                textIndent: '1ch',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                fontSize: '16px',
-                fontFamily: 'Raleway',
+                backgroundColor: "var(--white)",
+                color: "var(--text)",
+                height: "45px",
+                width: "95%",
+                textIndent: "1ch",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontFamily: "Raleway",
               }}
             >
               <option value="" disabled>
@@ -281,13 +283,13 @@ const PrayerRequestForm = () => {
             </select>
           </div>
 
-          <div className="form-group" style={{ marginBottom: '15px' }}>
+          <div className="form-group" style={{ marginBottom: "15px" }}>
             <label
               htmlFor="request"
               style={{
-                display: 'block',
-                marginBottom: '5px',
-                fontSize: '16px',
+                display: "block",
+                marginBottom: "5px",
+                fontSize: "16px",
                 fontWeight: 600,
               }}
             >
@@ -301,13 +303,13 @@ const PrayerRequestForm = () => {
               required
               placeholder="Enter your prayer request"
               style={{
-                backgroundColor: 'var(--white)',
-                color: 'var(--text)',
-                width: '95%',
-                height: '200px',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                resize: 'none',
+                backgroundColor: "var(--white)",
+                color: "var(--text)",
+                width: "95%",
+                height: "200px",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                resize: "none",
               }}
             />
           </div>
@@ -315,10 +317,10 @@ const PrayerRequestForm = () => {
           <div
             className="checkbox-group"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1ch',
-              marginBottom: '15px',
+              display: "flex",
+              alignItems: "center",
+              gap: "1ch",
+              marginBottom: "15px",
             }}
           >
             <input
@@ -328,13 +330,14 @@ const PrayerRequestForm = () => {
               checked={formData.anonymous}
               onChange={handleChange}
               style={{
-                cursor: 'pointer',
+                cursor: "pointer",
               }}
             />
+
             <label
               htmlFor="anonymous"
               style={{
-                fontSize: '14px',
+                fontSize: "14px",
               }}
             >
               Submit as anonymous
@@ -346,15 +349,15 @@ const PrayerRequestForm = () => {
               type="submit"
               value="Submit"
               style={{
-                backgroundColor: 'var(--primary)',
-                color: 'var(--white)',
-                width: '95%',
-                height: '45px',
-                textIndent: '1ch',
-                border: '1px solid transparent',
-                borderRadius: '1ch',
-                fontSize: '1rem',
-                fontFamily: 'Raleway',
+                backgroundColor: "var(--primary)",
+                color: "var(--white)",
+                width: "95%",
+                height: "45px",
+                textIndent: "1ch",
+                border: "1px solid transparent",
+                borderRadius: "1ch",
+                fontSize: "1rem",
+                fontFamily: "Raleway",
               }}
             />
           </div>

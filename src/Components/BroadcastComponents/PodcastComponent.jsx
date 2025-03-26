@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronLeft, faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleChevronLeft,
+  faCircleChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Podcasts = ({ data_source }) => {
   const [podcasts, setPodcasts] = useState([]);
@@ -12,7 +15,7 @@ const Podcasts = ({ data_source }) => {
         const data = await data_source();
         setPodcasts(data.podcasts ? data.podcasts : data.word.reverse());
       } catch (error) {
-        console.error('Failed to fetch podcasts:', error);
+        console.error("Failed to fetch podcasts:", error);
       }
     };
 
@@ -21,7 +24,7 @@ const Podcasts = ({ data_source }) => {
 
   const playPodcast = (podcast) => {
     setCurrentPodcast(podcast);
-    const audio = document.getElementById('audio1');
+    const audio = document.getElementById("audio1");
     if (audio) {
       audio.src = podcast.fileUrl;
       audio.play();
@@ -31,7 +34,9 @@ const Podcasts = ({ data_source }) => {
   const playNextPodcast = () => {
     if (!podcasts.length) return;
 
-    const currentIndex = podcasts.findIndex((p) => p._id === currentPodcast?._id);
+    const currentIndex = podcasts.findIndex(
+      (p) => p._id === currentPodcast?._id,
+    );
     const nextIndex = (currentIndex + 1) % podcasts.length;
     playPodcast(podcasts[nextIndex]);
   };
@@ -39,17 +44,19 @@ const Podcasts = ({ data_source }) => {
   const playPreviousPodcast = () => {
     if (!podcasts.length) return;
 
-    const currentIndex = podcasts.findIndex((p) => p._id === currentPodcast?._id);
+    const currentIndex = podcasts.findIndex(
+      (p) => p._id === currentPodcast?._id,
+    );
     const prevIndex = (currentIndex - 1 + podcasts.length) % podcasts.length;
     playPodcast(podcasts[prevIndex]);
   };
 
   useEffect(() => {
-    const audio = document.getElementById('audio1');
+    const audio = document.getElementById("audio1");
     if (audio) {
       const handleEnded = () => playNextPodcast();
-      audio.addEventListener('ended', handleEnded);
-      return () => audio.removeEventListener('ended', handleEnded);
+      audio.addEventListener("ended", handleEnded);
+      return () => audio.removeEventListener("ended", handleEnded);
     }
   }, [currentPodcast, podcasts]);
 
@@ -65,7 +72,9 @@ const Podcasts = ({ data_source }) => {
         </div>
         <div className="music-toolbar__header">
           <div className="song-title">
-            <span id="music-toolbar-title">{currentPodcast?.title || 'No Podcast Selected'}</span>
+            <span id="music-toolbar-title">
+              {currentPodcast?.title || "No Podcast Selected"}
+            </span>
           </div>
         </div>
         <div className="music-toolbar__controls">
@@ -93,7 +102,7 @@ const Podcasts = ({ data_source }) => {
             <div
               key={podcast._id}
               id={podcast._id}
-              className={`podcast-item ${currentPodcast?._id === podcast._id ? 'selected' : ''}`}
+              className={`podcast-item ${currentPodcast?._id === podcast._id ? "selected" : ""}`}
               onClick={() => playPodcast(podcast)}
               data-audio-url={podcast.fileUrl}
               data-audio-title={podcast.title}
@@ -105,7 +114,7 @@ const Podcasts = ({ data_source }) => {
                 <div className="p-description">
                   <p>
                     {podcast.description.length > 55
-                      ? podcast.description.substring(0, 48) + '...'
+                      ? podcast.description.substring(0, 48) + "..."
                       : podcast.description}
                   </p>
                 </div>

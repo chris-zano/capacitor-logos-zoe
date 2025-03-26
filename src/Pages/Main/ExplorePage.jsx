@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBible, faBuilding, faEnvelope } from "@fortawesome/free-solid-svg-icons"; // Import specific icons
+import {
+  faBible,
+  faBuilding,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons"; // Import specific icons
 import getCategories from "../../data/explore/get_categories.js";
 import "../../styles/explore.css";
 
@@ -26,7 +30,7 @@ const ExplorePage = () => {
           const isSpecialCategory =
             category.category_name === "Jesus Talk" ||
             category.category_name === "Spiritual Laws";
-          const animationDelay = `${( index / 3 ) * 0.2}s`;
+          const animationDelay = `${(index / 3) * 0.2}s`;
 
           return (
             <div
@@ -61,9 +65,13 @@ const ExplorePage = () => {
           );
         })}
         {/* Additional grid cards for Prayer Center and Devotionals */}
-        <div className="grid-card"  style={{
-                animation: `fadeInUp 0.5s ease-out 2s 1 forwards`,
-              }} data-url="/prayer-center">
+        <div
+          className="grid-card"
+          style={{
+            animation: `fadeInUp 0.5s ease-out 2s 1 forwards`,
+          }}
+          data-url="/prayer-center"
+        >
           <a href="/prayer-center">
             <div className="card-icon">
               <FontAwesomeIcon icon={faBuilding} style={{ color: "pink" }} />
@@ -76,9 +84,13 @@ const ExplorePage = () => {
             </div>
           </a>
         </div>
-        <div className="grid-card"  style={{
-                animation: `fadeInUp 0.5s ease-out 2.2s 1 forwards`,
-              }} data-url="/devotionals">
+        <div
+          className="grid-card"
+          style={{
+            animation: `fadeInUp 0.5s ease-out 2.2s 1 forwards`,
+          }}
+          data-url="/devotionals"
+        >
           <a href="/bible">
             <div className="card-icon">
               <FontAwesomeIcon icon={faBible} style={{ color: "blue" }} />
@@ -87,7 +99,9 @@ const ExplorePage = () => {
               <p>Bible</p>
             </div>
             <div className="card-description">
-              <p>Explore the timeless wisdom and teachings of the word of God</p>
+              <p>
+                Explore the timeless wisdom and teachings of the word of God
+              </p>
             </div>
           </a>
         </div>

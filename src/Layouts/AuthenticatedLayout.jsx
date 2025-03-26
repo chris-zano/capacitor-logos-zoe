@@ -3,7 +3,6 @@ import AppBarComponent from "../Components/AppBar.jsx";
 import BottomNavBarComponent from "../Components/BottomNavBar.jsx";
 
 const AuthenticatedLayout = () => {
-  
   return (
     <>
       <AppBarComponent />

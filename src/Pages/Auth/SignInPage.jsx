@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import userImage from '../../assets/images/user.png'
+import userImage from "../../assets/images/user.png";
 import BASEURL from "../../baseUrl.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +18,7 @@ const SignInPage = () => {
 
     try {
       const response = await fetch(`${BASEURL}/auth/login`, {
-      // const response = await fetch(`http://localhost:3123/auth/login`, {
+        // const response = await fetch(`http://localhost:3123/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,10 +41,7 @@ const SignInPage = () => {
   };
 
   const continueAsGuest = () => {
-    localStorage.setItem(
-      "auth",
-      JSON.stringify({ authenticated: true })
-    );
+    localStorage.setItem("auth", JSON.stringify({ authenticated: true }));
     localStorage.setItem(
       "user-data",
       JSON.stringify({
@@ -54,7 +51,7 @@ const SignInPage = () => {
         id: "0",
         bookmarks: [],
         profilePicture: userImage,
-      })
+      }),
     );
     navigate("/");
   };
@@ -79,35 +76,39 @@ const SignInPage = () => {
               required
             />
           </div>
-            <div className="input-group relative" style={{
-              position: 'relative'
-            }}>
-              <label htmlFor="password">Password</label>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                  id="password"
-                  className="input-field"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <span
-                  className="absolute right-[2.5ch] bottom-[2.5ch] flex items-center"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  style={{
-                    position: 'absolute',
-                    right: '2.5ch',
-                    bottom: '2.5ch',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className="toggle-icon"
-                  />
-                </span>
-            </div>
+          <div
+            className="input-group relative"
+            style={{
+              position: "relative",
+            }}
+          >
+            <label htmlFor="password">Password</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              id="password"
+              className="input-field"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <span
+              className="absolute right-[2.5ch] bottom-[2.5ch] flex items-center"
+              onClick={() => setShowPassword((prev) => !prev)}
+              style={{
+                position: "absolute",
+                right: "2.5ch",
+                bottom: "2.5ch",
+                cursor: "pointer",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={showPassword ? faEyeSlash : faEye}
+                className="toggle-icon"
+              />
+            </span>
+          </div>
           <div className="input-group">
             <button type="submit" className="login-btn">
               Login

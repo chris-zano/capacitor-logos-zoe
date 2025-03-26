@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
-import getBookAndChapterVerses from '../../data/bible/get_verses.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import getBookAndChapterVerses from "../../data/bible/get_verses.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function BookContent() {
   const { book, chapter } = useParams();
@@ -15,7 +15,7 @@ function BookContent() {
         console.log({ data });
         setVerses(data.verses);
       } catch (error) {
-        console.error('Error fetching verses:', error);
+        console.error("Error fetching verses:", error);
       }
     };
 
@@ -25,22 +25,31 @@ function BookContent() {
     <>
       <header>
         <div id="read-appbar">
-          <div className="row" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 3ch 0 1ch' }}>
+          <div
+            className="row"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "0 3ch 0 1ch",
+            }}
+          >
             <button onClick={() => window.history.back()}>
               <FontAwesomeIcon icon={faArrowLeft} />
               <span
-                className='poppins-regular'
+                className="poppins-regular"
                 style={{
-                  marginLeft: '2ch',
+                  marginLeft: "2ch",
                 }}
-              >{book} {chapter}</span>
+              >
+                {book} {chapter}
+              </span>
             </button>
           </div>
         </div>
       </header>
       <main
         style={{
-          marginTop: '3.2rem',
+          marginTop: "3.2rem",
         }}
       >
         <div className="bible-contents">
@@ -49,24 +58,25 @@ function BookContent() {
           ) : (
             <ul
               style={{
-                padding: 'unset',
-                margin: 'unset',
+                padding: "unset",
+                margin: "unset",
               }}
             >
               {verses.verses.verses.map((verse, index) => (
-                <li key={index}
-                  className='poppins-regular'
+                <li
+                  key={index}
+                  className="poppins-regular"
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: '0.6rem 1rem',
-                    fontWeight: '400',
-                    fontSize: '1.2rem',
-                    listStyle: 'none',
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "0.6rem 1rem",
+                    fontWeight: "400",
+                    fontSize: "1.2rem",
+                    listStyle: "none",
                   }}
                 >
                   <div>
-                    <sup style={{marginRight: '1.2ch'}}>[{index + 1}]</sup>
+                    <sup style={{ marginRight: "1.2ch" }}>[{index + 1}]</sup>
                     <span>{verse}</span>
                   </div>
                 </li>
@@ -74,10 +84,9 @@ function BookContent() {
             </ul>
           )}
         </div>
-
       </main>
     </>
-  )
+  );
 }
 
-export default BookContent
+export default BookContent;

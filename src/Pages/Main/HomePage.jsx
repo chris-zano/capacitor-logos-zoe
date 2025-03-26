@@ -3,7 +3,7 @@ import PodcastComponent from "../../Components/HomeComponents/PodcastsComponent.
 import RecommendedReadings from "../../Components/HomeComponents/RecommendedReadings.jsx";
 import Symbols from "../../Components/HomeComponents/SymbolsComponent.jsx";
 import VerseComponent from "../../Components/HomeComponents/VerseComponent.jsx";
-import '../../styles/home.css';
+import "../../styles/home.css";
 import DecisionsComponent from "./DecisionsComponent.jsx";
 import TestimoniesComponent from "./TestimoniesComponent.jsx";
 

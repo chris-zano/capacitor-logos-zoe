@@ -15,14 +15,14 @@ function Bookmarks() {
 
   const getRedirectUrl = ({ type, id }) => {
     switch (type) {
-      case 'article':
+      case "article":
         return `/articles/article/${id}`;
-      case 'devotional':
+      case "devotional":
         return `/devotionals/devotional/${id}`;
       default:
-        return '/';
+        return "/";
     }
-  }
+  };
 
   return (
     <div
@@ -30,7 +30,18 @@ function Bookmarks() {
         textAlign: "center",
       }}
     >
-      <p style={{ fontSize: "1.2rem", paddingLeft: '1ch', textAlign: 'left', fontWeight: '400', fontFamily: 'Poppins', marginBottom: "1ch" }}>Bookmarks</p>
+      <p
+        style={{
+          fontSize: "1.2rem",
+          paddingLeft: "1ch",
+          textAlign: "left",
+          fontWeight: "400",
+          fontFamily: "Poppins",
+          marginBottom: "1ch",
+        }}
+      >
+        Bookmarks
+      </p>
       {bookmarks.length > 0 ? (
         <ul
           style={{
@@ -43,17 +54,26 @@ function Bookmarks() {
           }}
         >
           {bookmarks.map((bookmark, index) => (
-            <a key={index} href={getRedirectUrl({type: bookmark.type, id: bookmark.id})} style={{
-              padding: '1ch',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1ch',
-              fontFamily: 'Poppins',
-            }}>
-              <img src={bookmark.image} alt={bookmark.title} style={{
-                borderRadius: '.7ch',
-                border: '1px solid #ccccde'
-              }} />
+            <a
+              key={index}
+              href={getRedirectUrl({ type: bookmark.type, id: bookmark.id })}
+              style={{
+                padding: "1ch",
+                display: "flex",
+                alignItems: "center",
+                gap: "1ch",
+                fontFamily: "Poppins",
+              }}
+            >
+              <img
+                src={bookmark.image}
+                alt={bookmark.title}
+                style={{
+                  borderRadius: ".7ch",
+                  border: "1px solid #ccccde",
+                }}
+              />
+
               <div className="article-details" sty>
                 <p>{bookmark.title}</p>
               </div>

@@ -43,12 +43,12 @@ const ProfilePage = () => {
 
   const checkNotificationPermissions = async () => {
     const { display } = await LocalNotifications.checkPermissions();
-    return display === 'granted';
+    return display === "granted";
   };
 
   const requestNotificationPermissions = async () => {
     const { display } = await LocalNotifications.requestPermissions();
-    return display === 'granted';
+    return display === "granted";
   };
 
   const scheduleDailyNotification = async () => {
@@ -85,7 +85,7 @@ const ProfilePage = () => {
     }
 
     const userConfirmed = window.confirm(
-      "Do you want to enable daily notifications?"
+      "Do you want to enable daily notifications?",
     );
     if (!userConfirmed) return;
 
@@ -100,11 +100,10 @@ const ProfilePage = () => {
     alert("Daily notifications enabled!");
   };
 
-
   if (!userData) return null;
 
   const obfuscatedEmail = `**********${userData.email.substring(
-    userData.email.indexOf("@")
+    userData.email.indexOf("@"),
   )}`;
 
   return (
@@ -112,11 +111,16 @@ const ProfilePage = () => {
       <div className="profile-header">
         <img
           id="profile-picture"
-          src={userData.profilePicture === '/images/user.png' ? avatar1 : userData.profilePicture}
+          src={
+            userData.profilePicture === "/images/user.png"
+              ? avatar1
+              : userData.profilePicture
+          }
           alt="Profile Picture"
           className="profile-picture"
           onClick={() => navigate("/avatars")}
         />
+
         <div className="user-details">
           <div id="u-name">
             <span id="first-name">{userData.firstname || "N/A"}</span>{" "}
@@ -143,36 +147,45 @@ const ProfilePage = () => {
       <ul className="action-list">
         <li>
           <FontAwesomeIcon icon={faBookmark} style={{ color: "var(--text)" }} />
+
           <a href="/bookmarks">Bookmarks</a>
           <br />
           <small>View a list of items you have saved</small>
         </li>
         <li onClick={enableNotifications}>
           <FontAwesomeIcon icon={faBell} style={{ color: "var(--text)" }} />
+
           <a href="#">Notifications</a>
           <br />
           <small>Enable push notifications.</small>
         </li>
         <li>
           <FontAwesomeIcon icon={faChurch} style={{ color: "var(--text)" }} />
+
           <a href="/about-us">About Us</a>
           <br />
           <small>Learn more about the LOGOS ZOE</small>
         </li>
         <li>
           <FontAwesomeIcon icon={faShield} style={{ color: "var(--text)" }} />
+
           <a href="/about-us">Privacy Policy</a>
           <br />
           <small>Learn about how we store and handle your data</small>
         </li>
         <li>
-          <FontAwesomeIcon icon={faQuestionCircle} style={{ color: "var(--text)" }} />
+          <FontAwesomeIcon
+            icon={faQuestionCircle}
+            style={{ color: "var(--text)" }}
+          />
+
           <a href="/about-us">FAQs</a>
           <br />
           <small>Discover answers to most asked questions</small>
         </li>
         <li>
           <FontAwesomeIcon icon={faKey} style={{ color: "var(--text)" }} />
+
           <a href="/auth/verify-email">Change Password</a>
           <br />
           <small>Verify your email to change your password</small>
@@ -182,6 +195,7 @@ const ProfilePage = () => {
             icon={faRightFromBracket}
             style={{ color: "var(--text)" }}
           />
+
           <a>Logout</a>
           <br />
           <small>End your current session</small>

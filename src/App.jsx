@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import { App as CapacitorApp } from "@capacitor/app"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
+import { App as CapacitorApp } from "@capacitor/app";
 import WelcomePage from "./Pages/Welcome/WelcomePage.jsx";
 import SignInPage from "./Pages/Auth/SignInPage.jsx";
 import SignUpPage from "./Pages/Auth/SignUpPage.jsx";
@@ -42,7 +48,10 @@ import DonationDetailsPage from "./Components/DonateComponents/DonationDetailsPa
 function App() {
   useEffect(() => {
     CapacitorApp.addListener("backButton", (event) => {
-      if (window.location.pathname === "/auth/welcome" || window.location.pathname === "/") {
+      if (
+        window.location.pathname === "/auth/welcome" ||
+        window.location.pathname === "/"
+      ) {
         CapacitorApp.exitApp();
       } else {
         window.history.back();
@@ -60,59 +69,96 @@ function App() {
         {/* Auth Routes */}
         <Route path="/auth">
           <Route path="welcome" element={<WelcomePage />} />
+
           <Route path="login" element={<SignInPage />} />
+
           <Route path="register" element={<SignUpPage />} />
+
           <Route path="forgot-password" element={<VerifyEmailPage />} />
+
           <Route path="verify-code" element={<VerifyCodePage />} />
+
           <Route path="verify-email" element={<VerifyEmailPage />} />
+
           <Route path="new-password" element={<ResetPasswordPage />} />
         </Route>
 
         {/* Authenticated Layout */}
         <Route path="/" element={<AuthenticatedLayout />}>
           <Route index element={<HomePage />} />
+
           {/* Broadcasts Route */}
           <Route path="/broadcast" element={<BroadcastPage />}>
             <Route path="podcasts" element={<BroadcastPage />} />
+
             <Route path="word-of-power" element={<BroadcastPage />} />
+
             <Route path="prayers" element={<BroadcastPage />} />
+
             <Route path="wisdom-nuggets" element={<BroadcastPage />} />
+
             <Route path="motivationals" element={<BroadcastPage />} />
+
             <Route path="inspirational" element={<BroadcastPage />} />
+
             <Route path="testimony-of-jesus" element={<BroadcastPage />} />
           </Route>
           <Route path="explore" element={<ExplorePage />} />
+
           <Route path="shop" element={<ShopPage />}>
             <Route path="landing" element={<ShopPage />} />
+
             <Route path="details/:id" element={<ShopPage />} />
+
             <Route path="checkout" element={<ShopPage />} />
           </Route>
           <Route path="donate" element={<DonatePage />} />
+
           <Route path="profile" element={<ProfilePage />} />
+
           <Route path="search" element={<SearchPage />} />
+
           <Route path="avatars" element={<ChooseProfileAvatar />} />
+
           <Route path="bookmarks" element={<Bookmarks />} />
         </Route>
         <Route path="donations/donate" element={<DonationPage />} />
+
         <Route path="donations/one-time" element={<OneTimeDonationPage />} />
+
         <Route path="donations/details" element={<DonationDetailsPage />} />
-        <Route path="/devotionals/devotional/:id" element={<DevotionalPage />} />
+
+        <Route
+          path="/devotionals/devotional/:id"
+          element={<DevotionalPage />}
+        />
+
         <Route path="/categories/:id" element={<CategoryContent />} />
+
         <Route path="/categories/article/:id" element={<CategoryArticle />} />
+
         <Route path="/categories/chapters/:id" element={<CategoryChapter />} />
+
         <Route path="/articles/article/:id" element={<ArticlePage />} />
+
         <Route path="/prayer-center" element={<PrayerRequestForm />} />
+
         <Route path="/devotionals" element={<Devotionals />} />
+
         <Route path="/bible" element={<BibleContents />} />
+
         <Route path="/bible/chapters/:book" element={<BibleChapters />} />
+
         <Route path="/bible/verses/:book/:chapter" element={<BookContent />} />
+
         <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path="/videos/video/:id/:category" element={<VideoPlayerPage />} />
 
-
+        <Route
+          path="/videos/video/:id/:category"
+          element={<VideoPlayerPage />}
+        />
 
         {/* <Route path="/broadcast"  /> */}
-
       </Routes>
     </Router>
   );

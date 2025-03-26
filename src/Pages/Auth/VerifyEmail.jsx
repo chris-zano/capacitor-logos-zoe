@@ -11,7 +11,7 @@ const VerifyEmailPage = () => {
 
     try {
       const response = await fetch(`${BASEURL}/auth/verify-email`, {
-      // const response = await fetch(`http://localhost:3123/auth/verify-email`, {
+        // const response = await fetch(`http://localhost:3123/auth/verify-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,11 @@ const VerifyEmailPage = () => {
       <div className="login-page">
         <h2 className="login-title">Confirm your email</h2>
 
-        {errorMessage && <div id="error-message" className="error-message">{errorMessage}</div>}
+        {errorMessage && (
+          <div id="error-message" className="error-message">
+            {errorMessage}
+          </div>
+        )}
 
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="input-group">

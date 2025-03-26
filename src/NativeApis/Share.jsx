@@ -25,5 +25,3 @@ function ShareApi({ button_text, data_to_share }) {
 }
 
 export default ShareApi;
-
-

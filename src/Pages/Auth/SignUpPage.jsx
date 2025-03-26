@@ -69,34 +69,38 @@ const SignUpPage = () => {
                 required
               />
             </div>
-            <div className="input-group relative" style={{
-              position: 'relative'
-            }}>
+            <div
+              className="input-group relative"
+              style={{
+                position: "relative",
+              }}
+            >
               <label htmlFor="password">Password</label>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                  id="password"
-                  className="input-field"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                id="password"
+                className="input-field"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+
+              <span
+                className="absolute right-[2.5ch] bottom-[2.5ch] flex items-center"
+                onClick={() => setShowPassword((prev) => !prev)}
+                style={{
+                  position: "absolute",
+                  right: "2.5ch",
+                  bottom: "2.5ch",
+                  cursor: "pointer",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={showPassword ? faEyeSlash : faEye}
+                  className="toggle-icon"
                 />
-                <span
-                  className="absolute right-[2.5ch] bottom-[2.5ch] flex items-center"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  style={{
-                    position: 'absolute',
-                    right: '2.5ch',
-                    bottom: '2.5ch',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className="toggle-icon"
-                  />
-                </span>
+              </span>
             </div>
             <button onClick={handleNext} className="login-btn">
               Next

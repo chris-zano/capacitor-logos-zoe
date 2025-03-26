@@ -105,6 +105,7 @@ const ChooseProfileAvatar = () => {
               border: "2px solid #007bff",
             }}
           />
+
           <br />
           <button
             type="button"

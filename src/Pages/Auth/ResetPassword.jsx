@@ -20,7 +20,7 @@ const ResetPasswordPage = () => {
       });
 
       const result = await response.json();
-      
+
       if (response.ok) {
         localStorage.setItem("reset", "true");
       } else {
@@ -37,7 +37,11 @@ const ResetPasswordPage = () => {
       <div className="login-page">
         <h2 className="login-title">Create a new password</h2>
 
-        {errorMessage && <div id="error-message" className="error-message">{errorMessage}</div>}
+        {errorMessage && (
+          <div id="error-message" className="error-message">
+            {errorMessage}
+          </div>
+        )}
 
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="input-group">
