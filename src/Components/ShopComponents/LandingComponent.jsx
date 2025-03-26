@@ -43,41 +43,39 @@ function Landing() {
     decisions: decisions,
   };
 
-  return (
-    <section className="shop_container">
-      {products.map((product) => (
-        <div className="shop-item-card" key={product._id}>
-          <NavLink to={`details/${product._id}/`}>
-            <img
-              src={
-                image_map[
-                  product.product_image.substring(
-                    product.product_image.lastIndexOf("/") + 1,
-                    product.product_image.lastIndexOf("."),
-                  )
-                ]
-              }
-              alt={product.product_title}
-            />
-
-            <div>
-              <h3>{product.product_title}</h3>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: product.product_description.substring(0, 100),
-                }}
-              ></div>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <button type="button">
-                  {product.status === "pre-order" ? "Pre-order" : "Coming Soon"}
-                </button>
-              </div>
-            </div>
-          </NavLink>
-        </div>
-      ))}
-    </section>
-  );
+    return (
+        <section className="shop_container">
+            {products.map((product) => (
+                <div className="shop-item-card" key={product._id}>
+                    <NavLink to={`details/${product._id}/`}>
+                        <img
+                            src={
+                                image_map[
+                                    product.product_image.substring(
+                                        product.product_image.lastIndexOf("/") + 1,
+                                        product.product_image.lastIndexOf(".")
+                                    )
+                                ]
+                            }
+                            alt={product.product_title}
+                        />
+                        <div>
+                            <h3>{product.product_title}</h3>
+                            <div dangerouslySetInnerHTML={{__html:product.product_description.substring(0, 100) + '...'}} >
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center" }}>
+                                <button type="button">
+                                    {product.status === "pre-order"
+                                        ? "Pre-order"
+                                        : "Coming Soon"}
+                                </button>
+                            </div>
+                        </div>
+                    </NavLink>
+                </div>
+            ))}
+        </section>
+    );
 }
 
 export default Landing;

@@ -26,22 +26,8 @@ function Bookmarks() {
 
   return (
     <div
-      style={{
-        textAlign: "center",
-      }}
     >
-      <p
-        style={{
-          fontSize: "1.2rem",
-          paddingLeft: "1ch",
-          textAlign: "left",
-          fontWeight: "400",
-          fontFamily: "Poppins",
-          marginBottom: "1ch",
-        }}
-      >
-        Bookmarks
-      </p>
+      <p style={{ fontSize: "1.2rem", paddingLeft: '1ch', textAlign: 'left', fontWeight: '400', fontFamily: 'Poppins', marginBottom: "1ch" }}>Bookmarks {bookmarks.length > 0 ? `(${bookmarks.length})` : null}</p>
       {bookmarks.length > 0 ? (
         <ul
           style={{
@@ -54,28 +40,24 @@ function Bookmarks() {
           }}
         >
           {bookmarks.map((bookmark, index) => (
-            <a
-              key={index}
-              href={getRedirectUrl({ type: bookmark.type, id: bookmark.id })}
-              style={{
-                padding: "1ch",
-                display: "flex",
-                alignItems: "center",
-                gap: "1ch",
-                fontFamily: "Poppins",
-              }}
-            >
-              <img
-                src={bookmark.image}
-                alt={bookmark.title}
-                style={{
-                  borderRadius: ".7ch",
-                  border: "1px solid #ccccde",
-                }}
-              />
-
+            <a key={index} href={getRedirectUrl({type: bookmark.type, id: bookmark.id})} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1ch',
+              fontFamily: 'Poppins',
+              textDecoration: 'none',
+              color: 'var(--text)',
+              backgroundColor: 'var(--card-background)',
+              borderRadius: '1.5ch',
+              border: '1px solid transparent',
+              padding: '1ch 1.3ch',
+            }}>
+              <img src={bookmark.image} alt={bookmark.title} style={{
+                borderRadius: '50%',
+                border: '1px solid var(--light-gray)'
+              }} />
               <div className="article-details" sty>
-                <p>{bookmark.title}</p>
+                <p>{bookmark.title.length > 21 ? bookmark.title.substring(0, 31)+ '...' : bookmark.title}</p>
               </div>
             </a>
           ))}

@@ -4,7 +4,7 @@ section.broadcasts-wrapper {
 
 section.broadcasts-wrapper div.row-carousel-nav {
     display: flex;
-    padding: 0 1ch 1ch 1ch;
+    padding: 0.5ch 1ch 2ch;
     gap: 1ch;
     overflow-x: auto;
     white-space: nowrap;
@@ -23,16 +23,16 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap {
 }
 
 section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
-    color: var(--white);
+    color: var(--light);
+    font-weight: 500;
     background-color: var(--green);
 }
 
 
 .music-player__toolbar {
     background-color: #121330;
-    border: 0.1ch solid var(--white);
-    box-shadow: 0px 3px 30px #c2c2c267;
-    border-radius: 2ch;
+    border: 1px solid var(--light-gray);
+    border-radius: 1.5ch;
     padding: 2ch;
 }
 
@@ -217,7 +217,7 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
     margin-top: 1rem;
     display: block;
     font-size: 2.5rem;
-    color: var(--white);
+    color: var(--light);
 }
 
 @keyframes animatesongtitle {
@@ -238,17 +238,15 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
     border: 2px solid transparent;
     display: flex;
     align-items: center;
-    background-color: var(--white);
-    border-radius: 2ch;
+    background-color: var(--modal-background);
+    border-radius: 1.5ch;
     padding-inline: 1ch;
     transition: all ease-in-out 350ms;
 
 }
 
 .r-podcast-list .podcast-item.selected {
-    /* border: 1px solid var(--green); */
-    box-shadow: 0px 3px 10px #c2c2c267;
-
+    border: 1px solid var(--green);
 }
 
 .r-podcast-list .podcast-item.selected .p-title {
@@ -257,6 +255,7 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
 
 .r-podcast-list .podcast-item.selected .p-description {
     opacity: 0.5;
+    color: var(--green);
 }
 
 .podcast-item .podcast-details {
@@ -280,10 +279,11 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
     display: flex;
     flex-direction: column;
     border: 1px solid transparent;
-    border-radius: 8px;
+    border-radius: 1.5ch;
     overflow: hidden;
     margin: 1ch auto;
-    background-color: var(--white);
+    padding: .7ch 0 0 0;
+    background-color: var(--card-background);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
     font-family: inter;

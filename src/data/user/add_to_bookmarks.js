@@ -31,7 +31,7 @@ const addToBookmarks = async ({ item_id, item_type }) => {
         })
         await response.json();
         if (response.ok) {
-            alert('Bookmark added successfully.');
+            alert('Bookmark updated successfully.');
             return;
         }
         return;

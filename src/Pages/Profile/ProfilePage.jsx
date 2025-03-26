@@ -16,6 +16,9 @@ import avatar1 from "../../assets/images/avatar1.jpg";
 import { faChurch } from "@fortawesome/free-solid-svg-icons/faChurch";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons/faQuestionCircle";
 
+
+
+
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
   const [emailVisible, setEmailVisible] = useState(false);
@@ -106,6 +109,112 @@ const ProfilePage = () => {
     userData.email.indexOf("@"),
   )}`;
 
+
+  const profileItems = [
+    {
+      route: "/bookmarks",
+      icon: faBookmark,
+      title: "Bookmarks",
+      subtitle: "View a list of items you have saved",
+      handler: null
+    },
+    {
+      route: "#",
+      icon: faBell,
+      title: "Notifications",
+      subtitle: "Enable push notifications.",
+      handler: enableNotifications
+    },
+    {
+      route: "/about-us",
+      icon: faChurch,
+      title: "About Us",
+      subtitle: "Learn more about the LOGOS ZOE",
+      handler: null
+    },
+    {
+      route: "/privacy-policy",
+      icon: faShield,
+      title: "Privacy Policy",
+      subtitle: "Learn about how we store and handle your data",
+      handler: null
+    },
+    {
+      route: "/faqs",
+      icon: faQuestionCircle,
+      title: "FAQs",
+      subtitle: "Discover answers to most asked questions",
+      handler: null
+    },
+    {
+      route: "/auth/verify-email",
+      icon: faKey,
+      title: "Change Password",
+      subtitle: "Verify your email to change your password",
+      handler: null
+    },
+    {
+      route: "#",
+      icon: faRightFromBracket,
+      title: "Logout",
+      subtitle: "End your current session",
+      handler: logOut
+    }
+  ];
+
+
+  const profileItems = [
+    {
+      route: "/bookmarks",
+      icon: faBookmark,
+      title: "Bookmarks",
+      subtitle: "View a list of items you have saved",
+      handler: null
+    },
+    {
+      route: "#",
+      icon: faBell,
+      title: "Notifications",
+      subtitle: "Enable push notifications.",
+      handler: enableNotifications
+    },
+    {
+      route: "/about-us",
+      icon: faChurch,
+      title: "About Us",
+      subtitle: "Learn more about the LOGOS ZOE",
+      handler: null
+    },
+    {
+      route: "/privacy-policy",
+      icon: faShield,
+      title: "Privacy Policy",
+      subtitle: "Learn about how we store and handle your data",
+      handler: null
+    },
+    {
+      route: "/faqs",
+      icon: faQuestionCircle,
+      title: "FAQs",
+      subtitle: "Discover answers to most asked questions",
+      handler: null
+    },
+    {
+      route: "/auth/verify-email",
+      icon: faKey,
+      title: "Change Password",
+      subtitle: "Verify your email to change your password",
+      handler: null
+    },
+    {
+      route: "#",
+      icon: faRightFromBracket,
+      title: "Logout",
+      subtitle: "End your current session",
+      handler: logOut
+    }
+  ];
+
   return (
     <div className="profile-container">
       <div className="profile-header">
@@ -145,64 +254,37 @@ const ProfilePage = () => {
       ) : null}
 
       <ul className="action-list">
-        <li>
-          <FontAwesomeIcon icon={faBookmark} style={{ color: "var(--text)" }} />
-
-          <a href="/bookmarks">Bookmarks</a>
-          <br />
-          <small>View a list of items you have saved</small>
-        </li>
-        <li onClick={enableNotifications}>
-          <FontAwesomeIcon icon={faBell} style={{ color: "var(--text)" }} />
-
-          <a href="#">Notifications</a>
-          <br />
-          <small>Enable push notifications.</small>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faChurch} style={{ color: "var(--text)" }} />
-
-          <a href="/about-us">About Us</a>
-          <br />
-          <small>Learn more about the LOGOS ZOE</small>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faShield} style={{ color: "var(--text)" }} />
-
-          <a href="/about-us">Privacy Policy</a>
-          <br />
-          <small>Learn about how we store and handle your data</small>
-        </li>
-        <li>
-          <FontAwesomeIcon
-            icon={faQuestionCircle}
-            style={{ color: "var(--text)" }}
+        {profileItems.map((item, index) => (
+          <ProfileListItem
+            key={index}
+            route={item.route}
+            icon={item.icon}
+            title={item.title}
+            subtitle={item.subtitle}
+            handler={item.handler}
           />
-
-          <a href="/about-us">FAQs</a>
-          <br />
-          <small>Discover answers to most asked questions</small>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faKey} style={{ color: "var(--text)" }} />
-
-          <a href="/auth/verify-email">Change Password</a>
-          <br />
-          <small>Verify your email to change your password</small>
-        </li>
-        <li onClick={logOut}>
-          <FontAwesomeIcon
-            icon={faRightFromBracket}
-            style={{ color: "var(--text)" }}
-          />
-
-          <a>Logout</a>
-          <br />
-          <small>End your current session</small>
-        </li>
+        ))}
       </ul>
     </div>
   );
 };
+
+const ProfileListItem = ({ route, icon, title, handler, subtitle }) => {
+
+  return (
+    <li onClick={handler}>
+      <a href={route}>
+        <FontAwesomeIcon
+          icon={icon}
+          style={{ color: "var(--text)" }}
+        />
+        <div>
+          <span>{title}</span>
+          <small>{subtitle}</small>
+        </div>
+      </a>
+    </li>
+  )
+}
 
 export default ProfilePage;

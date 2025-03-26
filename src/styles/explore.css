@@ -18,11 +18,10 @@ div.explore-grid {
 
 div.explore-grid div.grid-card {
     height: 135px;
-    background-color: var(--white);
     border-radius: 1ch;
     padding: 2.5ch 1.5ch;
     border-radius: 2ch;
-    background-color: var(--white);
+    background-color: var(--modal-background);
 }
 
 div.explore-grid div.grid-card .card-icon i {

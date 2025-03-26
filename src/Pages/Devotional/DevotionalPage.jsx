@@ -61,9 +61,7 @@ const DevotionalPage = ({ styles }) => {
   useEffect(() => {
     const fetchDevotionals = async () => {
       try {
-        const response = await fetch(
-          "https://logos-server-j2ld.onrender.com/devotionals/calendar/list",
-        );
+        const response = await fetch(`${BASEURL}/devotionals/calendar/list`);
         const data = await response.json();
         setDevotionals(
           data.sort((a, b) => {
@@ -107,6 +105,10 @@ const DevotionalPage = ({ styles }) => {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const days = [];
+    const currentDay = new Date().getDate();
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+
 
     for (let i = 0; i < firstDay; i++) {
       days.push(<div className="day" key={`blank-${i}`}></div>);
@@ -124,7 +126,7 @@ const DevotionalPage = ({ styles }) => {
 
       days.push(
         <div
-          className={`day ${devotional ? "has-devotional" : ""}`}
+          className={`day ${devotional ? "has-devotional" : ""} ${day === currentDay && month === currentMonth && year === currentYear ? "selected" : ""}`}
           key={day}
           onClick={() =>
             devotional &&
@@ -141,7 +143,7 @@ const DevotionalPage = ({ styles }) => {
 
   return (
     <>
-      <article className="d-chapter bg-white">
+      <article className="d-chapter">
         {/* Image Section */}
         <section className="image">
           <img src={devotional.theme_picture_url} alt="" />

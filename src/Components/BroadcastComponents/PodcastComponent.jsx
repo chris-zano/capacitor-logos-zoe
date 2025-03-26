@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleChevronLeft,
-  faCircleChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleChevronLeft, faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
+import LoadingSpinner from '../Loaders/LoadingSpinner.jsx';
 
 const Podcasts = ({ data_source }) => {
   const [podcasts, setPodcasts] = useState([]);
@@ -96,7 +94,7 @@ const Podcasts = ({ data_source }) => {
 
       <div className="r-podcast-list">
         {podcasts.length === 0 ? (
-          <span>Loading...</span>
+          <LoadingSpinner />
         ) : (
           podcasts.map((podcast) => (
             <div

@@ -31,31 +31,23 @@ const VideoPlayerPage = ({ match }) => {
     fetchVideoData();
   }, [id]);
 
-  return (
-    <div>
-      <header>
-        <div id="read-appbar">
-          <div className="row">
-            <button onClick={() => window.history.back()}>
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </button>
-            <h3
-              style={{ color: "var(--white)", fontFamily: "Inter" }}
-              className="article_title-p"
-            >
-              {video ? (
-                video.video_title.length > 20 ? (
-                  video.video_title.substring(0, 20) + "..."
-                ) : (
-                  video.video_title
-                )
-              ) : (
-                <LoadingSpinner />
-              )}
-            </h3>
-          </div>
-        </div>
-      </header>
+    return (
+        <div>
+            <header>
+                <div id="read-appbar">
+                    <div className="row">
+                        <button onClick={() => window.history.back()}>
+                            <FontAwesomeIcon icon={faArrowLeft} />
+                        </button>
+                        <h3
+                            style={{ color: "var(--text)", fontFamily: "Inter" }}
+                            className="article_title-p"
+                        >
+                            {video ? (video.video_title.length > 20 ? video.video_title.substring(0, 20) + "..." : video.video_title) : <LoadingSpinner />}
+                        </h3>
+                    </div>
+                </div>
+            </header>
 
       <main id="video-player-main">
         <section className="player-section">

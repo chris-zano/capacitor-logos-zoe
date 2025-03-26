@@ -1,17 +1,17 @@
 .shop_container {
+  margin-top: 1ch;
   display: grid;
-  gap: 10px;
+  gap: 2ch;
   overflow-y: scroll;
   box-sizing: border-box;
-  background-color: var(--white);
+  background-color: var(--theme-background);
 }
 
 .shop-item-card {
   padding: 1ch;
-  border-radius: 1ch;
-  border-bottom: 1px solid #e4e4e4d2;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: 1.5ch;
+  background-color: var(--modal-background);
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .shop-item-card>a {
@@ -58,9 +58,8 @@ span.author-name {
   height: 3.5rem;
   border-radius: 50px;
   border: 1px solid var(--green);
-  background-color: unset;
-  background: unset;
-  color: #222222;
+  background-color: var(--green);
+  color: var(--light);
   margin: 0 auto;
 }
 
@@ -68,11 +67,11 @@ span.author-name {
 .shop-item-card>div>div>div>button:focus-within,
 .shop-item-card>div>div>div>button:hover {
   background-color: var(--green);
-  color: var(--white);
+  color: var(--light);
 }
 
 div#products-appbar {
-  background-color: var(--primary);
+  background-color: var(--theme-background);
   position: fixed;
   top: 0;
   left: 0;
@@ -95,11 +94,11 @@ div#products-appbar div.row button {
   background-color: unset;
   background: unset;
   font-size: 22px;
-  color: var(--white);
+  color: var(--text);
 }
 
 div#products-appbar div.row h2 {
-  color: var(--white);
+  color: var(--text);
   font-weight: 500;
   font-size: 22px;
   overflow: hidden;
@@ -135,6 +134,11 @@ main.products_main {
 
 .product-info p {
   font-size: 1.4ch;
+  color: var(--text);
+  font-family: 'Poppins';
+  font-weight: 400;
+  margin-bottom: 1ch;
+  line-height: 1.6;
 }
 
 .product-info .ratings {
@@ -154,8 +158,8 @@ main.products_main {
 .product-info button {
   margin: 10px 10px 0 0;
   padding: 2ch 3.2ch;
-  background-color: #cacacad7;
-  color: rgb(163, 162, 162);
+  background-color: var(--light-gray);
+  color: var(--text);
   border: none;
   border-radius: 25px;
   cursor: no-drop;
@@ -180,10 +184,9 @@ main.products_main {
 .related-product-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
+  background-color: var(--modal-background);
   padding: 1ch;
   border-radius: 10px;
-  box-shadow: 0px 3px 3px #acacac4f;
   text-decoration: none;
   color: inherit;
 }

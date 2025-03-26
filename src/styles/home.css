@@ -7,7 +7,7 @@ section#daily-verse {
     gap: .4ch;
     padding: 2ch;
     border-radius: 2ch;
-    background-color: var(--white);
+    background-color: var(--modal-background);
 }
 
 section#daily-verse .verse-card .title-text {
@@ -63,6 +63,7 @@ section#daily-verse .verse-actions button {
 
 section#daily-verse .verse-actions button svg {
     font-size: 22px;
+    color: var(--text);
 }
 
 span#notice {
@@ -79,7 +80,7 @@ span#notice {
     gap: .4ch;
     padding: 1ch;
     border-radius: 2ch;
-    background-color: var(--white);
+    background-color: var(--modal-background);
 }
 
 .podcast-header {
@@ -97,7 +98,7 @@ span#notice {
 
 
 .podcast-header div a {
-    background-color: white;
+    background-color: var(--modal-background);
     padding: 1ch 1.2ch;
     border: 1px solid #b4b4b4b8;
     border-radius: 1ch;
@@ -119,7 +120,7 @@ span#notice {
 }
 
 .podcast-list .podcast-item svg {
-    color: #032879;
+    color: var(--theme-icon);
 }
 
 @media screen and (max-width: 380px) {
@@ -176,7 +177,7 @@ section#recommended-readings {
     gap: 1ch;
     padding: 1ch;
     border-radius: 2ch;
-    background-color: var(--white);
+    background-color: var(--modal-background);
 }
 
 
@@ -225,7 +226,7 @@ section#symbols {
     gap: .4ch;
     padding: 1ch;
     border-radius: 2ch;
-    background-color: var(--white);
+    background-color: var(--modal-background);
 }
 
 a.related-article-card {
@@ -270,7 +271,7 @@ section#testimonies {
     gap: .4ch;
     padding: 1ch;
     border-radius: 2ch;
-    background-color: var(--white);
+    background-color: var(--modal-background);
 }
 
 .testimony-list {
@@ -280,7 +281,7 @@ section#testimonies {
     gap: .4ch;
     padding: 1ch;
     border-radius: 2ch;
-    background-color: var(--white);
+    background-color: var(--modal-background);
 }
 
 .testimony-header {
@@ -298,9 +299,9 @@ section#testimonies {
 
 
 .testimony-header div a {
-    background-color: white;
+    background-color: var(--modal-background);
     padding: 1ch 1.2ch;
-    border: 1px solid var(--theme-background);
+    border: 1px solid var(--light-gray);
     border-radius: 1ch;
     text-decoration: none;
     display: flex;
@@ -376,7 +377,7 @@ section#testimonies {
 
 .devotional-daily {
     margin-top: 0.5ch;
-    background-color: var(--white);
+    background-color: var(--modal-background);
     width: 100%;
     display: flex;
     flex-direction: column;

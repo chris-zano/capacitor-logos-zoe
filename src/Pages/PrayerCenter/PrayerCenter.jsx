@@ -56,13 +56,14 @@ const PrayerRequestForm = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "var(--white)" }}>
+    <div style={{ backgroundColor: 'var(--theme-background)' }}>
       <header>
         <div
           id="read-appbar"
           style={{
-            backgroundColor: "var(--primary)",
-            position: "fixed",
+            backgroundColor: 'var(--theme-background)',
+            borderBottom: '1px solid var(--light-gray)',
+            position: 'fixed',
             top: 0,
             left: 0,
             width: "100%",
@@ -83,11 +84,11 @@ const PrayerRequestForm = () => {
             <button
               onClick={() => window.history.back()}
               style={{
-                outline: "none",
-                border: "none",
-                background: "unset",
-                fontSize: "22px",
-                color: "var(--white)",
+                outline: 'none',
+                border: 'none',
+                background: 'unset',
+                fontSize: '22px',
+                color: 'var(--text)',
               }}
             >
               <FontAwesomeIcon icon={faArrowLeft} />
@@ -95,8 +96,8 @@ const PrayerRequestForm = () => {
             <h2
               className="article_title-p"
               style={{
-                fontSize: "1.2rem",
-                color: "var(--white)",
+                fontSize: '1.2rem',
+                color: 'var(--text)',
               }}
             >
               Submit A Prayer Request
@@ -132,6 +133,7 @@ const PrayerRequestForm = () => {
                 marginBottom: "5px",
                 fontSize: "16px",
                 fontWeight: 600,
+                color: 'var(--text)',
               }}
             >
               Your Name (Optional)
@@ -165,6 +167,7 @@ const PrayerRequestForm = () => {
                 marginBottom: "5px",
                 fontSize: "16px",
                 fontWeight: 600,
+                color: 'var(--text)',
               }}
             >
               Your Email Address (Optional)
@@ -177,15 +180,15 @@ const PrayerRequestForm = () => {
               onChange={handleChange}
               placeholder="Enter your email"
               style={{
-                backgroundColor: "var(--white)",
-                color: "var(--text)",
-                width: "95%",
-                height: "45px",
-                textIndent: "1ch",
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                fontSize: "16px",
-                fontFamily: "Raleway",
+                backgroundColor: 'var(--modal-background)',
+                color: 'var(--text)',
+                width: '95%',
+                height: '45px',
+                textIndent: '1ch',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                fontSize: '16px',
+                fontFamily: 'Raleway',
               }}
             />
           </div>
@@ -211,15 +214,15 @@ const PrayerRequestForm = () => {
               required
               placeholder="Enter prayer title"
               style={{
-                backgroundColor: "var(--white)",
-                color: "var(--text)",
-                width: "95%",
-                height: "45px",
-                textIndent: "1ch",
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                fontSize: "16px",
-                fontFamily: "Raleway",
+                backgroundColor: 'var(--modal-background)',
+                color: 'var(--text)',
+                width: '95%',
+                height: '45px',
+                textIndent: '1ch',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                fontSize: '16px',
+                fontFamily: 'Raleway',
               }}
             />
           </div>
@@ -232,6 +235,7 @@ const PrayerRequestForm = () => {
                 marginBottom: "5px",
                 fontSize: "16px",
                 fontWeight: 600,
+                color: 'var(--text)',
               }}
             >
               Prayer Topic
