@@ -38,7 +38,6 @@ function Details() {
   }
 
   const product = products.filter((p) => p._id === id)[0];
-  console.log(product);
 
   if (!product) {
     return <p>Product not found.</p>;
@@ -59,10 +58,10 @@ function Details() {
         <img
           src={
             image_map[
-              product.product_image.substring(
-                product.product_image.lastIndexOf("/") + 1,
-                product.product_image.lastIndexOf("."),
-              )
+            product.product_image.substring(
+              product.product_image.lastIndexOf("/") + 1,
+              product.product_image.lastIndexOf("."),
+            )
             ]
           }
           alt={product.product_title}
@@ -81,12 +80,14 @@ function Details() {
           <strong>Availability:</strong> {product.status}
         </div>
         <div className="price">${product.price}</div>
-        <button type="button" disabled>
-          Add to Cart
-        </button>
-        <button type="button" disabled>
-          Add to Wishlist
-        </button>
+        <div style={{display: 'flex'}}>
+          <button type="button" disabled>
+            Add to Cart
+          </button>
+          <button type="button" disabled>
+            Add to Wishlist
+          </button>
+        </div>
       </div>
 
       <div className="related-products">
@@ -101,10 +102,10 @@ function Details() {
               <img
                 src={
                   image_map[
-                    p.product_image.substring(
-                      p.product_image.lastIndexOf("/") + 1,
-                      p.product_image.lastIndexOf("."),
-                    )
+                  p.product_image.substring(
+                    p.product_image.lastIndexOf("/") + 1,
+                    p.product_image.lastIndexOf("."),
+                  )
                   ]
                 }
                 alt={p.product_title}

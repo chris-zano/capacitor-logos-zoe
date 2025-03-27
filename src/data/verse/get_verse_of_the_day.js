@@ -9,7 +9,6 @@ export const GetDailyVerse = async () => {
 
 
       if (timestamp === today) {
-        console.log('Returning cached daily verse');
         return data;
       }
     }

@@ -7,7 +7,6 @@ import Details from "../../Components/ShopComponents/DetailsComponent.jsx";
 
 const ShopPage = () => {
   const location = useLocation();
-  console.log(location.pathname);
   const fileUrl =
     location.pathname === "/shop" ? "shop" : location.pathname.split("/")[2];
 

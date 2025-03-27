@@ -28,11 +28,9 @@ const getBibleBooksChronological = async () => {
             const { data, timestamp } = JSON.parse(cachedData);
 
             if (now - timestamp < oneWeek) {
-                console.log('Returning cached bible books (chronological)');
                 return data;
             }
         }
-        console.log("Fetching bible_books");
 
         const response = await fetch(`${BASEURL}/bible/books`);
         const data = await response.json();

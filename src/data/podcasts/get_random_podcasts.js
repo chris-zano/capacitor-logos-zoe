@@ -7,12 +7,10 @@ const getRandomPodcasts = async () => {
         const { data, timestamp } = JSON.parse(cachedData);
   
         if (timestamp === today) {
-          console.log('Returning cached random podcasts');
           return data;
         }
       }
   
-      console.log('Fetching new random podcasts');
       const response = await fetch('https://logos-server-j2ld.onrender.com/podcasts/random');
       const data = await response.json();
   

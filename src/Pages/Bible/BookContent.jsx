@@ -50,6 +50,9 @@ function BookContent() {
       <main
         style={{
           marginTop: "3.2rem",
+          backgroundColor: "var(--card-background) !important",
+          height: "99.99dvh",
+          overflow: "auto",
         }}
       >
         <div className="bible-contents">

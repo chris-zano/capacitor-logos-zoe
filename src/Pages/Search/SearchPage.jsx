@@ -40,7 +40,7 @@ const SearchPage = () => {
   };
 
   if (loading) {
-    return <LoadingSpinner />;
+    // return <LoadingSpinner />;
   }
 
   if (error) {
@@ -50,7 +50,14 @@ const SearchPage = () => {
   return (
     <>
       {/* Search Bar */}
-      <div style={{ position: "relative" }}>
+      <div style={{ 
+        position: "fixed" ,
+        top: '3.4rem',
+        left: 0,
+        right: 0,
+        backgroundColor: "var(--theme-background)",
+        zIndex: 99999
+        }}>
         <input
           type="text"
           placeholder="Search..."
@@ -72,9 +79,41 @@ const SearchPage = () => {
         />
       </div>
 
+      {loading && <section
+        style={{
+          width: "100%",
+          height: "calc(80vh - 2rem)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 999999
+        }}
+
+      >
+        <div style={{
+          width: "50px",
+          height: "50px",
+          border: "2px solid rgba(0, 0, 255, 0.3)",
+          borderTop: "3px solid blue",
+          borderRadius: "50%",
+          animation: "spin 1s linear infinite"
+        }} />
+        <br />
+        <p style={{ marginLeft: "10px" }}>Getting things ready for you...</p>
+        <style>
+          {`
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `}
+        </style>
+      </section>}
+
       {/* Search Results */}
       {query && (
-        <div style={{ marginTop: "20px" }}>
+        <div style={{ marginTop: "calc(4rem + 1rem + 1rem)" }}>
           {filteredResults.length === 0 ? (
             <p style={{ color: 'var(--text)' }}>No results found</p>
           ) : (

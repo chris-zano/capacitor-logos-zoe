@@ -943,9 +943,9 @@ article.chapter #message-overview {
 }
 
 article.chapter #message > * {
-  line-height: 2.1ch;
+  line-height: 1.8ch;
   font-family: "Raleway" !important;
-  font-size: 1.8ch;
+  font-size: 1.5ch;
 }
 
 article.chapter section.image {
@@ -1113,13 +1113,13 @@ div.author .circle-avatar img {
 
 .a-chapter .message {
   margin: 2ch 0.5ch;
-  padding: 0ch 2ch;
+  padding: 0ch 1.2ch;
 }
 
 .a-chapter #article-message {
-  line-height: 2.43ch;
+  line-height: 2.25ch;
   font-family: "Poppins" !important;
-  font-size: 1.65ch;
+  font-size: 1.4ch;
 }
 
 .a-chapter section.image {
@@ -1144,23 +1144,24 @@ h2.header-title {
   padding: 0 1ch;
 }
 
-section#recommended-readings {
+section#recommended-articles {
   margin-top: 2ch;
   display: flex;
   flex-direction: column;
   gap: 1ch;
   padding: 1ch;
-  border-radius: 1.5ch;
-  background-color: var(--theme-background);
+  border-radius: 0;
+  background-color: var(--modal-background);
+
 }
 
-section#recommended-readings div.reading-articles {
+section#recommended-articles div.reading-articles {
   display: flex;
   gap: 1rem;
   padding: 0 2ch 2ch 1ch;
   overflow-x: scroll;
 }
-section#recommended-readings div.reading-articles a.reading-card {
+section#recommended-articles div.reading-articles a.reading-card {
   display: flex;
   flex-direction: column;
   gap: 1.2ch;

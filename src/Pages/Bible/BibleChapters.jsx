@@ -54,30 +54,43 @@ function BibleChapters() {
           marginTop: "3.2rem",
         }}
       >
-        {chapters &&
-          Array.from({ length: chapters }, (_, index) => (
-            <div
-              key={index}
-              className="poppins-regular"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "0.8rem 1.2rem",
-                borderBottom: "1px solid rgb(210 209 209 / 36%)",
-                cursor: "pointer",
-                transition: "background-color 0.3s ease",
-                fontWeight: "500",
-                fontSize: "1.2rem",
-              }}
-            >
-              <NavLink
-                to={`/bible/verses/${book}/${index + 1}`}
-                style={{ width: "100%" }}
+        <ul
+          style={{
+            padding: "1rem 1.5ch",
+            display: "grid",
+            gridTemplateColumns: '1fr 1fr 1fr 1fr',
+            gap: "1rem"
+          }}
+        >
+
+          {chapters &&
+            Array.from({ length: chapters }, (_, index) => (
+              <div
+                key={index}
+                className="poppins-regular"
+                style={{
+                  backgroundColor: "var(--modal-background)",
+                  borderRadius: "0.5rem",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "0.7rem 1.2rem",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s ease",
+                  fontWeight: "500",
+                  fontSize: "1.2rem",
+                  listStyle: "none",
+                }}
               >
-                <span style={{ width: "100%" }}>Chapter {index + 1}</span>
-              </NavLink>
-            </div>
-          ))}
+                <NavLink
+                  to={`/bible/verses/${book}/${index + 1}`}
+                  style={{ width: "100%", textAlign: "center" }}
+                >
+                  <span style={{ width: "100%", textAlign: "center" }}>{index + 1}</span>
+                </NavLink>
+              </div>
+            ))}
+        </ul>
+
       </main>
     </>
   );

@@ -12,11 +12,9 @@ const getBookChapters = async ({ book }) => {
 
 
             if (now - timestamp < oneWeek) {
-                console.log('Returning cached book chapters');
                 return data;
             }
         }
-        console.log(`Fetching ${book}_chapters`);
 
         const response = await fetch(`${BASEURL}/bible/chapters/${book}`);
         const data = await response.json();

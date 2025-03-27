@@ -31,8 +31,8 @@ const LoadingSpinner = () => (
                     100% { transform: rotate(360deg); }
                 }
             `}
-    </style>
-  </div>
+        </style>
+    </div>
 );
 
 export default LoadingSpinner;

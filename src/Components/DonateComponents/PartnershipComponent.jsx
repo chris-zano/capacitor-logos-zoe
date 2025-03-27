@@ -5,8 +5,6 @@ import manInbarCode from "/src/assets/images/man-in-barcode.jpg";
 import mangreyedOut from "/src/assets/images/man-greyed-out.jpg";
 import online from "/src/assets/images/online-discipleship.jpg";
 import intercessory from "/src/assets/images/intercessory-prayer.jpg";
-import website from "/src/assets/images/website-translation.jpg";
-import country from "/src/assets/images/country-specific.jpg";
 import podcast from "/src/assets/images/podcast-production.jpg";
 import { useNavigate } from "react-router-dom";
 
@@ -122,13 +120,11 @@ const Partnership = () => {
               <h3 className="opt-title">Partnership Options</h3>
             </div>
             <ul>
-              <Option
+              <OneTime
                 imgSrc={online}
                 imgAlt="partner option"
                 title="Online Discipleship"
-                content={
-                  <>
-                    <p>
+                content="
                       The Great Commission emphasises the importance of
                       disciplining the nations. Our online discipleship
                       programme is built on a cutting-edge Learning Management
@@ -145,18 +141,14 @@ const Partnership = () => {
                       can best speak to new believers whose native language is
                       not English. Your partnership means a lot to The Logos Zoe
                       and the gospel reaching the nations of the world.
-                    </p>
-                  </>
-                }
+                    "
               />
 
-              <Option
+              <OneTime
                 imgSrc={intercessory}
                 imgAlt="partner option"
                 title="Intercessory Prayer For Souls"
-                content={
-                  <>
-                    <p>
+                content="
                       To win the world, we must constantly intercede for the
                       world. The church prayed for Peter constantly when he was
                       arrested and imprisoned to be killed. It was only a matter
@@ -172,18 +164,14 @@ const Partnership = () => {
                       We believe some men would be saved by a Damascus encounter
                       when we pray. Your partnership means a lot to The Logos
                       Zoe and the gospel reaching the nations of the world.
-                    </p>
-                  </>
-                }
+                    "
               />
 
-              <Option
+              <OneTime
                 imgSrc={podcast}
                 imgAlt="partner option"
                 title="Broadcast Production & Distribution"
-                content={
-                  <>
-                    <p>
+                content="
                       The Word of Faith Podcast is a 10-minute podcast where the
                       unadulterated word of God is shared and distributed daily
                       to the phones and tablets of subscribers at no cost. We
@@ -205,9 +193,7 @@ const Partnership = () => {
                       the audio messages they produce around the world. Your
                       donation means a lot to The Logos Zoe and the gospel
                       reaching the nations of the world.
-                    </p>
-                  </>
-                }
+                    "
               />
             </ul>
           </div>
@@ -219,50 +205,83 @@ const Partnership = () => {
         <section className="one-time">
           <div className="options-group">
             <div className="section-title-small" style={{ marginTop: "3rem" }}>
-              <h3 className="opt-title">Partnership Options</h3>
+              <h3 className="opt-title">One Time Donation Options</h3>
             </div>
             <ul>
               <OneTime
                 imgSrc={online}
                 imgAlt="partner option"
                 title="Online Discipleship"
-                content={
-                  <>
-                    <p>
-                      The Great Commission emphasizes the importance of
-                      disciplining the nations... (Additional content truncated
-                      for brevity)
-                    </p>
-                  </>
-                }
+                content="
+                      The Great Commission emphasises the importance of
+                      disciplining the nations. Our online discipleship
+                      programme is built on a cutting-edge Learning Management
+                      System (LMS) that provides newly born-again Christians
+                      with the knowledge they need to mature in the faith. Your
+                      partnership allows us to add a one-on-one session to the
+                      LMS, where experienced instructors can work with students
+                      individually. Thus, experienced believers are employed to
+                      counsel, direct, correct, instruct and coach these new
+                      Christians in righteousness. Our growing number of new
+                      believers necessitates that we scale up our discipleship
+                      program to include various translations of our
+                      discipleship resources. This is the only way our resources
+                      can best speak to new believers whose native language is
+                      not English. Your partnership means a lot to The Logos Zoe
+                      and the gospel reaching the nations of the world.
+                    "
               />
 
               <OneTime
                 imgSrc={intercessory}
                 imgAlt="partner option"
                 title="Intercessory Prayer For Souls"
-                content={
-                  <>
-                    <p>
+                content="
                       To win the world, we must constantly intercede for the
-                      world... (Additional content truncated for brevity)
-                    </p>
-                  </>
-                }
+                      world. The church prayed for Peter constantly when he was
+                      arrested and imprisoned to be killed. It was only a matter
+                      of time before Peter received his deliverance. The Logos
+                      Zoe is continually expanding its full-time prayer warriors
+                      to handle the prayer needs of those our work ministers to.
+                      The team of prayer warriors is constantly interceding for
+                      the salvation of men and women all over the world. Your
+                      partnership enables the project to maintain existing
+                      full-time prayer warriors, while enlarging the team to
+                      meet the ever-increasing demand for prayer by new
+                      believers, especially in difficult regions of the world.
+                      We believe some men would be saved by a Damascus encounter
+                      when we pray. Your partnership means a lot to The Logos
+                      Zoe and the gospel reaching the nations of the world.
+                    "
               />
 
               <OneTime
                 imgSrc={podcast}
                 imgAlt="partner option"
                 title="Broadcast Production & Distribution"
-                content={
-                  <>
-                    <p>
-                      The Word of Faith Podcast is a 10-minute podcast...
-                      (Additional content truncated for brevity)
-                    </p>
-                  </>
-                }
+                content="
+                      The Word of Faith Podcast is a 10-minute podcast where the
+                      unadulterated word of God is shared and distributed daily
+                      to the phones and tablets of subscribers at no cost. We
+                      believe that one word from God can contain an entire
+                      life-changing formula. Our inspirational videos and wisdom
+                      nuggets are Holy Ghost-filled messages to inspire and help
+                      believers to navigate their lives in this changing world.
+                      The end is near and the message of the gospel must be
+                      preached in all nations of the world. Our salvation
+                      messages are meant to help those who are at the ends of
+                      the world to encounter Christ. This is why getting the
+                      word of God to places where Christ is not known in audio
+                      and video formats is important. In this way, those who
+                      cannot read can still appreciate the word of God. Further,
+                      we can get our podcast content onto online radios to
+                      enable us reach many more with the gospel of Christ. Your
+                      partnership will enable the production to keep up the good
+                      work, as well as employ innovative ways of distributing
+                      the audio messages they produce around the world. Your
+                      donation means a lot to The Logos Zoe and the gospel
+                      reaching the nations of the world.
+                    "
               />
             </ul>
           </div>
@@ -294,7 +313,7 @@ const Article = ({ imgSrc, imgAlt, title, content, navigate }) => (
   </article>
 );
 
-const Option = ({ imgSrc, imgAlt, title, content }) => (
+const Option = ({ imgSrc, imgAlt, title, content: _content }) => (
   <li>
     <div className="li-image">
       <img src={imgSrc} alt={imgAlt} />
@@ -304,24 +323,61 @@ const Option = ({ imgSrc, imgAlt, title, content }) => (
       <a href="/donations/donate" className="donate-btn">
         Donate
       </a>
-      <details>{content}</details>
+      <details>{_content}</details>
     </div>
   </li>
 );
 
-const OneTime = ({ imgSrc, imgAlt, title, content }) => (
-  <li>
-    <div className="li-image">
-      <img src={imgSrc} alt={imgAlt} />
-    </div>
-    <div className="expandable">
-      <span className="li-title">{title}</span>
-      <a href="/donations/one-time" className="donate-btn">
-        Donate
-      </a>
-      <details>{content}</details>
-    </div>
-  </li>
+const OneTime = ({ imgSrc, imgAlt, title, content: _content }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+  <>
+    <li>
+      <section>
+        <div className="li-image">
+          <img src={imgSrc} alt={imgAlt} />
+        </div>
+        <div className="expandable">
+          <span className="li-title">{title}</span>
+          <a href="/donations/one-time" className="donate-btn">
+            Donate
+          </a>
+        </div>
+      </section>
+      <details
+      className="options-group"
+      open={isOpen}
+      onToggle={(e) => setIsOpen(e.target.open)}
+    >
+      <summary
+        style={{
+          lineHeight: "2.1ch",
+          fontFamily: "Poppins",
+          fontSize: "1.1rem",
+          cursor: "pointer",
+        }}
+      >
+        {isOpen ? (
+          <span style={{ color: "var(--red)" }}>Show less</span>
+        ) : (
+          <>
+            {_content.substring(0, 90)}
+            <span style={{ color: "var(--green)" }}>...read more</span>
+          </>
+        )}
+      </summary>
+      <p
+        style={{
+          lineHeight: "2.1ch",
+          fontFamily: "Poppins",
+          fontSize: "1.1rem",
+        }}
+      >
+        {_content}
+      </p>
+    </details>
+    </li>
+  </>
 );
-
+}
 export default Partnership;

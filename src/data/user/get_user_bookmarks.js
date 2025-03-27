@@ -26,7 +26,6 @@ const getUserBookmarks = async () => {
             })
         })
         const data = await response.json();
-        console.log({bookmarkList: data});
         return data.bookmarks
     } catch (error) {
         console.error(error);

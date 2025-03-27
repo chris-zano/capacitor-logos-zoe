@@ -230,27 +230,29 @@ article .date-section button i {
 }
 
 .message-sect strong {
-    margin-bottom: 1ch;
+  margin-bottom: 1ch;
 }
 
 .message-sect .theme-scripture {
   margin-block: 0.5ch 2ch;
-  line-height: 2.62ch;
   font-family: "Poppins";
+  line-height: 2.25ch !important;
+  font-size: 1.5ch;
 }
 
 .hr-divider {
-    display: flex;
-    margin-block: 5ch;
-    border: 2px solid var(--primary);
-    border-radius: 50px;
+  display: flex;
+  margin-block: 5ch;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
 }
 
 article.d-chapter .message {
   margin: 2ch 0.5ch;
   padding: 0ch;
   font-family: "Poppins" !important;
-  line-height: 2.62ch !important;
+  line-height: 2.25ch !important;
+  font-size: 1.5ch;
 }
 
 #close-modal {

@@ -221,7 +221,7 @@ const ArticlePage = () => {
         </main>
 
         {/* Recommended Readings */}
-        <section id="recommended-readings">
+        <section id="recommended-articles">
           {relatedArticles && relatedArticles.length > 0 ? (
             <>
               <h2>Continue Reading</h2>
