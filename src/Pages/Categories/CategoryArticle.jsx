@@ -146,55 +146,8 @@ const CategoryArticle = () => {
             ></p>
           </section>
 
-          {/* Comment Section */}
-          {/* <section className="comment-section" style={{ paddingInline: '2ch', marginTop: '2ch' }}>
-               <h4>Leave a Comment</h4>
-               <form method="post" action={`/comment-article/${id}`} style={{ display: 'flex', flexDirection: 'column' }}>
-               <input
-                  type="text"
-                  name="comment"
-                  placeholder="Add a comment"
-                  style={{ marginBottom: '1ch', padding: '1.2rem 2ch', borderRadius: '2ch', outline: 'unset', border: '1px solid var(--theme-icon)', fontFamily: 'inter' }}
-                  required
-               />
-               <button
-                  type="submit"
-                  style={{ background: 'var(--primary)', border: '1ch solid var(--primary)', color: 'var(--white)', padding: '1ch 2ch', borderRadius: '2ch' }}
-               >
-                  Post
-               </button>
-               </form>
-               </section> */}
-
-          {/* Comments List */}
-          {/* <section className="comments-list">
-               {comments && comments.length ? (
-               <div className="comments-header">
-                  <h3>Comments</h3>
-                  <p>{comments.length} comment{comments.length > 1 ? 's' : ''}</p>
-               </div>
-               ) : (
-               <div className="no-comments">
-                  <p>No comments yet. Be the first to leave one!</p>
-               </div>
-               )}
-               {comments && comments.map((comment, index) => (
-               <div key={index} className="comment">
-                  <div className="comment-author">
-                      <div className="circle-avatar">
-                          <img src="/default-avatar.jpg" alt="avatar" />
-                      </div>
-                      <div className="author-name">{comment.author || 'Anonymous'}</div>
-                  </div>
-                  <div className="comment-message">
-                      <p>{comment.message}</p>
-                  </div>
-               </div>
-               ))}
-               </section> */}
-
           {/* Recommended Articles Section */}
-          <section id="recommended-readings">
+          <section id="cat-rec-readings">
             {relatedArticles && relatedArticles.length ? (
               <>
                 <h2>Continue Reading</h2>

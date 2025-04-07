@@ -159,7 +159,7 @@ const CategoryContent = () => {
         </article>
 
         {/* Related Articles Section */}
-        <section id="recommended-readings">
+        <section id="cat-rec-readings">
           <h2 className="header-title">
             {articles.length > 0 ? "Related Articles" : ""}
           </h2>

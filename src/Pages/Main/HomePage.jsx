@@ -13,7 +13,9 @@ import WisdomNuggetsComponent from "./WisdomNuggetsComponent.jsx";
 
 const HomePage = () => {
   return (
-    <>
+    <section style={{
+      padding: "0.1ch 1ch 80px 1ch"
+    }}>
       <VerseComponent />
       <DevotionalComponent />
       <PodcastComponent />
@@ -25,7 +27,7 @@ const HomePage = () => {
       <WisdomNuggetsComponent />
       <FaithDimensionsComponent />
       <MotivationalsComponent />
-    </>
+    </section>
   );
 };
 

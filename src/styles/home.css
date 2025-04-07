@@ -170,6 +170,29 @@ span#notice {
     font-size: 0.6rem;
 }
 
+section#cat-rec-readings {
+    margin-top: 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+    padding: 1ch;
+    background-color: var(--modal-background);
+}
+
+
+section#cat-rec-readings div.reading-articles {
+    display: flex;
+    gap: 1rem;
+    padding: 0 2ch 2ch 1ch;
+    overflow-x: scroll;
+}
+section#cat-rec-readings div.reading-articles a.reading-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2ch;
+    width: 9rem;
+}
+
 section#recommended-readings {
     margin-top: 2ch;
     display: flex;

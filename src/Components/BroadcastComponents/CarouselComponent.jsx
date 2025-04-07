@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Carousel = ({ currentRoute }) => {
-  console.log(currentRoute);
   return (
     <div className="row-carousel-nav">
       <Link

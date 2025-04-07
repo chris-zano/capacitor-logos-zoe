@@ -98,17 +98,22 @@ const VideoPlayerPage = ({ match }) => {
               {videos.map((v) => (
                 <a
                   href={`/videos/video/${v._id}/${v.category}`}
-                  className="video-card"
+                  className="r-video-card"
                   key={v._id}
                 >
-                  <h3 className="video-title">{v.video_title}</h3>
-                  <div className="video-thumbnail">
+                  <div className="r-video-thumbnail">
                     <img src={v.video_image} alt={v.video_title} />
-
-                    <div className="card-overlay">
-                      <FontAwesomeIcon icon={faCirclePlay} />
+                  </div>
+                  <div className="description-data">
+                    <div className="des-img">
+                      <img src={v.video_image} alt="sample des-data" />
+                    </div>
+                    <div className="des-text">
+                      <h3>{v.video_title}</h3>
+                      <p>{v.video_description}</p>
                     </div>
                   </div>
+
                 </a>
               ))}
             </div>

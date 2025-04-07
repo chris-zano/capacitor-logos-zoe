@@ -284,9 +284,8 @@ main#container-main {
   height: fit-content;
   scroll-behavior: smooth;
   margin-top: 3.2rem;
-  margin-bottom: 80px;
-  padding: 1ch;
-  padding-bottom: 100px;
+  /* padding: 1ch; */
+  /* padding-bottom: 100px; */
   scroll-behavior: smooth;
   background-color: var(--theme-background);
 }
@@ -782,7 +781,6 @@ input.input-field {
 
 #cat-chapters ul li {
   background-color: var(--card-background);
-  border: 1px solid var(--light-gray);
   margin-bottom: 2ch;
   padding: 2ch;
   width: 80%;
@@ -824,7 +822,7 @@ input.input-field {
   border-radius: 50px;
   padding: 1ch 2ch;
   background-color: var(--purple);
-  color: var(--text);
+  color: var(--white);
   text-align: center;
   font-family: inherit;
   font-size: 0.9rem;
@@ -1327,26 +1325,46 @@ section.related-section {
 
 .related-videos-grid {
   display: grid;
-  gap: 0.3rem;
+  gap: 1rem;
   width: 100%;
 }
-.video-card {
+.r-video-card {
   width: 100%;
-  background-color: var(--white);
   text-decoration: none;
   border-radius: 1ch;
   color: inherit;
   display: block;
 }
-.video-thumbnail {
+.r-video-thumbnail {
   border-radius: 1ch;
   position: relative;
 }
-.video-thumbnail img {
+.r-video-thumbnail img {
   border-radius: 1ch;
   width: 100%;
   height: auto;
   display: block;
+}
+
+.r-video-title {
+  font-weight: 500;
+  font-family: Poppins;
+  font-size: 1.2rem;
+  text-indent: 0.5ch;
+}
+
+.description-data {
+  padding: 0 0.2ch 0.5ch 0.2ch;
+  display: flex;
+  gap: 0.5ch;
+  align-items: center;
+}
+
+.description-data img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .drop-down-home-share {

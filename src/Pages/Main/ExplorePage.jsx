@@ -21,10 +21,9 @@ const ExplorePage = () => {
   }, []);
 
   return (
-    <div>
-      <div className="explore-title">
-        <h2 className="section-title">Explore</h2>
-      </div>
+    <div style={{
+      padding: "1.7ch 1ch 80px 1ch"
+    }}>
       <div id="explore-grid" className="explore-grid">
         {categories.map((category, index) => {
           const isSpecialCategory =

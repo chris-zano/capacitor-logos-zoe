@@ -1,5 +1,10 @@
 {
   "appId": "com.niico.logoszoe",
   "appName": "Logos Zoe",
-  "webDir": "dist"
+  "webDir": "dist",
+  "splashScreen": {
+    "launchShowDuration": 0,
+    "androidScaleType": "CENTER_CROP",
+    "backgroundColor": "#0048ba"
+  }
 }
