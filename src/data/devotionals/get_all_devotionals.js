@@ -1,3 +1,5 @@
+import BASEURL from "../../baseUrl.js";
+
 const getAllDevotionals = async () => {
   try {
     const key = 'allDevotionals';
@@ -14,7 +16,7 @@ const getAllDevotionals = async () => {
     }
 
 
-    const response = await fetch('https://logos-server-j2ld.onrender.com/devotionals');
+    const response = await fetch(`${BASEURL}/devotionals`);
     const data = await response.json();
 
 

@@ -1,6 +1,8 @@
+import BASEURL from "../../baseUrl.js";
+
 const getCategoryById = async (id) => {
     try {      
-      const response = await fetch(`https://logos-server-j2ld.onrender.com/categories/category/${id}`);
+      const response = await fetch(`${BASEURL}/categories/category/${id}`);
       const data = await response.json();
   
       return data;

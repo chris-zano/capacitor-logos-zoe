@@ -1,3 +1,5 @@
+import BASEURL from "../../baseUrl.js";
+
 const getProducts = async () => {
   try {
     const key = 'products';
@@ -17,7 +19,7 @@ const getProducts = async () => {
     }
 
 
-    const response = await fetch('https://logos-server-j2ld.onrender.com/products');
+    const response = await fetch(`${BASEURL}/products`);
     const data = await response.json();
 
 

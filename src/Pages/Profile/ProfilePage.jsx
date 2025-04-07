@@ -162,55 +162,107 @@ const ProfilePage = () => {
     }
   ];
 
+  const guestProfileItems = [
+    {
+      route: "/auth/login",
+      icon: faKey,
+      title: "Login",
+      subtitle: "Login to your account",
+      handler: null
+    },
+    {
+      route: "/auth/register",
+      icon: faPeopleLine,
+      title: "Sign Up",
+      subtitle: "Create a new account",
+      handler: null
+    },
+    {
+      route: "/about-us",
+      icon: faChurch,
+      title: "About Us",
+      subtitle: "Learn more about the LOGOS ZOE",
+      handler: null
+    },
+    {
+      route: "/privacy-policy",
+      icon: faShield,
+      title: "Privacy Policy",
+      subtitle: "Learn about how we store and handle your data",
+      handler: null
+    },
+    {
+      route: "/faqs",
+      icon: faQuestionCircle,
+      title: "FAQs",
+      subtitle: "Discover answers to most asked questions",
+      handler: null
+    },
+  ];
+
   return (
     <div className="profile-container">
-      <div className="profile-header">
-        <img
-          id="profile-picture"
-          src={
-            userData.profilePicture === "/images/user.png"
-              ? avatar1
-              : userData.profilePicture
-          }
-          alt="Profile Picture"
-          className="profile-picture"
-          onClick={() => navigate("/avatars")}
-        />
 
-        <div className="user-details">
-          <div id="u-name">
-            <span id="first-name">{userData.firstname || "N/A"}</span>{" "}
-            <span id="last-name">{userData.lastname || "N/A"}</span>
+      {/* authenticated user profile header */}
+      {
+        userData.firstname !== "Guest" ? (
+          <div className="authenticated-user-profile-header">
+            <img id="profile-picture" src={
+              userData.profilePicture === "/images/user.png"
+                ? avatar1
+                : userData.profilePicture
+            }
+              alt="user profile"
+              className="profile-picture"
+              onClick={() => navigate("/avatars")}
+            />
+            <div className="user-details">
+              <div id="u-name">
+                <span id="first-name">{userData.firstname}</span>{" "}
+                <span id="last-name">{userData.lastname}</span>
+              </div>
+              <div className="u-email">
+                <span
+                  id="email"
+                  onClick={showFullEmail}
+                  data-visible={emailVisible.toString()}
+                >
+                  {emailVisible ? userData.email : obfuscatedEmail}
+                </span>
+              </div>
+            </div>
           </div>
-          {userData.firstname !== "Guest" && (
-            <span
-              id="email"
-              onClick={showFullEmail}
-              data-visible={emailVisible.toString()}
-            >
-              {emailVisible ? userData.email : obfuscatedEmail}
-            </span>
-          )}
-        </div>
-      </div>
+        ) : (
+          <></>
+        )
+      }
 
-      {userData.firstname === "Guest" ? (
-        <span id="sign-in" onClick={() => navigate("/auth/login")}>
-          Sign in
-        </span>
-      ) : null}
+
 
       <ul className="action-list">
-        {profileItems.map((item, index) => (
-          <ProfileListItem
-            key={index}
-            route={item.route}
-            icon={item.icon}
-            title={item.title}
-            subtitle={item.subtitle}
-            handler={item.handler}
-          />
-        ))}
+        {
+          userData.firstname !== "Guest" ?
+            profileItems.map((item, index) => (
+              <ProfileListItem
+                key={index}
+                route={item.route}
+                icon={item.icon}
+                title={item.title}
+                subtitle={item.subtitle}
+                handler={item.handler}
+              />
+            )) :
+            guestProfileItems.map((item, index) => (
+              <ProfileListItem
+                key={index}
+                route={item.route}
+                icon={item.icon}
+                title={item.title}
+                subtitle={item.subtitle}
+                handler={item.handler}
+              />
+            ))
+        }
       </ul>
     </div>
   );

@@ -3,6 +3,13 @@ import AppBarComponent from "../Components/AppBar.jsx";
 import BottomNavBarComponent from "../Components/BottomNavBar.jsx";
 
 const AuthenticatedLayout = () => {
+  const user = JSON.parse(localStorage.getItem("user-data"));
+
+  if (!user) {
+    window.location.href = "/auth/welcome";
+    return null;
+  }
+
   return (
     <>
       <AppBarComponent />

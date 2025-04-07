@@ -1,3 +1,5 @@
+import BASEURL from "../../baseUrl.js";
+
 const getRandomPodcasts = async () => {
     try {
       const key = 'randomPodcasts';
@@ -11,7 +13,7 @@ const getRandomPodcasts = async () => {
         }
       }
   
-      const response = await fetch('https://logos-server-j2ld.onrender.com/podcasts/random');
+      const response = await fetch(`${BASEURL}/podcasts/random`);
       const data = await response.json();
   
       localStorage.setItem(

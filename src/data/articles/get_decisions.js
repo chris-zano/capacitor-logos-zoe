@@ -1,6 +1,8 @@
+import BASEURL from "../../baseUrl.js";
+
 const getDecisions = async () => {
     try {
-      const response = await fetch('https://logos-server-j2ld.onrender.com/articles/decisions');
+      const response = await fetch(`${BASEURL}/articles/decisions`);
       const data = await response.json();
   
       return data;

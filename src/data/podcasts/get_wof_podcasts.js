@@ -1,3 +1,5 @@
+import BASEURL from "../../baseUrl.js";
+
 const getWofPodcasts = async () => {
   try {
     const key = 'wofPodcasts';
@@ -14,7 +16,7 @@ const getWofPodcasts = async () => {
     }
 
 
-    const response = await fetch('https://logos-server-j2ld.onrender.com/podcasts/wof');
+    const response = await fetch(`${BASEURL}/podcasts/wof`);
     const data = await response.json();
 
 

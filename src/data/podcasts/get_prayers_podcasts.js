@@ -1,3 +1,5 @@
+import BASEURL from "../../baseUrl.js";
+
 const getPrayersPodcasts = async () => {
     try {
         const key = 'prayers';
@@ -16,7 +18,7 @@ const getPrayersPodcasts = async () => {
 
 
         console.log('Fetching new prayers podcasts');
-        const response = await fetch('https://logos-server-j2ld.onrender.com/podcasts/prayers');
+        const response = await fetch(`${BASEURL}/podcasts/prayers`);
         const data = await response.json();
 
 

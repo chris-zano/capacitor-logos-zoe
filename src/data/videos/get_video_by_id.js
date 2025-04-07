@@ -1,3 +1,5 @@
+import BASEURL from "../../baseUrl.js";
+
 const getVideoById = async ({ videoId, category }) => {
     const key = `video_${category}_${videoId}`;
     const cachedData = localStorage.getItem(key);
@@ -11,7 +13,7 @@ const getVideoById = async ({ videoId, category }) => {
         }
       }
   
-      const response = await fetch(`https://logos-server-j2ld.onrender.com/videos/${videoId}/${category}`);
+      const response = await fetch(`${BASEURL}/videos/${videoId}/${category}`);
       const data = await response.json();
   
       localStorage.setItem(
