@@ -219,7 +219,7 @@ a.reading-card div.card-info {
     color: #5d809ccc;
 }
 
-section#symbols {
+section.symbols {
     margin-top: 2ch;
     display: flex;
     flex-direction: column;

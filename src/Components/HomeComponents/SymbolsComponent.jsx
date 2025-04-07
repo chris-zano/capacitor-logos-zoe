@@ -18,7 +18,7 @@ const Symbols = () => {
   }
 
   return (
-    <section id="symbols">
+    <section id="symbols" className="symbols">
       <div className="podcast-header">
         <h2 className="section-title">Dream Symbols & Meanings</h2>
         <div>

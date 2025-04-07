@@ -2,50 +2,50 @@ import React, { useEffect, useState } from "react";
 import getVideosByCategoryName from "../../data/videos/get_videos_by_category_name.js";
 import { NavLink } from "react-router-dom";
 
-const TestimoniesComponent = () => {
-  const [testimonies, setTestimonies] = useState([]);
+const MotivationalsComponent = () => {
+  const [nuggets, setNuggets] = useState([]);
 
   useEffect(() => {
-    const fetchTestimonies = async () => {
+    const fetchnuggets = async () => {
       const data = await getVideosByCategoryName({
-        category_name: "testimony-of-jesus",
+        category_name: "motivationals",
       });
-      setTestimonies(data.slice(0, 3));
+      setNuggets(data.slice(0, 3));
     };
 
-    fetchTestimonies();
+    fetchnuggets();
   }, []);
 
-  if (!testimonies || testimonies.length === 0) {
+  if (!nuggets || nuggets.length === 0) {
     return null;
   }
 
   return (
     <div className="testimony-list">
       <div className="testimony-header">
-        <h2 className="section-title">Testimonies of Jesus Christ</h2>
+        <h2 className="section-title">Motivationals</h2>
       </div>
 
-      {testimonies.map((testimony) => (
+      {nuggets.map((nugget) => (
         <NavLink
-          to={`/videos/video/${testimony._id}/${testimony.category}`}
-          key={testimony._id}
+          to={`/videos/video/${nugget._id}/${nugget.category}`}
+          key={nugget._id}
           className="testimonial-card"
         >
-          <div id={testimony._id} className="testimony-item">
+          <div id={nugget._id} className="testimony-item">
             <div className="p-image">
               <img
-                src={testimony.video_image}
-                alt={testimony.video_title}
+                src={nugget.video_image}
+                alt={nugget.video_title}
                 width="100px"
               />
             </div>
             <div className="testimony-details">
               <div className="p-title">
-                <p>{testimony.video_title}</p>
+                <p>{nugget.video_title}</p>
               </div>
               <div className="p-description">
-                <p>Testimonies of Jesus Christ</p>
+                <p>nuggets of Jesus Christ</p>
               </div>
             </div>
             <div className="testimony-play-icon">
@@ -60,4 +60,4 @@ const TestimoniesComponent = () => {
   );
 };
 
-export default TestimoniesComponent;
+export default MotivationalsComponent;

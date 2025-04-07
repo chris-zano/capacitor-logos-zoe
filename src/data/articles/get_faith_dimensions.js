@@ -1,8 +1,8 @@
 import BASEURL from "../../baseUrl.js";
 
-const getArticleById = async (id) => {
+const getFaithDimensions = async () => {
     try {
-      const response = await fetch(`${BASEURL}/articles/article/${id}`);
+      const response = await fetch(`${BASEURL}/articles/faith-dimensions`);
       const data = await response.json();
   
       return data;
@@ -11,5 +11,5 @@ const getArticleById = async (id) => {
     }
   };
   
-  export default getArticleById;
+  export default getFaithDimensions;
   

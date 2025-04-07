@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import getSpiritualLaws from "../../data/articles/get_spiritual_laws.js";
+import getFaithDimensions from "../../data/articles/get_faith_dimensions.js";
 
-function SpiritualLawsComponent() {
+function FaithDimensionsComponent() {
     const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const data = await getSpiritualLaws();
+      const data = await getFaithDimensions();
       setArticles(data);
     };
 
@@ -19,7 +19,7 @@ function SpiritualLawsComponent() {
   return (
     <section id="spiritual-laws" className="symbols">
       <div className="podcast-header">
-        <h2 className="section-title">Spiritual Laws</h2>
+        <h2 className="section-title">Faith Dimensions</h2>
         <div>
           <a href="/explore">
             <span>See More</span>
@@ -54,4 +54,4 @@ function SpiritualLawsComponent() {
   )
 }
 
-export default SpiritualLawsComponent
+export default FaithDimensionsComponent

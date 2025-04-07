@@ -1,8 +1,8 @@
 import BASEURL from "../../baseUrl.js";
 
-const getSymbols = async () => {
+const getSpiritualLaws = async () => {
     try {
-      const response = await fetch(`${BASEURL}/articles/symbols`);
+      const response = await fetch(`${BASEURL}/articles/spiritual-laws`);
       const data = await response.json();
   
       return data;
@@ -11,5 +11,5 @@ const getSymbols = async () => {
     }
   };
   
-  export default getSymbols;
+  export default getSpiritualLaws;
   
