@@ -155,11 +155,17 @@ main.products_main {
   font-weight: bold;
 }
 
+.product-info .buttons-cta {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 1ch;
+}
+
 .product-info button {
-  margin: 10px 10px 0 0;
-  padding: 2ch 3.2ch;
+  padding: 1.5ch 1.7ch;
   background-color: var(--light-gray);
-  color: var(--text);
+  color: gray;
   border: none;
   border-radius: 25px;
   cursor: no-drop;

@@ -80,7 +80,7 @@ function Details() {
           <strong>Availability:</strong> {product.status}
         </div>
         <div className="price">${product.price}</div>
-        <div style={{display: 'flex'}}>
+        <div className="buttons-cta">
           <button type="button" disabled>
             Add to Cart
           </button>

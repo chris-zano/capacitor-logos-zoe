@@ -3,12 +3,12 @@
   top: 4rem;
   left: 1ch;
   right: 1ch;
-  border-radius: 1ch;
-  padding: 0ch;
+  border-radius: 50px;
+  padding: 0.2ch;
   display: flex;
   justify-content: space-between;
   border: 1px solid var(--light-gray);
-  background-color: var(--theme-background);
+  background-color: var(--modal-background);
   z-index: 10001;
 }
 .nav-tabs button {
@@ -25,20 +25,18 @@
 }
 
 .nav-tabs button.left-tab {
-  border-right: 1px solid var(--green);
-  border-bottom-left-radius: 1ch;
-  border-top-left-radius: 1ch;
+  border-radius: 50px;
+  margin-right: 0.3ch;
 }
 
 .nav-tabs button.right-tab {
-  border-bottom-right-radius: 1ch;
-  border-top-right-radius: 1ch;
+  border-radius: 50px;
 }
 
 .nav-tabs button.focused {
   font-size: 1.1rem;
   font-weight: bold;
-  color: var(--text);
+  color: var(--white);
   background-color: var(--green);
 }
 
@@ -102,7 +100,7 @@ details {
   font-family: inter;
   font-size: 1.2rem;
   font-weight: 400;
-  color: var(--text);
+  color: var(--white);
   border-radius: 2ch;
 }
 
