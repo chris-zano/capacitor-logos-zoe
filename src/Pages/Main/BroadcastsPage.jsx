@@ -15,7 +15,6 @@ const BroadcastPage = () => {
     location.pathname === "/broadcast"
       ? "broadcast"
       : location.pathname.split("/")[2];
-  console.log(fileUrl);
 
   return (
     <section className="broadcasts-wrapper">

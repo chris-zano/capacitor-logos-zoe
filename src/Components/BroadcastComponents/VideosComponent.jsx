@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../Loaders/LoadingSpinner.jsx";
+import logo from '../../assets/images/ali.jpg'
+import { fetchYouTubeVideoDetails } from "../../data/videos/get_video_data.js";
 
 function VideosComponent({ data_source, category }) {
 
@@ -9,12 +11,29 @@ function VideosComponent({ data_source, category }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  function extractVideoIdFromIframe(iframeHtml) {
+    const match = iframeHtml.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : null;
+  }
+
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
         const data = await data_source({ category_name: category });
-        setVideos(data);
+        const tempArray = []
+        // for each video, extract the video ID from the iframe HTML
+        Array.from(data).forEach(async (video) => {
+          const videoUrl = extractVideoIdFromIframe(video.video_fullText);
+          const videoId = videoUrl;
+          const res = await fetchYouTubeVideoDetails(videoId);
+          video = { ...video, ...res }
+          tempArray.push(video)
+          if (tempArray.length === data.length) {
+            setVideos(tempArray);
+            console.log(tempArray);
+          }
+        });
       } catch (err) {
         console.log(err);
         setError("Failed to load videos. Please try again.");
@@ -35,7 +54,7 @@ function VideosComponent({ data_source, category }) {
   }
 
   return (
-    <div className="videos-container" style={{paddingBottom: '80px'}}>
+    <div className="videos-container" style={{ paddingBottom: '80px' }}>
       {videos.length === 0 ? (
         <p>No content available for this category</p>
       ) : (
@@ -47,21 +66,63 @@ function VideosComponent({ data_source, category }) {
               href={`/videos/video/${video._id}/${video.category}`}
               className="video-card"
               id={video._id}
+
             >
 
-              <div className="video-thumbnail">
+              <div className="video-thumbnail" style={{ position: 'relative' }}>
                 <img src={video.video_image} alt={video.video_title} />
 
-                <div className="card-overlay">
+                <div>
+                  <span
+                    style={{
+                      position: 'absolute',
+                      bottom: '9%',
+                      right: '2%',
+                      backgroundColor: 'var(--red)',
+                      color: 'white',
+                      width: '55px',
+                      height: '30px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: '5px',
+                      fontSize: '1rem',
+                      fontWeight: '500',
+                    }}
+                  >
+                    {video.duration}
+                  </span>
                 </div>
               </div>
               <div className="description-data">
                 <div className="des-img">
-                  <img src={video.video_image} alt="sample des-data" />
+                  <img src={logo} alt="sample des-data" />
                 </div>
                 <div className="des-text">
-                  <h3>{video.video_title}</h3>
-                  <p>{video.video_description}</p>
+                  <span className="vd-title">
+                    {
+                      video.video_title.length > 30
+                        ? video.video_title.substring(0, 30) + "..."
+                        : video.video_title
+                    }
+                  </span>
+                  <small>{video.description.substring(0, 40) + '...'}</small>
+                  <span>
+                    <small>
+                      {
+                        video.views === "1"
+                          ? video.views + " view"
+                          : video.views + " views"
+                      }
+                    </small>{" . "}
+                    <small>
+                      {
+                        video.likes === "1"
+                          ? video.likes + " like"
+                          : video.likes + " likes"
+                      }
+                    </small>
+                  </span>
                 </div>
               </div>
             </a>

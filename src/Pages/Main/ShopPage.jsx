@@ -11,7 +11,7 @@ const ShopPage = () => {
     location.pathname === "/shop" ? "shop" : location.pathname.split("/")[2];
 
   return (
-    <div className="shop-page">
+    <div className="shop-page" style={{ padding: "1ch 1ch 80px 1ch" }}>
       {fileUrl === "shop" && <Landing />}
       {fileUrl === "landing" && <Landing />}
       {fileUrl === "details" && <Details />}

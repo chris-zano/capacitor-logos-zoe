@@ -2,7 +2,7 @@ import Partnership from "../../Components/DonateComponents/PartnershipComponent.
 import "../../styles/donate.css";
 const DonatePage = () => {
   return (
-    <div>
+    <div style={{paddingBottom:"80px"}}>
       <Partnership />
     </div>
   );
