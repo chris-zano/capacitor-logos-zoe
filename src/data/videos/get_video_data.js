@@ -24,7 +24,8 @@ export function parseDurationToString(durationArray) {
         durationString += `${hours}:`;
     }
     if (minutes) {
-        durationString += `${minutes}:`;
+
+        durationString += `${String(minutes).padStart(2, "0")}:`;
     }
     if (seconds) {
         durationString += `${seconds}`;

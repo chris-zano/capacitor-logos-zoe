@@ -56,7 +56,7 @@ function VideosComponent({ data_source, category }) {
   return (
     <div className="videos-container" style={{ paddingBottom: '80px' }}>
       {videos.length === 0 ? (
-        <p>No content available for this category</p>
+        <LoadingSpinner />
       ) : (
         videos.map((video) => {
           const cleanedIframe = video.video_fullText.replace(/\\"/g, '"');
@@ -78,7 +78,7 @@ function VideosComponent({ data_source, category }) {
                       position: 'absolute',
                       bottom: '9%',
                       right: '2%',
-                      backgroundColor: 'var(--red)',
+                      backgroundColor: 'var(--light-gray)',
                       color: 'white',
                       width: '55px',
                       height: '30px',
@@ -86,8 +86,8 @@ function VideosComponent({ data_source, category }) {
                       justifyContent: 'center',
                       alignItems: 'center',
                       borderRadius: '5px',
-                      fontSize: '1rem',
-                      fontWeight: '500',
+                      fontSize: '0.855rem',
+                      fontWeight: '400',
                     }}
                   >
                     {video.duration}
@@ -110,16 +110,20 @@ function VideosComponent({ data_source, category }) {
                   <span>
                     <small>
                       {
-                        video.views === "1"
-                          ? video.views + " view"
-                          : video.views + " views"
+                        video.views == "undefined"
+                          ? "0 views"
+                          : video.views === "1"
+                            ? video.views + " view"
+                            : video.views + " views"
                       }
                     </small>{" . "}
                     <small>
                       {
-                        video.likes === "1"
-                          ? video.likes + " like"
-                          : video.likes + " likes"
+                        video.likes === undefined
+                          ? "0 likes"
+                          : video.likes === "1"
+                            ? video.likes + " like"
+                            : video.likes + " likes"
                       }
                     </small>
                   </span>

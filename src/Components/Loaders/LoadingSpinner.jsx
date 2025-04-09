@@ -7,11 +7,12 @@ const LoadingSpinner = () => (
         left: 0,
         right: 0,
         bottom: 0,
+        padding: "20px",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "start",
         alignItems: "center",
-        backgroundColor: "var(--modal-background)",
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
         zIndex: 999999
     }}>
         <div style={{

@@ -83,19 +83,24 @@ const VideoPlayerPage = ({ match }) => {
                   }}
                 />
               </div>
-              <article className="player-des">
-                <div className="player-des-img">
-                  <img src={logo} alt={video.description} />
-                </div>
+              <details className="player-des">
+                <summary>
+                  <div className="summary-data">
+                    <div className="player-des-img">
+                      <img src={logo} alt={video.description} />
+                    </div>
+                    <span className="video-title">
+                      {video.video_title}
+                    </span>
+                  </div>
+
+                </summary>
                 <div className="player-des-text">
-                  <span className="video-title">
-                    {video.video_title}
-                  </span>
                   <span className="video-description">
                     {video.description}
                   </span>
                 </div>
-              </article>
+              </details>
             </div>
           ) : (
             <p>Video not available.</p>
@@ -157,16 +162,20 @@ const VideoPlayerPage = ({ match }) => {
                       <span>
                         <small>
                           {
-                            v.views === "1"
-                              ? v.views + " view"
-                              : v.views + " views"
+                            v.views == "undefined"
+                              ? "0 views"
+                              : v.views === "1"
+                                ? v.views + " view"
+                                : v.views + " views"
                           }
                         </small>{" . "}
                         <small>
                           {
-                            v.likes === "1"
-                              ? v.likes + " like"
-                              : v.likes + " likes"
+                            v.likes === undefined
+                              ? "0 likes"
+                              : v.likes === "1"
+                                ? v.likes + " like"
+                                : v.likes + " likes"
                           }
                         </small>
                       </span>

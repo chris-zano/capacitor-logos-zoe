@@ -4,17 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faKey,
   faRightFromBracket,
-  faTrash,
   faBookmark,
   faBell,
   faPeopleLine,
-  faArrowUpFromWaterPump,
   faShield,
 } from "@fortawesome/free-solid-svg-icons";
 import { LocalNotifications } from "@capacitor/local-notifications";
 import avatar1 from "../../assets/images/avatar1.jpg";
 import { faChurch } from "@fortawesome/free-solid-svg-icons/faChurch";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons/faQuestionCircle";
+import { faPencil } from "@fortawesome/free-solid-svg-icons/faPencil";
 
 
 
@@ -111,6 +110,13 @@ const ProfilePage = () => {
 
 
   const profileItems = [
+    {
+      route: "/edit-profile",
+      icon: faPencil,
+      title: "Edit Profile",
+      subtitle: "Update your profile information",
+      handler: null
+    },
     {
       route: "/bookmarks",
       icon: faBookmark,
@@ -214,7 +220,6 @@ const ProfilePage = () => {
             }
               alt="user profile"
               className="profile-picture"
-              onClick={() => navigate("/avatars")}
             />
             <div className="user-details">
               <div id="u-name">

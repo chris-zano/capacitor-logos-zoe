@@ -46,6 +46,9 @@ import OneTimeDonationPage from "./Components/DonateComponents/OneTimeDonation.j
 import DonationDetailsPage from "./Components/DonateComponents/DonationDetailsPage.jsx";
 import FaqPage from "./Pages/Profile/FaqPage.jsx";
 import PrivacyPolicyPage from "./Pages/Profile/PrivacyPolicyPage.jsx";
+import ErrorBoundary from "./Components/ErrorBoundary.jsx";
+import NotFoundPage from "./Components/404Component.jsx";
+import EditProfilePage from "./Pages/Profile/EditProfilePage.jsx";
 
 function App() {
   useEffect(() => {
@@ -67,103 +70,106 @@ function App() {
     <Router>
       {/* scroll to top */}
       <ScrollToTop />
-      <Routes>
-        {/* Auth Routes */}
-        <Route path="/auth">
-          <Route path="welcome" element={<WelcomePage />} />
+      <ErrorBoundary>
+        <Routes>
+          {/* Auth Routes */}
+          <Route path="/auth">
+            <Route path="welcome" element={<WelcomePage />} />
 
-          <Route path="login" element={<SignInPage />} />
+            <Route path="login" element={<SignInPage />} />
 
-          <Route path="register" element={<SignUpPage />} />
+            <Route path="register" element={<SignUpPage />} />
 
-          <Route path="forgot-password" element={<VerifyEmailPage />} />
+            <Route path="forgot-password" element={<VerifyEmailPage />} />
 
-          <Route path="verify-code" element={<VerifyCodePage />} />
+            <Route path="verify-code" element={<VerifyCodePage />} />
 
-          <Route path="verify-email" element={<VerifyEmailPage />} />
+            <Route path="verify-email" element={<VerifyEmailPage />} />
 
-          <Route path="new-password" element={<ResetPasswordPage />} />
-        </Route>
-
-        {/* Authenticated Layout */}
-        <Route path="/" element={<AuthenticatedLayout />}>
-          <Route index element={<HomePage />} />
-
-          {/* Broadcasts Route */}
-          <Route path="/broadcast" element={<BroadcastPage />}>
-            <Route path="podcasts" element={<BroadcastPage />} />
-
-            <Route path="word-of-power" element={<BroadcastPage />} />
-
-            <Route path="prayers" element={<BroadcastPage />} />
-
-            <Route path="wisdom-nuggets" element={<BroadcastPage />} />
-
-            <Route path="motivationals" element={<BroadcastPage />} />
-
-            <Route path="inspirational" element={<BroadcastPage />} />
-
-            <Route path="testimony-of-jesus" element={<BroadcastPage />} />
+            <Route path="new-password" element={<ResetPasswordPage />} />
           </Route>
-          <Route path="explore" element={<ExplorePage />} />
 
-          <Route path="shop" element={<ShopPage />}>
-            <Route path="landing" element={<ShopPage />} />
+          {/* Authenticated Layout */}
+          <Route path="/" element={<AuthenticatedLayout />}>
+            <Route index element={<HomePage />} />
 
-            <Route path="details/:id" element={<ShopPage />} />
+            {/* Broadcasts Route */}
+            <Route path="/broadcast" element={<BroadcastPage />}>
+              <Route path="podcasts" element={<BroadcastPage />} />
 
-            <Route path="checkout" element={<ShopPage />} />
+              <Route path="word-of-power" element={<BroadcastPage />} />
+
+              <Route path="prayers" element={<BroadcastPage />} />
+
+              <Route path="wisdom-nuggets" element={<BroadcastPage />} />
+
+              <Route path="motivationals" element={<BroadcastPage />} />
+
+              <Route path="inspirational" element={<BroadcastPage />} />
+
+              <Route path="testimony-of-jesus" element={<BroadcastPage />} />
+            </Route>
+            <Route path="explore" element={<ExplorePage />} />
+
+            <Route path="shop" element={<ShopPage />}>
+              <Route path="landing" element={<ShopPage />} />
+
+              <Route path="details/:id" element={<ShopPage />} />
+
+              <Route path="checkout" element={<ShopPage />} />
+            </Route>
+            <Route path="donate" element={<DonatePage />} />
+
+            <Route path="profile" element={<ProfilePage />} />
+
+            <Route path="search" element={<SearchPage />} />
+
+            <Route path="avatars" element={<ChooseProfileAvatar />} />
+
+            <Route path="bookmarks" element={<Bookmarks />} />
           </Route>
-          <Route path="donate" element={<DonatePage />} />
+          <Route path="donations/donate" element={<DonationPage />} />
 
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="donations/one-time" element={<OneTimeDonationPage />} />
 
-          <Route path="search" element={<SearchPage />} />
+          <Route path="donations/details" element={<DonationDetailsPage />} />
 
-          <Route path="avatars" element={<ChooseProfileAvatar />} />
+          <Route
+            path="/devotionals/devotional/:id"
+            element={<DevotionalPage />}
+          />
 
-          <Route path="bookmarks" element={<Bookmarks />} />
-        </Route>
-        <Route path="donations/donate" element={<DonationPage />} />
+          <Route path="/categories/:id" element={<CategoryContent />} />
 
-        <Route path="donations/one-time" element={<OneTimeDonationPage />} />
+          <Route path="/categories/article/:id" element={<CategoryArticle />} />
 
-        <Route path="donations/details" element={<DonationDetailsPage />} />
+          <Route path="/categories/chapters/:id" element={<CategoryChapter />} />
 
-        <Route
-          path="/devotionals/devotional/:id"
-          element={<DevotionalPage />}
-        />
+          <Route path="/articles/article/:id" element={<ArticlePage />} />
 
-        <Route path="/categories/:id" element={<CategoryContent />} />
+          <Route path="/prayer-center" element={<PrayerRequestForm />} />
 
-        <Route path="/categories/article/:id" element={<CategoryArticle />} />
+          <Route path="/devotionals" element={<Devotionals />} />
 
-        <Route path="/categories/chapters/:id" element={<CategoryChapter />} />
+          <Route path="/bible" element={<BibleContents />} />
 
-        <Route path="/articles/article/:id" element={<ArticlePage />} />
+          <Route path="/bible/chapters/:book" element={<BibleChapters />} />
 
-        <Route path="/prayer-center" element={<PrayerRequestForm />} />
+          <Route path="/bible/verses/:book/:chapter" element={<BookContent />} />
 
-        <Route path="/devotionals" element={<Devotionals />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/faqs" element={<FaqPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/edit-profile" element={<EditProfilePage />} />
+          <Route
+            path="/videos/video/:id/:category"
+            element={<VideoPlayerPage />}
+          />
+          {/* catch all route */}
+          <Route path="*" element={<NotFoundPage />} />
 
-        <Route path="/bible" element={<BibleContents />} />
-
-        <Route path="/bible/chapters/:book" element={<BibleChapters />} />
-
-        <Route path="/bible/verses/:book/:chapter" element={<BookContent />} />
-
-        <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path="/faqs" element={<FaqPage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-
-        <Route
-          path="/videos/video/:id/:category"
-          element={<VideoPlayerPage />}
-        />
-
-        {/* <Route path="/broadcast"  /> */}
-      </Routes>
+        </Routes>
+      </ErrorBoundary>
     </Router>
   );
 }

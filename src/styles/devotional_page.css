@@ -30,7 +30,7 @@ header div#read-appbar div.row button {
   color: var(--text);
 }
 
-article {
+article.d-chapter {
   background-color: var(--theme-background) !important;
   padding-bottom: 1rem;
 }
