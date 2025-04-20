@@ -512,17 +512,17 @@ h2.section-title {
 
 #get-started-btn {
   margin-bottom: 1ch;
-  height: 40px;
+  height: 50px;
   width: 70vw;
   border-radius: 50px;
-  font-size: 1.5ch;
+  font-size: 1.7ch;
   display: grid;
   place-items: center;
   background: unset;
   outline: unset;
   border: unset;
   background-color: var(--success);
-  color: var(--white);
+  color: var(--light);
   font-weight: bold;
   font-family: inter;
 }
@@ -625,7 +625,7 @@ input.input-field {
   border: 1px solid var(--white);
   background: #007bff;
   border-radius: 1ch;
-  color: var(--white);
+  color: var(--light);
   cursor: pointer;
 }
 
