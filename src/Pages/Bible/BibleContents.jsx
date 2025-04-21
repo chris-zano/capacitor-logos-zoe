@@ -79,7 +79,7 @@ function BibleContents() {
             <button onClick={() => window.history.back()}>
               <FontAwesomeIcon icon={faArrowLeft} />
               <span className="poppins-regular" style={{ marginLeft: "1ch" }}>
-              Bible Contents ( NKJV )
+              Holy Bible ( NKJV )
               </span>
             </button>
           </div>

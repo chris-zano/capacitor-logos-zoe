@@ -291,8 +291,8 @@ main#container-main {
   height: fit-content;
   scroll-behavior: smooth;
   margin-top: 3.2rem;
-  /* padding: 1ch; */
-  /* padding-bottom: 100px; */
+  max-width: 480px;
+  margin-inline: auto;
   scroll-behavior: smooth;
   background-color: var(--theme-background);
 }
