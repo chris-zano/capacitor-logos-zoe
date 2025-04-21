@@ -21,21 +21,32 @@ function VideosComponent({ data_source, category }) {
       try {
         setLoading(true);
         const data = await data_source({ category_name: category });
-        const tempArray = []
-        // for each video, extract the video ID from the iframe HTML
-        Array.from(data).forEach(async (video) => {
-          const videoUrl = extractVideoIdFromIframe(video.video_fullText);
-          const videoId = videoUrl;
-          const res = await fetchYouTubeVideoDetails(videoId);
-          video = { ...video, ...res }
-          tempArray.push(video)
-          if (tempArray.length === data.length) {
-            setVideos(tempArray);
-            console.log(tempArray);
+
+        // Step 1: Create video fetch promises
+        const videoFetchPromises = data.map(async (video) => {
+          const videoId = extractVideoIdFromIframe(video.video_fullText);
+          if (!videoId) return null;
+
+          try {
+            const details = await fetchYouTubeVideoDetails(videoId);
+            if (!details || details.error) return null;
+
+            return { ...video, ...details };
+          } catch (err) {
+            console.warn("Failed to fetch details for video ID:", videoId, err);
+            return null;
           }
         });
+
+        // Step 2: Await all and filter valid ones
+        const results = await Promise.allSettled(videoFetchPromises);
+        const successfulVideos = results
+          .filter(res => res.status === "fulfilled" && res.value !== null)
+          .map(res => res.value);
+
+        setVideos(successfulVideos);
       } catch (err) {
-        console.log(err);
+        console.error(err);
         setError("Failed to load videos. Please try again.");
       } finally {
         setLoading(false);
@@ -43,7 +54,8 @@ function VideosComponent({ data_source, category }) {
     };
 
     getData();
-  }, [data_source]);
+  }, [data_source, category]);
+
 
   if (loading) {
     return <LoadingSpinner />;
@@ -78,7 +90,7 @@ function VideosComponent({ data_source, category }) {
                       position: 'absolute',
                       bottom: '9%',
                       right: '2%',
-                      backgroundColor: 'var(--light-gray)',
+                      backgroundColor: 'black',
                       color: 'white',
                       width: '55px',
                       height: '30px',

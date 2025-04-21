@@ -12,8 +12,8 @@ const Carousel = ({ currentRoute }) => {
       </Link>
 
       <Link
-        to="word-of-power"
-        className={`btn-wrap ${currentRoute === "word-of-power" ? "active" : ""}`}
+        to="word-of-faith"
+        className={`btn-wrap ${currentRoute === "word-of-faith" ? "active" : ""}`}
       >
         Word of Faith
       </Link>

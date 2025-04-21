@@ -29,12 +29,34 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
 }
 
 .music-player__toolbar {
-  background-color: #121330;
+  position: relative;
+  background-color: #121330e7;
+  background: url('https://picsum.photos/200/200?sig=1') no-repeat center center;
+  background-size: cover;
   border: 1px solid var(--light-gray);
   border-radius: 1.5ch;
   padding: 2ch;
-  margin: 0 0.7ch;
+  margin: 0 1.7ch;
+  overflow: hidden;
 }
+
+.music-player__toolbar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 37, 75, 0.5);
+  border-radius: inherit;
+  z-index: 0;
+}
+
+/* Ensure content sits above the overlay */
+.music-player__toolbar > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 .music-player__sound-wave {
   width: 200px;
@@ -45,12 +67,14 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
   align-items: center;
 }
 
-.music-player__sound-wave .bar {
+.music-player__sound-wave .bar,
+.music-player__sound-wave .nobar
+ {
   display: block;
   width: 2px;
   margin-right: 1px;
   height: 150px;
-  background: #1b6cfc;
+  background: #ffffff;
   animation: sound 0ms -800ms linear infinite alternate;
   transition: height 0.8s;
 }
@@ -167,6 +191,13 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
   animation-duration: 442ms;
 }
 
+.nobar:nth-child(even) {
+  height: 70px;
+}
+.nobar:nth-child(odd) {
+  height: 50px;
+}
+
 .music-toolbar__header {
   width: calc(100% - 40px);
   padding: 10px 20px;
@@ -186,7 +217,7 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
   white-space: nowrap;
   animation: animatesongtitle 8s infinite linear;
   padding-left: 100%;
-  color: var(--green);
+  color: var(--light);
   font-weight: 600;
   font-family: inter;
   font-size: 1.2rem;
@@ -227,24 +258,23 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
 
 
 .r-podcast-list {
+  background-color: var(--modal-background);
   margin: 1rem 1ch;
-  padding-bottom: 80px;
+  padding-bottom: 4rem;
+  border-radius: 1ch;
   display: flex;
   flex-direction: column;
-  gap: 1ch;
 }
 
 .r-podcast-list .podcast-item {
   border: 2px solid transparent;
   display: flex;
   align-items: center;
-  background-color: var(--modal-background);
-  border-radius: 1.5ch;
   padding-inline: 1ch;
   transition: all ease-in-out 350ms;
 }
 
-.r-podcast-list .podcast-item.selected {
+.r-podcast-list .podcast-item.selected img {
   border: 1px solid var(--green);
 }
 
@@ -273,11 +303,15 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
   font-size: 0.6rem;
 }
 
+.podcast-item img {
+  border-radius: 0.5ch;
+}
+
 .videos-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  padding: 0 0.5ch;
+  padding: 0 0ch;
 }
 
 .video-card {
@@ -290,7 +324,7 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
 
 .video-thumbnail {
   position: relative;
-  height: 210px;
+  height: 220px;
 }
 
 .video-thumbnail img {
@@ -301,7 +335,7 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 2ch;
+  /* border-radius: 2ch; */
   border: 2px solid var(--light-gray);
 }
 

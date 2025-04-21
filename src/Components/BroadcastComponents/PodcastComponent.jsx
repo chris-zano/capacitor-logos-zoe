@@ -2,23 +2,41 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronLeft, faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import LoadingSpinner from '../Loaders/LoadingSpinner.jsx';
+import { useSearchParams } from 'react-router-dom';
 
 const Podcasts = ({ data_source }) => {
   const [podcasts, setPodcasts] = useState([]);
   const [currentPodcast, setCurrentPodcast] = useState(null);
+  const [searchParams] = useSearchParams();
+  const [animateBarState, setAnimateBarState] = useState(false);
+  const id = searchParams.get("id");
+
+  const getRandomImageUrl = (seed) => {
+    return `https://picsum.photos/200/200?sig=${seed}`;
+  };
+
 
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
         const data = await data_source();
-        setPodcasts(data.podcasts ? data.podcasts : data.word.reverse());
+        const podcastData = data.podcasts ? data.podcasts : data.word.reverse();
+        const podcastsWithImages = podcastData.map((podcast, index) => ({
+          ...podcast,
+          thumbnailUrl: getRandomImageUrl(index),
+        }));
+        setPodcasts(podcastsWithImages);
+        if (id !== null) {
+          const podcast = podcastsWithImages.find((podcast) => podcast._id === id);
+          playPodcast(podcast);
+        }
       } catch (error) {
         console.error("Failed to fetch podcasts:", error);
       }
     };
 
     fetchPodcasts();
-  }, []);
+  }, [id, data_source]);
 
   const playPodcast = (podcast) => {
     setCurrentPodcast(podcast);
@@ -26,6 +44,7 @@ const Podcasts = ({ data_source }) => {
     if (audio) {
       audio.src = podcast.fileUrl;
       audio.play();
+      setAnimateBarState(true);
     }
   };
 
@@ -58,14 +77,28 @@ const Podcasts = ({ data_source }) => {
     }
   }, [currentPodcast, podcasts]);
 
+  useEffect(() => {
+    const audio = document.getElementById("audio1");
+    if (audio) {
+      audio.addEventListener("playing", () => setAnimateBarState(true));
+      audio.addEventListener("pause", () => setAnimateBarState(false));
+    }
+  }, [])
+
   return (
     <div className="music-player">
-      <div className="music-player__toolbar music-toolbar">
+      <div className="music-player__toolbar music-toolbar"
+        style={{
+          backgroundImage: `url(${currentPodcast?.thumbnailUrl || 'https://picsum.photos/200/200?sig=default'})`,
+        }}
+      >
         <div className="music-player__sound-wave">
           {Array(20)
             .fill(null)
             .map((_, idx) => (
-              <i key={idx} className="bar"></i>
+              <i key={idx}
+                className={animateBarState ? `bar` : `nobar`}
+              ></i>
             ))}
         </div>
         <div className="music-toolbar__header">
@@ -77,7 +110,7 @@ const Podcasts = ({ data_source }) => {
         </div>
         <div className="music-toolbar__controls">
           <div id="audio0">
-            <audio id="audio1" preload controls>
+            <audio id="audio1" controls>
               Your browser does not support HTML5 Audio!
             </audio>
           </div>
@@ -105,6 +138,9 @@ const Podcasts = ({ data_source }) => {
               data-audio-url={podcast.fileUrl}
               data-audio-title={podcast.title}
             >
+              <div>
+                <img src={podcast.thumbnailUrl} alt={podcast.title} />
+              </div>
               <div className="podcast-details">
                 <div className="p-title">
                   <p>{podcast.title.substring(0, 40)}</p>

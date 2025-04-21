@@ -1,9 +1,9 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logoImage from "/src/assets/images/logo.png";
 import { NavLink } from "react-router-dom";
 
 const AppBarComponent = () => {
+
   return (
     <header id="header_top_navbar" className="w-[1536px]">
       <div className="app-bar">

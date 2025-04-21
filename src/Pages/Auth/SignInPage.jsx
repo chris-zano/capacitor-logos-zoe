@@ -10,11 +10,13 @@ const SignInPage = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
+    setIsLoading(true);
 
     try {
       const response = await fetch(`${BASEURL}/auth/login`, {
@@ -36,6 +38,8 @@ const SignInPage = () => {
       }
     } catch (err) {
       setErrorMessage("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -108,16 +112,40 @@ const SignInPage = () => {
               />
             </span>
           </div>
+          <div
+            className="input-checkbox relative"
+            style={{
+              position: "relative",
+              gap: "0.5rem",
+              marginLeft: '1rem',
+              fontFamily: 'Poppins'
+            }}
+          >
+            <input type="checkbox" name="terms" id="terms_and_conditions" required />
+            <label htmlFor="terms_and_conditions" style={{fontSize: '0.7rem'}}>
+              I agree to the{" "}
+              <a href="/terms-and-conditions" className="terms-link" style={{color: 'blue'}}>
+                Terms and Conditions
+              </a>
+              <br />
+              and 
+              <a href="/privacy-policy" className="privacy-link" style={{color: 'blue'}}>
+                {" "} Privacy Policy
+              </a>
+            </label>
+          </div>
           <div className="input-group">
             <button type="submit" className="login-btn">
-              Login
+              {
+                !isLoading ? (
+                  "Login"
+                ) : (
+                  <div className="loading-spinner">Loading....</div>
+                )
+              }
             </button>
           </div>
         </form>
-
-        <button className="guest-login-btn" onClick={continueAsGuest}>
-          <a>Continue as Guest</a>
-        </button>
 
         <div className="login-footer">
           <p>

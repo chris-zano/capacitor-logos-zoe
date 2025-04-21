@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import getRandomPodcasts from "../../data/podcasts/get_random_podcasts";
+import { useNavigate } from "react-router-dom";
 
 const PodcastComponent = () => {
   const [podcasts, setPodcasts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPodcasts = async () => {
@@ -16,11 +18,9 @@ const PodcastComponent = () => {
   }, []);
 
   const playPodcast = (podcast) => {
-    localStorage.setItem(
-      "home-podcast",
-      JSON.stringify({ id: podcast._id, url: podcast.fileUrl }),
-    );
-    window.location.href = "/broadcast";
+    const {category, _id} = podcast;
+    const podcastUrl = `/broadcast/${category}?id=${_id}`;
+    navigate(podcastUrl);
   };
 
   if (!podcasts || podcasts.length === 0) {

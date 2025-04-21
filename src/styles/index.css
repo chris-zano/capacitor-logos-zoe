@@ -466,67 +466,6 @@ h2.section-title {
   color: var(--green);
 }
 
-.carousel {
-  position: relative;
-  overflow: hidden;
-  height: 85vh;
-  width: 100vw;
-}
-
-.carousel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: opacity 1s ease;
-}
-
-.welcome-screen {
-  background-color: var(--white);
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10001;
-}
-
-.overlay-actions {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.buttons_container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-}
-
-#get-started-btn {
-  margin-bottom: 1ch;
-  height: 50px;
-  width: 70vw;
-  border-radius: 50px;
-  font-size: 1.7ch;
-  display: grid;
-  place-items: center;
-  background: unset;
-  outline: unset;
-  border: unset;
-  background-color: var(--success);
-  color: var(--light);
-  font-weight: bold;
-  font-family: inter;
-}
-
 .login-page-overlay {
   position: fixed;
   top: 0;
@@ -549,26 +488,6 @@ h2.section-title {
   font-size: 24px;
   font-weight: bold;
   font-family: Raleway;
-}
-
-.google-login-btn {
-  background-color: #fff;
-  color: var(--text);
-  font-family: Raleway;
-  font-weight: bold;
-  font-size: 16px;
-  border-radius: 5px;
-  width: 80%;
-  height: 45px;
-  margin: 2ch auto;
-  padding: 1ch;
-  border: none;
-  border-radius: 1.5ch;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1ch;
 }
 
 .google-login-btn svg {
@@ -645,8 +564,8 @@ input.input-field {
 .login-btn:focus,
 .login-btn:focus-within {
   border: 1px solid #007bff;
-  background: transparent;
-  color: var(--text);
+  background: #3797ff;
+  color: var(--light);
 }
 
 .login-footer {
