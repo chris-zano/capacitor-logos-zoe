@@ -9,6 +9,7 @@ function BibleContents() {
   const [error, setError] = useState(null);
   const [oldTestamentBooks, setOldTestamentBooks] = useState([]);
   const [newTestamentBooks, setNewTestamentBooks] = useState([]);
+  const [activeTab, setActiveTab] = useState('old');
 
   useEffect(() => {
     const fetchBibleContents = async () => {
@@ -29,6 +30,40 @@ function BibleContents() {
     fetchBibleContents();
   }, []);
 
+  const renderBookList = (books) => (
+    <ul style={{
+      display: "grid",
+      gridTemplateColumns: '1fr 1fr',
+      gap: "1rem",
+      paddingTop: "1rem"
+    }}>
+      {books.map((book, index) => (
+        <li
+          key={index}
+          className="poppins-regular"
+          style={{
+            backgroundColor: "var(--modal-background)",
+            borderRadius: "0.5rem",
+            display: "flex",
+            alignItems: "center",
+            padding: "0.7rem 1.2rem",
+            cursor: "pointer",
+            transition: "background-color 0.3s ease",
+            fontWeight: "500",
+            fontSize: "1.2rem",
+            listStyle: "none",
+          }}
+        >
+          <NavLink to={`chapters/${book}`} style={{ width: "100%" }}>
+            <span style={{ width: "100%" }}>
+              {book.length > 12 ? book.substring(0, 12) + "..." : book}
+            </span>
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <>
       <header>
@@ -43,90 +78,55 @@ function BibleContents() {
           >
             <button onClick={() => window.history.back()}>
               <FontAwesomeIcon icon={faArrowLeft} />
-              <span
-                className="poppins-regular"
-                style={{
-                  marginLeft: "1ch",
-                }}
-              >
-                Books
+              <span className="poppins-regular" style={{ marginLeft: "1ch" }}>
+              Bible Contents ( NKJV )
               </span>
             </button>
           </div>
         </div>
       </header>
-      <main
-        style={{
-          marginTop: "3.2rem",
-          // padding: '0 1.5ch',
-        }}
-      >
+      <main style={{ marginTop: "3rem" }}>
         {error ? (
           <p className="error">{error}</p>
         ) : (
-          <div className="bible-contents" style={{ padding: '1rem 0.5rem' }}>
+          <div className="bible-contents" style={{ padding: '0.2rem 0.5rem' }}>
             <div>
-              <h2 className="poppins-bold" style={{ padding: '0 1rem' }}>Old Testament</h2>
-              <ul
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: "1rem"
-                }}
-              >
-                {oldTestamentBooks.map((book, index) => (
-                  <li
-                    key={index}
-                    className="poppins-regular"
-                    style={{
-                      backgroundColor: "var(--modal-background)",
-                      borderRadius: "0.5rem",
-                      display: "flex",
-                      alignItems: "center",
-                      padding: "0.7rem 1.2rem",
-                      cursor: "pointer",
-                      transition: "background-color 0.3s ease",
-                      fontWeight: "500",
-                      fontSize: "1.2rem",
-                      listStyle: "none",
-                    }}
-                  >
-                    <NavLink to={`chapters/${book}`} style={{ width: "100%" }}>
-                      <span style={{ width: "100%" }}>{book.length > 12 ? book.substring(0, 12) + "..." : book}</span>
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-              <h2 className="poppins-bold">New Testament</h2>
-              <ul
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: "1rem"
-                }}>
-                {newTestamentBooks.map((book, index) => (
-                  <li
-                    key={index}
-                    className="poppins-regular"
-                    style={{
-                      backgroundColor: "var(--modal-background)",
-                      borderRadius: "0.5rem",
-                      display: "flex",
-                      alignItems: "center",
-                      padding: "0.7rem 1.2rem",
-                      cursor: "pointer",
-                      transition: "background-color 0.3s ease",
-                      fontWeight: "500",
-                      fontSize: "1.2rem",
-                      listStyle: "none",
-                    }}
-                  >
-                    <NavLink to={`chapters/${book}`} style={{ width: "100%" }}>
-                      <span style={{ width: "100%" }}>{book.length > 12 ? book.substring(0, 12) + "..." : book}</span>
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
+              {oldTestamentBooks.length > 0 && newTestamentBooks.length > 0 && (
+                <>
+
+                  {/* Tabs */}
+                  <div style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "1rem"
+                  }}>
+                    <button
+                      onClick={() => setActiveTab('old')}
+                      className={`tab-button ${activeTab === 'old' ? 'active' : ''}`}
+                    >
+                      Old Testament
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('new')}
+                      className={`tab-button ${activeTab === 'new' ? 'active' : ''}`}
+                    >
+                      New Testament
+                    </button>
+                  </div>
+
+                  {/* Tab Content */}
+                  {activeTab === 'old' && (
+                    <>
+                      {renderBookList(oldTestamentBooks)}
+                    </>
+                  )}
+                  {activeTab === 'new' && (
+                    <>
+                      {renderBookList(newTestamentBooks)}
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
         )}

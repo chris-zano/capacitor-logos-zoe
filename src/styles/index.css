@@ -185,43 +185,51 @@
   --primary-light: #85c1e9;
   --accent: #e74c3c;
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --theme-background: #121212;
-    --background-light: #1b1b1b;
-    --modal-background: #2e2e2e;
-    --card-background: #303030;
-    --theme-icon: #d1d1d1;
-    --light-gray: #2c2c2c;
-    --text: #eaeaea;
-    --white: #1b1b1b;
-    --text-safe-color: #f5f5f5;
+    --theme-background: #121212;           /* Base dark background */
+    --background-light: #1a1a1a;           /* Slightly lighter for contrast blocks */
+    --modal-background: #1e1e1e;           /* Modal panels */
+    --card-background: #242424;            /* Card or surface containers */
+    --light-gray: #3a3a3a;                 /* For dividers and subtle borders */
+    --text: #e0e0e0;                       /* Body text */
+    --text-safe-color: #f5f5f5;            /* Headings or highlights */
+    --white: #e0e0e0;                      /* Inverted white (for inputs/buttons) */
+
+    --theme-icon: #c0c0c0;                 /* Icons that blend but stay visible */
     --border-radius: 1.5ch;
-    --blue: #3a5a9f;
-    --indigo: #b79a62;
-    --purple: #9b59b6;
-    --primary: #1aa4e0;
-    --red: #e74c3c;
-    --orange: #fd7e14;
-    --yellow: #ffbe00;
-    --green: #28a745;
-    --teal: #20c997;
-    --cyan: #17a2b8;
-    --gray: #aaaaaa;
-    --gray-dark: #6c757d;
-    --primary: #81bee7;
-    --secondary: #232323;
+
+    /* Accent Colors - adjusted for contrast and clarity */
+    --blue: #4d88ff;
+    --indigo: #a689ff;
+    --purple: #b388ff;
+    --primary: #4fa3e3;                    /* Main CTA (ensures ~4.8:1 contrast) */
+    --primary-light: #7fcfff;
+    --accent: #ff5c57;                     /* Used for errors or attention-grabbing elements */
+
+    /* Feedback colors - match semantic meaning */
+    --red: #ff5c5c;
+    --orange: #ffa94d;
+    --yellow: #ffd95c;
+    --green: #5cd68c;
+    --teal: #4fd2c2;
+    --cyan: #4fc1e9;
+
+    /* Grays */
+    --gray: #b0b0b0;
+    --gray-dark: #888888;
+
+    /* Bootstrap-style tokens for general UI roles */
+    --secondary: #1f1f1f;
     --success: #28a745;
     --info: #17a2b8;
-    --warning: #ffbe00;
+    --warning: #ffc107;
     --danger: #dc3545;
     --light: #f5f5f5;
     --dark: #121212;
-    --primary-light: #5faee3;
-    --accent: #e74c3c;
   }
 }
+
 
 * {
   scrollbar-width: none;
@@ -439,7 +447,7 @@ h2.section-title {
   padding: 1ch 2.1ch 0.3ch 2.1ch;
   height: 2.7rem;
   margin: 0;
-  background-color: var(--white);
+  background-color: var(--theme-background);
   border-top: 1px solid var(--light-gray);
 }
 

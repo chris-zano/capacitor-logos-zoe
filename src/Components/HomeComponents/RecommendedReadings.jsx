@@ -22,10 +22,10 @@ const RecommendedReadings = () => {
       <div className="podcast-header">
         <h2 className="section-title">Today's Highlights</h2>
         <div>
-          <a href="/explore">
+          {/* <a href="/explore">
             <span>See More</span>
             <i className="fa-solid fa-arrow-right"></i>
-          </a>
+          </a> */}
         </div>
       </div>
 

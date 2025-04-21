@@ -79,19 +79,15 @@ function DevotionalComponent() {
         <div className="bottom-row">
           <span className="read-now">Devotional of the Day</span>
           <span className="actions">
-            <button
-              onClick={handleShare}
-              style={{
-                border: "none",
-                background: "none",
-                cursor: "pointer",
-                padding: 0,
-                marginLeft: "10px",
+            <ShareApi
+              button_text={<FontAwesomeIcon icon={faShareNodes} />}
+              data_to_share={{
+                title: "Today's Devotional",
+                text: `${devotional.day} - ${devotional.month} (${devotional.year})`,
+                url: `https://chris-zano.github.io/store.logos/devotionals`,
+                dialogTitle: "Share with friends",
               }}
-              aria-label="Share Today's Devotional"
-            >
-              <FontAwesomeIcon icon={faShareNodes} />
-            </button>
+            />
           </span>
         </div>
       </div>

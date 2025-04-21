@@ -134,6 +134,28 @@ const SignUpPage = () => {
                 required
               />
             </div>
+            <div
+              className="input-checkbox relative"
+              style={{
+                position: "relative",
+                gap: "0.5rem",
+                marginLeft: '1rem',
+                fontFamily: 'Poppins'
+              }}
+            >
+              <input type="checkbox" name="terms" id="terms_and_conditions" required />
+              <label htmlFor="terms_and_conditions" style={{ fontSize: '0.7rem' }}>
+                I agree to the{" "}
+                <a href="/terms-and-conditions" className="terms-link" style={{ color: 'blue' }}>
+                  Terms and Conditions
+                </a>
+                <br />
+                and
+                <a href="/privacy-policy" className="privacy-link" style={{ color: 'blue' }}>
+                  {" "} Privacy Policy
+                </a>
+              </label>
+            </div>
             <button type="submit" className="login-btn">
               Sign Up
             </button>

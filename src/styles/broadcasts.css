@@ -34,7 +34,7 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
   background: url('https://picsum.photos/200/200?sig=1') no-repeat center center;
   background-size: cover;
   border: 1px solid var(--light-gray);
-  border-radius: 1.5ch;
+  border-radius: 2.5ch;
   padding: 2ch;
   margin: 0 1.7ch;
   overflow: hidden;
@@ -311,13 +311,14 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  padding: 0 0ch;
+  padding: 0 1ch;
 }
 
 .video-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  border-radius: 1ch;
   transition: transform 0.2s;
   font-family: Poppins, sans-serif;
 }
@@ -325,6 +326,7 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
 .video-thumbnail {
   position: relative;
   height: 220px;
+  border-radius: 1ch;
 }
 
 .video-thumbnail img {
@@ -335,8 +337,8 @@ section.broadcasts-wrapper div.row-carousel-nav .btn-wrap.active {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  /* border-radius: 2ch; */
-  border: 2px solid var(--light-gray);
+  border-radius: 1ch;
+  border: 1px solid var(--light-gray);
 }
 
 .video-card .description-data {

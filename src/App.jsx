@@ -95,7 +95,7 @@ function App() {
 
             {/* Broadcasts Route */}
             <Route path="/broadcast" element={<BroadcastPage />}>
-              <Route path="podcasts" element={<BroadcastPage />} />
+              <Route path="podcast" element={<BroadcastPage />} />
 
               <Route path="word-of-faith" element={<BroadcastPage />} />
 

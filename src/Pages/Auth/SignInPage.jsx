@@ -43,22 +43,6 @@ const SignInPage = () => {
     }
   };
 
-  const continueAsGuest = () => {
-    localStorage.setItem("auth", JSON.stringify({ authenticated: true }));
-    localStorage.setItem(
-      "user-data",
-      JSON.stringify({
-        firstname: "Guest",
-        lastname: "User",
-        email: "user@guest.com",
-        id: "0",
-        bookmarks: [],
-        profilePicture: userImage,
-      }),
-    );
-    navigate("/");
-  };
-
   return (
     <div className="login-page-overlay">
       <div className="login-page">
@@ -112,28 +96,7 @@ const SignInPage = () => {
               />
             </span>
           </div>
-          <div
-            className="input-checkbox relative"
-            style={{
-              position: "relative",
-              gap: "0.5rem",
-              marginLeft: '1rem',
-              fontFamily: 'Poppins'
-            }}
-          >
-            <input type="checkbox" name="terms" id="terms_and_conditions" required />
-            <label htmlFor="terms_and_conditions" style={{fontSize: '0.7rem'}}>
-              I agree to the{" "}
-              <a href="/terms-and-conditions" className="terms-link" style={{color: 'blue'}}>
-                Terms and Conditions
-              </a>
-              <br />
-              and 
-              <a href="/privacy-policy" className="privacy-link" style={{color: 'blue'}}>
-                {" "} Privacy Policy
-              </a>
-            </label>
-          </div>
+          
           <div className="input-group">
             <button type="submit" className="login-btn">
               {

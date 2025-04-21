@@ -12,7 +12,6 @@ function BookContent() {
     const fetchVerses = async () => {
       try {
         const data = await getBookAndChapterVerses({ book, chapter });
-        console.log({ data });
         setVerses(data.verses);
       } catch (error) {
         console.error("Error fetching verses:", error);
@@ -50,7 +49,7 @@ function BookContent() {
       <main
         style={{
           marginTop: "3.2rem",
-          backgroundColor: "var(--card-background) !important",
+          backgroundColor: "var(--theme-background) !important",
           height: "99.99dvh",
           overflow: "auto",
         }}
@@ -72,10 +71,13 @@ function BookContent() {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    padding: "0.6rem 1rem",
+                    padding: "0.6rem",
                     fontWeight: "400",
-                    fontSize: "1.2rem",
+                    fontSize: "1.1rem",
                     listStyle: "none",
+                    backgroundColor:'var(--card-background)',
+                    margin:'0.5rem',
+                    borderRadius:'0.5rem'
                   }}
                 >
                   <div>

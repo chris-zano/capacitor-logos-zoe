@@ -59,3 +59,22 @@ div.explore-grid div.grid-card {
         transform: translateY(0);
     }
 }
+
+.tab-button {
+    font-family: "Poppins";
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+    color: var(--text);
+}
+
+.tab-button.active {
+    border-bottom: 3px solid var(--purple);
+    color: var(--purple);
+}

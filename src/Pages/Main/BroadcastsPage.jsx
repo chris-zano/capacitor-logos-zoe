@@ -24,7 +24,7 @@ const BroadcastPage = () => {
         {fileUrl === "broadcast" && (
           <Podcasts data_source={getDevotionalsPodcasts} />
         )}
-        {fileUrl === "podcasts" && (
+        {fileUrl === "podcast" && (
           <Podcasts data_source={getDevotionalsPodcasts} />
         )}
         {fileUrl === "word-of-faith" && (

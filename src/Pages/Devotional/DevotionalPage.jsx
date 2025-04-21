@@ -108,12 +108,28 @@ const DevotionalPage = ({ styles }) => {
     const currentDay = new Date().getDate();
     const currentMonth = new Date().getMonth();
     const currentYear = new Date().getFullYear();
-
-
+  
+    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  
+    const calendarElements = [];
+  
+    // Add weekdays header
+    calendarElements.push(
+      <div className="weekday-row" key="weekday-row">
+        {weekdays.map((day) => (
+          <div className="weekday" key={day}>
+            {day}
+          </div>
+        ))}
+      </div>
+    );
+  
+    // Add blank days
     for (let i = 0; i < firstDay; i++) {
-      days.push(<div className="day" key={`blank-${i}`}></div>);
+      days.push(<div className="day empty" key={`blank-${i}`}></div>);
     }
-
+  
+    // Add calendar days
     for (let day = 1; day <= daysInMonth; day++) {
       const devotional = devotionals.find((d) => {
         const devotionalDate = new Date(d.year, monthMapping[d.month], d.day);
@@ -123,10 +139,14 @@ const DevotionalPage = ({ styles }) => {
           devotionalDate.getDate() === day
         );
       });
-
+  
       days.push(
         <div
-          className={`day ${devotional ? "has-devotional" : ""} ${day === currentDay && month === currentMonth && year === currentYear ? "selected" : ""}`}
+          className={`day ${devotional ? "has-devotional" : ""} ${
+            day === currentDay && month === currentMonth && year === currentYear
+              ? "selected"
+              : ""
+          }`}
           key={day}
           onClick={() =>
             devotional &&
@@ -134,12 +154,14 @@ const DevotionalPage = ({ styles }) => {
           }
         >
           {day}
-        </div>,
+        </div>
       );
     }
-
-    return days;
+  
+    calendarElements.push(...days);
+    return calendarElements;
   };
+  
 
   return (
     <>
@@ -179,9 +201,9 @@ const DevotionalPage = ({ styles }) => {
               <ShareApi
                 button_text={<FontAwesomeIcon icon={faShareNodes} />}
                 data_to_share={{
-                  title: "Verse of the Day",
+                  title: "Today's Devotional",
                   text: `${devotional.day} - ${devotional.month} (${devotional.year})`,
-                  url: `${BASEURL}/devotionals/devotional/${devotional._id}`,
+                  url: `https://chris-zano.github.io/store.logos/devotionals?id=${devotional._id}`,
                   dialogTitle: "Share with friends",
                 }}
               />

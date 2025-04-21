@@ -14,7 +14,6 @@ function BibleChapters() {
     const fetchChapters = async () => {
       try {
         const data = await getBookChapters({ book });
-        console.log({ data });
         setChapters(data.chapters);
       } catch (error) {
         console.error("Error fetching chapters:", error);

@@ -5,8 +5,8 @@ const Carousel = ({ currentRoute }) => {
   return (
     <div className="row-carousel-nav">
       <Link
-        to="podcasts"
-        className={`btn-wrap ${currentRoute === "podcasts" || currentRoute === "broadcast" ? "active" : ""}`}
+        to="podcast"
+        className={`btn-wrap ${currentRoute === "podcast" || currentRoute === "broadcast" ? "active" : ""}`}
       >
         Podcasts
       </Link>

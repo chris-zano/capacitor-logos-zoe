@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import getSearchData from "../../data/search/search.js"; // Import your search data fetching function
+import getSearchData from "../../data/search/search.js";
 import LoadingSpinner from "../../Components/Loaders/LoadingSpinner.jsx";
+import "./SearchPage.css";
 
 const SearchPage = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -16,9 +17,9 @@ const SearchPage = () => {
         const data = await getSearchData();
         setSearchResults(data.search_data);
         setFilteredResults(data.search_data);
-        setLoading(false);
       } catch (err) {
         setError("Error loading search results");
+      } finally {
         setLoading(false);
       }
     };
@@ -33,125 +34,68 @@ const SearchPage = () => {
     const filtered = searchResults.filter(
       (result) =>
         result.title.toLowerCase().includes(input) ||
-        result.content.toLowerCase().includes(input),
+        result.content.toLowerCase().includes(input)
     );
+    console.log({filtered});
 
     setFilteredResults(filtered);
   };
 
-  if (loading) {
-    // return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
   return (
-    <>
-      {/* Search Bar */}
-      <div style={{ 
-        position: "fixed" ,
-        top: '3.4rem',
-        left: 0,
-        right: 0,
-        backgroundColor: "var(--theme-background)",
-        zIndex: 99999
-        }}>
+    <div className="search-page">
+      {/* Fixed Search Bar */}
+      <div className="search-bar-container">
         <input
           type="text"
           placeholder="Search..."
           value={query}
           onChange={handleSearch}
-          style={{
-            width: '90vw',
-            margin: '10px',
-            padding: '1rem 0',
-            fontSize: '16px',
-            textIndent: '1ch',
-            borderRadius: '50px',
-            outline: 'none',
-            border: '1px solid var(--light-gray)',
-            fontFamily: 'Inter',
-            color: 'var(--text)',
-            backgroundColor: 'var(--card-background)',
-          }}
+          className="search-input"
+          aria-label="Search"
         />
       </div>
 
-      {loading && <section
-        style={{
-          width: "100%",
-          height: "calc(80vh - 2rem)",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: 999999
-        }}
+      {/* Loader */}
+      {loading && (
+        <div className="loader-container">
+          <div className="loader" />
+          <p className="loader-text">Getting things ready for you...</p>
+        </div>
+      )}
 
-      >
-        <div style={{
-          width: "50px",
-          height: "50px",
-          border: "2px solid rgba(0, 0, 255, 0.3)",
-          borderTop: "3px solid blue",
-          borderRadius: "50%",
-          animation: "spin 1s linear infinite"
-        }} />
-        <br />
-        <p style={{ marginLeft: "10px" }}>Getting things ready for you...</p>
-        <style>
-          {`
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-            `}
-        </style>
-      </section>}
+      {/* Error */}
+      {error && <div className="error-message">{error}</div>}
 
       {/* Search Results */}
-      {query && (
-        <div style={{ marginTop: "calc(4rem + 1rem + 1rem)" }}>
+      {!loading && query && (
+        <div className="results-container">
           {filteredResults.length === 0 ? (
-            <p style={{ color: 'var(--text)' }}>No results found</p>
+            <p className="no-results">No results found</p>
           ) : (
-            filteredResults.map(result => (
-              <div key={result.id} style={{ marginBottom: '15px' }}>
-                <NavLink to={`/${result.type}s/${result.type}/${result.id}`} style={{ textDecoration: 'none', color: 'var(--text)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      padding: '10px',
-                      width: '90vw',
-                      backgroundColor: 'var(--card-background)',
-                      borderRadius: '2ch'
-                    }}
-                  >
-                    <img src={result.image} alt={result.title} style={{ width: '50px', height: '50px', marginRight: '10px', borderRadius: '50%' }} />
-                    <div>
-                      <h3
-                        style={{
-                          margin: 0,
-                          fontSize: "16px",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {result.title.length > 20
-                          ? `${result.title.slice(0, 20)}...`
-                          : result.title}
-                      </h3>
-                    </div>
-                  </div>
-                </NavLink>
-              </div>
+            filteredResults.map((result) => (
+              <NavLink
+                key={result.id}
+                to={`/${result.type}s/${result.type}/${result.id}`}
+                className="result-card"
+              >
+                <img
+                  src={result.image}
+                  alt={result.title}
+                  className="result-image"
+                />
+                <div className="result-info">
+                  <h3 className="result-title">
+                    {result.title.length > 30
+                      ? result.title.slice(0, 30) + "..."
+                      : result.title}
+                  </h3>
+                </div>
+              </NavLink>
             ))
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
