@@ -185,27 +185,39 @@
   --primary-light: #85c1e9;
   --accent: #e74c3c;
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --theme-background: #121212;           /* Base dark background */
-    --background-light: #1a1a1a;           /* Slightly lighter for contrast blocks */
-    --modal-background: #1e1e1e;           /* Modal panels */
-    --card-background: #242424;            /* Card or surface containers */
-    --light-gray: #3a3a3a;                 /* For dividers and subtle borders */
-    --text: #e0e0e0;                       /* Body text */
-    --text-safe-color: #f5f5f5;            /* Headings or highlights */
-    --white: #e0e0e0;                      /* Inverted white (for inputs/buttons) */
+    --theme-background: #121212;
+    /* Base dark background */
+    --background-light: #1a1a1a;
+    /* Slightly lighter for contrast blocks */
+    --modal-background: #1e1e1e;
+    /* Modal panels */
+    --card-background: #242424;
+    /* Card or surface containers */
+    --light-gray: #3a3a3a;
+    /* For dividers and subtle borders */
+    --text: #e0e0e0;
+    /* Body text */
+    --text-safe-color: #f5f5f5;
+    /* Headings or highlights */
+    --white: #e0e0e0;
+    /* Inverted white (for inputs/buttons) */
 
-    --theme-icon: #c0c0c0;                 /* Icons that blend but stay visible */
+    --theme-icon: #c0c0c0;
+    /* Icons that blend but stay visible */
     --border-radius: 1.5ch;
 
     /* Accent Colors - adjusted for contrast and clarity */
     --blue: #4d88ff;
     --indigo: #a689ff;
     --purple: #b388ff;
-    --primary: #4fa3e3;                    /* Main CTA (ensures ~4.8:1 contrast) */
+    --primary: #4fa3e3;
+    /* Main CTA (ensures ~4.8:1 contrast) */
     --primary-light: #7fcfff;
-    --accent: #ff5c57;                     /* Used for errors or attention-grabbing elements */
+    --accent: #ff5c57;
+    /* Used for errors or attention-grabbing elements */
 
     /* Feedback colors - match semantic meaning */
     --red: #ff5c5c;
@@ -270,8 +282,7 @@ div.container_wrapper_main {
 }
 
 body {
-  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
-    env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
   -webkit-user-select: none;
@@ -291,10 +302,15 @@ main#container-main {
   height: fit-content;
   scroll-behavior: smooth;
   margin-top: 3.2rem;
-  max-width: 480px;
-  margin-inline: auto;
   scroll-behavior: smooth;
   background-color: var(--theme-background);
+}
+
+@media screen and (min-width: 480px) {
+  main#container-main {
+    max-width: 650px;
+    margin-inline: auto;
+  }
 }
 
 blockquote {
@@ -307,15 +323,15 @@ blockquote {
   line-height: 2.5ch;
 }
 
-* > i {
+*>i {
   color: var(--text);
 }
 
-* > *::-webkit-scrollbar {
+*>*::-webkit-scrollbar {
   display: none;
 }
 
-iframe > *::-webkit-scrollbar {
+iframe>*::-webkit-scrollbar {
   display: none;
 }
 
@@ -421,7 +437,7 @@ header .search-icon {
   font-weight: 500;
 }
 
-.header_actions > * {
+.header_actions>* {
   font-size: 25px;
   color: var(--white);
 }
@@ -858,7 +874,7 @@ article.chapter #message-overview {
   padding: 0 2ch;
 }
 
-article.chapter #message > * {
+article.chapter #message>* {
   line-height: 1.8ch;
   font-family: "Raleway" !important;
   font-size: 1.5ch;
@@ -1076,6 +1092,7 @@ section#recommended-articles div.reading-articles {
   padding: 0 2ch 2ch 1ch;
   overflow-x: scroll;
 }
+
 section#recommended-articles div.reading-articles a.reading-card {
   display: flex;
   flex-direction: column;
@@ -1124,6 +1141,7 @@ main#video-player-main {
   height: 0;
   border-bottom: 1px solid var(--light-gray);
 }
+
 .video-player .iframe-container iframe {
   position: absolute;
   width: 100%;
@@ -1159,7 +1177,7 @@ details.player-des[open] summary::before {
 }
 
 .player-des summary .summary-data {
-  display:grid;
+  display: grid;
   grid-template-columns: 12% 88%;
   column-gap: 7px;
 }
@@ -1305,6 +1323,7 @@ section.related-section {
   gap: 1rem;
   width: 100%;
 }
+
 .r-video-card {
   width: 100%;
   text-decoration: none;
@@ -1312,10 +1331,12 @@ section.related-section {
   color: inherit;
   display: block;
 }
+
 .r-video-thumbnail {
   border-radius: 1ch;
   position: relative;
 }
+
 .r-video-thumbnail img {
   border-radius: 1ch;
   width: 100%;
