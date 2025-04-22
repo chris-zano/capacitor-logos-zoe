@@ -120,7 +120,7 @@ const Partnership = () => {
               <h3 className="opt-title">Partnership Options</h3>
             </div>
             <ul>
-              <OneTime
+              <PartnershipOption
                 imgSrc={online}
                 imgAlt="partner option"
                 title="Online Discipleship"
@@ -144,7 +144,7 @@ const Partnership = () => {
                     "
               />
 
-              <OneTime
+              <PartnershipOption
                 imgSrc={intercessory}
                 imgAlt="partner option"
                 title="Intercessory Prayer For Souls"
@@ -167,7 +167,7 @@ const Partnership = () => {
                     "
               />
 
-              <OneTime
+              <PartnershipOption
                 imgSrc={podcast}
                 imgAlt="partner option"
                 title="Broadcast Production & Distribution"
@@ -313,71 +313,109 @@ const Article = ({ imgSrc, imgAlt, title, content, navigate }) => (
   </article>
 );
 
-const Option = ({ imgSrc, imgAlt, title, content: _content }) => (
-  <li>
-    <div className="li-image">
-      <img src={imgSrc} alt={imgAlt} />
-    </div>
-    <div className="expandable">
-      <span className="li-title">{title}</span>
-      <a href="/donations/donate" className="donate-btn">
-        Donate
-      </a>
-      <details>{_content}</details>
-    </div>
-  </li>
-);
+const PartnershipOption = ({ imgSrc, imgAlt, title, content: _content }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <>
+      <li>
+        <section>
+          <div className="li-image">
+            <img src={imgSrc} alt={imgAlt} />
+          </div>
+          <div className="expandable">
+            <span className="li-title">{title}</span>
+            <a href="/donations/donate" className="donate-btn">
+              Donate
+            </a>
+          </div>
+        </section>
+        <details
+          className="options-group"
+          open={isOpen}
+          onToggle={(e) => setIsOpen(e.target.open)}
+        >
+          <summary
+            style={{
+              lineHeight: "2.1ch",
+              fontFamily: "Poppins",
+              fontSize: "1.1rem",
+              cursor: "pointer",
+            }}
+          >
+            {isOpen ? (
+              <span style={{ color: "var(--red)" }}>Show less</span>
+            ) : (
+              <>
+                {_content.substring(0, 90)}
+                <span style={{ color: "var(--green)" }}>...read more</span>
+              </>
+            )}
+          </summary>
+          <p
+            style={{
+              lineHeight: "2.1ch",
+              fontFamily: "Poppins",
+              fontSize: "1.1rem",
+            }}
+          >
+            {_content}
+          </p>
+        </details>
+      </li>
+    </>
+  );
+}
 
 const OneTime = ({ imgSrc, imgAlt, title, content: _content }) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
-  <>
-    <li>
-      <section>
-        <div className="li-image">
-          <img src={imgSrc} alt={imgAlt} />
-        </div>
-        <div className="expandable">
-          <span className="li-title">{title}</span>
-          <a href="/donations/one-time" className="donate-btn">
-            Donate
-          </a>
-        </div>
-      </section>
-      <details
-      className="options-group"
-      open={isOpen}
-      onToggle={(e) => setIsOpen(e.target.open)}
-    >
-      <summary
-        style={{
-          lineHeight: "2.1ch",
-          fontFamily: "Poppins",
-          fontSize: "1.1rem",
-          cursor: "pointer",
-        }}
-      >
-        {isOpen ? (
-          <span style={{ color: "var(--red)" }}>Show less</span>
-        ) : (
-          <>
-            {_content.substring(0, 90)}
-            <span style={{ color: "var(--green)" }}>...read more</span>
-          </>
-        )}
-      </summary>
-      <p
-        style={{
-          lineHeight: "2.1ch",
-          fontFamily: "Poppins",
-          fontSize: "1.1rem",
-        }}
-      >
-        {_content}
-      </p>
-    </details>
-    </li>
-  </>
-);
+    <>
+      <li>
+        <section>
+          <div className="li-image">
+            <img src={imgSrc} alt={imgAlt} />
+          </div>
+          <div className="expandable">
+            <span className="li-title">{title}</span>
+            <a href="/donations/one-time" className="donate-btn">
+              Donate
+            </a>
+          </div>
+        </section>
+        <details
+          className="options-group"
+          open={isOpen}
+          onToggle={(e) => setIsOpen(e.target.open)}
+        >
+          <summary
+            style={{
+              lineHeight: "2.1ch",
+              fontFamily: "Poppins",
+              fontSize: "1.1rem",
+              cursor: "pointer",
+            }}
+          >
+            {isOpen ? (
+              <span style={{ color: "var(--red)" }}>Show less</span>
+            ) : (
+              <>
+                {_content.substring(0, 90)}
+                <span style={{ color: "var(--green)" }}>...read more</span>
+              </>
+            )}
+          </summary>
+          <p
+            style={{
+              lineHeight: "2.1ch",
+              fontFamily: "Poppins",
+              fontSize: "1.1rem",
+            }}
+          >
+            {_content}
+          </p>
+        </details>
+      </li>
+    </>
+  );
 }
 export default Partnership;

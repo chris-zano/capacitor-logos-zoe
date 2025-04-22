@@ -16,7 +16,7 @@ const BottomNavBarComponent = () => {
   ];
 
   return (
-    <footer id="footer_bottom_navbar" className="w-[1536px]">
+    <footer id="footer_bottom_navbar" className="">
       <ul id="bottom-navigation-list">
         {navItems.map((item) => {
           const isBroadcastActive =

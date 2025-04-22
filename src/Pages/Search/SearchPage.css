@@ -17,14 +17,13 @@
     left: 0;
     width: 100%;
     background-color: var(--theme-background);
-    border-bottom: 1px solid var(--light-gray);
     z-index: 1000;
     display: flex;
     padding: 1rem 0;
 }
 
 .search-input {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     padding: 0.75rem 1rem;
     font-size: 1rem;

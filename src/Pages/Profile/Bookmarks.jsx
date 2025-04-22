@@ -33,7 +33,7 @@ function Bookmarks() {
           style={{
             listStyle: "none",
             padding: 0,
-            margin: 0,
+            margin: '0 1ch',
             display: "flex",
             flexDirection: "column",
             gap: "15px",
@@ -50,7 +50,7 @@ function Bookmarks() {
               backgroundColor: 'var(--card-background)',
               borderRadius: '1.5ch',
               border: '1px solid transparent',
-              padding: '1ch 1.3ch',
+              padding: '1ch',
             }}>
               <img src={bookmark.image} alt={bookmark.title} style={{
                 borderRadius: '50%',
@@ -65,7 +65,6 @@ function Bookmarks() {
       ) : (
         <p style={{ fontSize: "18px", color: "#666" }}>
           No bookmarks found. Start saving your favorite items! <br />
-          loading...
         </p>
       )}
     </div>

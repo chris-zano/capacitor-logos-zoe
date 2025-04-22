@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const AppBarComponent = () => {
 
   return (
-    <header id="header_top_navbar" className="w-[1536px]">
+    <header id="header_top_navbar">
       <div className="app-bar">
         <a href="/profile" className="user-icon-btn">
           <FontAwesomeIcon icon="circle-user" />

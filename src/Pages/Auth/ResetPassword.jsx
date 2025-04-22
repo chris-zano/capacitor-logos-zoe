@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import BASEURL from "../../baseUrl.js";
+import { useNavigate } from "react-router-dom";
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +31,9 @@ const ResetPasswordPage = () => {
     } catch (err) {
       setErrorMessage("An error occurred. Please try again.");
     }
-    window.location.href = "/auth/login";
+    finally{
+      navigate("/auth/login")
+    }
   };
 
   return (

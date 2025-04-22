@@ -207,7 +207,9 @@ const ProfilePage = () => {
   ];
 
   return (
-    <div className="profile-container">
+    <div className="profile-container" style={{
+      padding: "0.1ch 0ch 80px 0ch"
+    }}>
 
       {/* authenticated user profile header */}
       {
