@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import getRecommendedArticles from "../../data/articles/get_random_articles.js";
+import { NavLink } from "react-router-dom";
 
 const RecommendedReadings = () => {
   const [articles, setArticles] = useState([]);
@@ -21,19 +22,13 @@ const RecommendedReadings = () => {
     <section id="recommended-readings">
       <div className="podcast-header">
         <h2 className="section-title">Today's Highlights</h2>
-        <div>
-          {/* <a href="/explore">
-            <span>See More</span>
-            <i className="fa-solid fa-arrow-right"></i>
-          </a> */}
-        </div>
       </div>
 
       <div className="reading-articles">
         {articles.map((article) => (
-          <a
+          <NavLink
             key={article._id}
-            href={`/articles/article/${article._id}/`}
+            to={`/articles/article/${article._id}/`}
             className="reading-card"
           >
             <div className="r-card-img">
@@ -55,7 +50,7 @@ const RecommendedReadings = () => {
                 </small>
               </div>
             </div>
-          </a>
+          </NavLink>
         ))}
       </div>
     </section>

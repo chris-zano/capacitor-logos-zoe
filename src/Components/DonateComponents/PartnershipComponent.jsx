@@ -6,7 +6,7 @@ import mangreyedOut from "/src/assets/images/man-greyed-out.jpg";
 import online from "/src/assets/images/online-discipleship.jpg";
 import intercessory from "/src/assets/images/intercessory-prayer.jpg";
 import podcast from "/src/assets/images/podcast-production.jpg";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Partnership = () => {
   const navigate = useNavigate();
@@ -324,9 +324,9 @@ const PartnershipOption = ({ imgSrc, imgAlt, title, content: _content }) => {
           </div>
           <div className="expandable">
             <span className="li-title">{title}</span>
-            <a href="/donations/donate" className="donate-btn">
+            <NavLink to="/donations/donate" className="donate-btn">
               Donate
-            </a>
+            </NavLink>
           </div>
         </section>
         <details
@@ -377,9 +377,9 @@ const OneTime = ({ imgSrc, imgAlt, title, content: _content }) => {
           </div>
           <div className="expandable">
             <span className="li-title">{title}</span>
-            <a href="/donations/one-time" className="donate-btn">
+            <NavLink to="/donations/one-time" className="donate-btn">
               Donate
-            </a>
+            </NavLink>
           </div>
         </section>
         <details

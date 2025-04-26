@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import getSymbols from "../../data/articles/get_symbols.js";
+import { NavLink } from "react-router-dom";
 
 const Symbols = () => {
   const [symbols, setSymbols] = useState([]);
@@ -21,19 +22,13 @@ const Symbols = () => {
     <section id="symbols" className="symbols">
       <div className="podcast-header">
         <h2 className="section-title">Dream Symbols & Meanings</h2>
-        <div>
-          {/* <a href="/explore">
-            <span>See More</span>
-            <i className="fa-solid fa-arrow-right"></i>
-          </a> */}
-        </div>
       </div>
 
       <div className="symbols-list">
         {symbols.map((symbol) => (
-          <a
+          <NavLink
             key={symbol._id}
-            href={`/articles/article/${symbol._id}/`}
+            to={`/articles/article/${symbol._id}/`}
             className="related-article-card"
           >
             <img src={symbol.article_image} alt={symbol.article_title} />
@@ -48,7 +43,7 @@ const Symbols = () => {
                 })}
               </small>
             </div>
-          </a>
+          </NavLink>
         ))}
       </div>
     </section>

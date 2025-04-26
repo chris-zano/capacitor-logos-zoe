@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faKey,
@@ -279,7 +279,7 @@ const ProfileListItem = ({ route, icon, title, handler, subtitle }) => {
 
   return (
     <li onClick={handler}>
-      <a href={route}>
+      <NavLink to={route}>
         <FontAwesomeIcon
           icon={icon}
           style={{ color: "var(--text)" }}
@@ -288,7 +288,7 @@ const ProfileListItem = ({ route, icon, title, handler, subtitle }) => {
           <span>{title}</span>
           <small>{subtitle}</small>
         </div>
-      </a>
+      </NavLink>
     </li>
   )
 }

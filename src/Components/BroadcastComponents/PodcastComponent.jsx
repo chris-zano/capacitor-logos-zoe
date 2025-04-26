@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronLeft, faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import LoadingSpinner from '../Loaders/LoadingSpinner.jsx';
 import { useSearchParams } from 'react-router-dom';
+import { AudioContext } from '../AudioProvider.jsx';
 
 const Podcasts = ({ data_source }) => {
+  const audioRef = useContext(AudioContext);
   const [podcasts, setPodcasts] = useState([]);
   const [currentPodcast, setCurrentPodcast] = useState(null);
   const [searchParams] = useSearchParams();
@@ -69,7 +71,7 @@ const Podcasts = ({ data_source }) => {
   };
 
   useEffect(() => {
-    const audio = document.getElementById("audio1");
+    const audio = audioRef.current;
     if (audio) {
       const handleEnded = () => playNextPodcast();
       audio.addEventListener("ended", handleEnded);
@@ -78,7 +80,7 @@ const Podcasts = ({ data_source }) => {
   }, [currentPodcast, podcasts]);
 
   useEffect(() => {
-    const audio = document.getElementById("audio1");
+    const audio = audioRef.current;
     if (audio) {
       audio.addEventListener("playing", () => setAnimateBarState(true));
       audio.addEventListener("pause", () => setAnimateBarState(false));

@@ -40,7 +40,7 @@ function Bookmarks() {
           }}
         >
           {bookmarks.map((bookmark, index) => (
-            <a key={index} href={getRedirectUrl({type: bookmark.type, id: bookmark.id})} style={{
+            <NavLink key={index} to={getRedirectUrl({type: bookmark.type, id: bookmark.id})} style={{
               display: 'flex',
               alignItems: 'center',
               gap: '1ch',
@@ -59,7 +59,7 @@ function Bookmarks() {
               <div className="article-details" sty>
                 <p>{bookmark.title.length > 21 ? bookmark.title.substring(0, 31)+ '...' : bookmark.title}</p>
               </div>
-            </a>
+            </NavLink>
           ))}
         </ul>
       ) : (

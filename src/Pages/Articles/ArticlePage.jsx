@@ -1,6 +1,6 @@
 import { faBookmark, faTrash } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -31,7 +31,6 @@ const ArticlePage = () => {
         `${BASEURL}/articles/${articleData.article._id}/comments`,
       );
       const data = await response.json();
-      console.log({ comments: data });
       setComments(data.comments.reverse());
     } catch (error) {
       console.error("Error fetching comments:", error);
@@ -41,7 +40,6 @@ const ArticlePage = () => {
   const fetchArticle = async () => {
     try {
       const data = await getArticleById(id);
-      console.log({ data });
       setArticleData(data);
     } catch (error) {
       console.error("Error fetching article data:", error);
@@ -227,8 +225,8 @@ const ArticlePage = () => {
               <h2>Continue Reading</h2>
               <div className="reading-articles">
                 {relatedArticles.map((related, index) => (
-                  <a
-                    href={`/articles/article/${related._id}/`}
+                  <NavLink
+                    to={`/articles/article/${related._id}/`}
                     className="reading-card"
                     key={index}
                   >
@@ -254,17 +252,17 @@ const ArticlePage = () => {
                         </small>
                       </div>
                     </div>
-                  </a>
+                  </NavLink>
                 ))}
               </div>
             </>
           ) : (
-            <a
-              href="/donate"
+            <NavLink
+              to="/donate"
               style={{ textDecoration: "underline", color: "blue" }}
             >
               Support our mission with a donation
-            </a>
+            </NavLink>
           )}
         </section>
 

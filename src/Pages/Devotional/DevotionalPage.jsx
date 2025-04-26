@@ -108,11 +108,11 @@ const DevotionalPage = ({ styles }) => {
     const currentDay = new Date().getDate();
     const currentMonth = new Date().getMonth();
     const currentYear = new Date().getFullYear();
-  
+
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  
+
     const calendarElements = [];
-  
+
     // Add weekdays header
     calendarElements.push(
       <div className="weekday-row" key="weekday-row">
@@ -123,12 +123,12 @@ const DevotionalPage = ({ styles }) => {
         ))}
       </div>
     );
-  
+
     // Add blank days
     for (let i = 0; i < firstDay; i++) {
       days.push(<div className="day empty" key={`blank-${i}`}></div>);
     }
-  
+
     // Add calendar days
     for (let day = 1; day <= daysInMonth; day++) {
       const devotional = devotionals.find((d) => {
@@ -139,29 +139,31 @@ const DevotionalPage = ({ styles }) => {
           devotionalDate.getDate() === day
         );
       });
-  
+
       days.push(
         <div
-          className={`day ${devotional ? "has-devotional" : ""} ${
-            day === currentDay && month === currentMonth && year === currentYear
+          className={`day ${devotional ? "has-devotional" : ""} ${day === currentDay && month === currentMonth && year === currentYear
               ? "selected"
               : ""
-          }`}
+            }`}
           key={day}
-          onClick={() =>
+          onClick={() => {
             devotional &&
-            (window.location.href = `/devotionals/devotional/${devotional._id}`)
+              (navigate(`/devotionals/devotional/${devotional._id}`))
+            
+            setModalOpen(false)
+          }
           }
         >
           {day}
         </div>
       );
     }
-  
+
     calendarElements.push(...days);
     return calendarElements;
   };
-  
+
 
   return (
     <>
@@ -182,7 +184,7 @@ const DevotionalPage = ({ styles }) => {
           <div className="row-column">
             <div className="listen">
               {devotional.type === "old" ? (
-                <div onClick={() => (window.location.href = "/broadcast")}>
+                <div onClick={() => (navigate("/broadcast"))}>
                   <FontAwesomeIcon icon={faCirclePlay} />
                   <span>Listen to podcast discussion</span>
                 </div>

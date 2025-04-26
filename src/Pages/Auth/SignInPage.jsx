@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import BASEURL from "../../baseUrl.js";
-import userImage from "../../assets/images/user.png";
+import logo from "../../assets/images/icon-foreground.png";
 
 const SignInPage = () => {
   const [email, setEmail] = useState("");
@@ -44,6 +44,9 @@ const SignInPage = () => {
   return (
     <div className="signin-container">
       <div className="signin-card">
+        <div className="logo-wrapper-login">
+          <img src={logo} alt="logo" />
+        </div>
         <h2 className="signin-title">Login to Your Account</h2>
 
         {errorMessage && (
@@ -102,14 +105,14 @@ const SignInPage = () => {
         <div className="signin-links">
           <p>
             Don't have an account?{" "}
-            <a href="/auth/register" className="signin-link">
+            <NavLink to="/auth/register" className="signin-link">
               Create one
-            </a>
+            </NavLink>
           </p>
           <p>
-            <a href="/auth/forgot-password" className="signin-link">
+            <NavLink to="/auth/forgot-password" className="signin-link">
               Forgot password?
-            </a>
+            </NavLink>
           </p>
         </div>
       </div>
@@ -117,11 +120,8 @@ const SignInPage = () => {
       <style>{`
         .signin-container {
           font-family: 'Poppins';
-          min-height: 100vh;
+          min-height: 100svh;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(135deg, #ebf4ff 0%, #e0e7ff 100%);
           padding: 0 16px;
         }
 
@@ -129,8 +129,9 @@ const SignInPage = () => {
           width: 100%;
           max-width: 28rem;
           background: white;
-          border-radius: 1rem;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          border-top-left-radius: 1rem;
+          border-top-right-radius: 1rem;
+          // box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
           padding: 1rem;
         }
 
@@ -140,6 +141,15 @@ const SignInPage = () => {
           text-align: center;
           color: #1e293b;
           margin-bottom: 1.5rem;
+        }
+
+        .logo-wrapper-login {
+          width: 100%;
+          height: 55px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
         }
 
         .signin-error {

@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import ShareApi from "../../NativeApis/Share.jsx";
 import getVideoById from "../../data/videos/get_video_by_id.js";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import LoadingSpinner from "../../Components/Loaders/LoadingSpinner.jsx";
 import logo from "../../assets/images/ali.jpg";
 import { fetchYouTubeVideoDetails } from "../../data/videos/get_video_data.js";
@@ -113,9 +113,9 @@ const VideoPlayerPage = ({ match }) => {
           ) : (
             <div className="related-videos-grid">
               {videos.map((v) => (
-                <a
+                <NavLink
                   key={v._id}
-                  href={`/videos/video/${v._id}/${v.category}`}
+                  to={`/videos/video/${v._id}/${v.category}`}
                   className="video-card"
                   id={v._id}
 
@@ -130,7 +130,7 @@ const VideoPlayerPage = ({ match }) => {
                           position: 'absolute',
                           bottom: '9%',
                           right: '2%',
-                          backgroundColor: 'var(--red)',
+                          backgroundColor: 'black',
                           color: 'white',
                           width: '55px',
                           height: '30px',
@@ -181,7 +181,7 @@ const VideoPlayerPage = ({ match }) => {
                       </span>
                     </div>
                   </div>
-                </a>
+                </NavLink>
               ))}
             </div>
           )}

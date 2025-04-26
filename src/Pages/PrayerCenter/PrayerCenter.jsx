@@ -56,7 +56,7 @@ const PrayerRequestForm = () => {
   };
 
   return (
-    <div style={{ backgroundColor: 'var(--theme-background)' }}>
+    <div style={{ backgroundColor: 'var(--theme-background)' }} className="poppins-regular">
       <header>
         <div
           id="read-appbar"
@@ -116,7 +116,7 @@ const PrayerRequestForm = () => {
       >
         <form
           method="post"
-          className="prayer-req-form"
+          className="prayer-req-form poppins-regular"
           id="prayerRequestForm"
           onSubmit={handleSubmit}
           style={{
@@ -154,7 +154,7 @@ const PrayerRequestForm = () => {
                 border: "1px solid #ccc",
                 borderRadius: "5px",
                 fontSize: "16px",
-                fontFamily: "Raleway",
+                fontFamily: "Poppins",
               }}
             />
           </div>
@@ -188,7 +188,8 @@ const PrayerRequestForm = () => {
                 border: '1px solid #ccc',
                 borderRadius: '5px',
                 fontSize: '16px',
-                fontFamily: 'Raleway',
+                fontFamily: "Poppins",
+
               }}
             />
           </div>
@@ -200,7 +201,7 @@ const PrayerRequestForm = () => {
                 display: "block",
                 marginBottom: "5px",
                 fontSize: "16px",
-                fontWeight: 600,
+                fontWeight: 600
               }}
             >
               Prayer Title
@@ -222,7 +223,7 @@ const PrayerRequestForm = () => {
                 border: '1px solid #ccc',
                 borderRadius: '5px',
                 fontSize: '16px',
-                fontFamily: 'Raleway',
+                fontFamily: "Poppins"
               }}
             />
           </div>
@@ -255,7 +256,7 @@ const PrayerRequestForm = () => {
                 border: "1px solid #ccc",
                 borderRadius: "5px",
                 fontSize: "16px",
-                fontFamily: "Raleway",
+                fontFamily: "Poppins",
               }}
             >
               <option value="" disabled>
@@ -314,6 +315,7 @@ const PrayerRequestForm = () => {
                 border: "1px solid #ccc",
                 borderRadius: "5px",
                 resize: "none",
+                fontFamily:"Poppins"
               }}
             />
           </div>
@@ -361,7 +363,7 @@ const PrayerRequestForm = () => {
                 border: "1px solid transparent",
                 borderRadius: "1ch",
                 fontSize: "1rem",
-                fontFamily: "Raleway",
+                fontFamily: "Poppins",
               }}
             />
           </div>

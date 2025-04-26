@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import BASEURL from "../../baseUrl.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import logo from "../../assets/images/icon-foreground.png";
+
 
 const SignUpPage = () => {
   const [step, setStep] = useState(1);
@@ -55,6 +57,9 @@ const SignUpPage = () => {
   return (
     <div className="signin-container">
       <div className="signin-card">
+      <div className="logo-wrapper-login">
+          <img src={logo} alt="logo" />
+        </div>
         <h2 className="signin-title">Create an Account</h2>
 
         {errorMessage && <div className="signin-error">{errorMessage}</div>}
@@ -132,13 +137,13 @@ const SignUpPage = () => {
               <input type="checkbox" id="terms_and_conditions" required />
               <label htmlFor="terms_and_conditions" className="terms-label">
                 I agree to the{" "}
-                <a href="/terms-and-conditions" className="terms-link">
+                <NavLink to="/terms-and-conditions" className="terms-link">
                   Terms and Conditions
-                </a>{" "}
+                </NavLink>{" "}
                 and{" "}
-                <a href="/privacy-policy" className="privacy-link">
+                <NavLink to="/privacy-policy" className="privacy-link">
                   Privacy Policy
-                </a>
+                </NavLink>
               </label>
             </div>
 
@@ -155,9 +160,9 @@ const SignUpPage = () => {
         <div className="signin-links">
           <p>
             Already have an account?{" "}
-            <a href="/auth/login" className="signin-link">
+            <NavLink to="/auth/login" className="signin-link">
               Login
-            </a>
+            </NavLink>
           </p>
         </div>
       </div>
@@ -165,11 +170,8 @@ const SignUpPage = () => {
       <style>{`
         .signin-container {
           font-family: 'Poppins';
-          min-height: 100vh;
+          min-height: 100svh;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(135deg, #ebf4ff 0%, #e0e7ff 100%);
           padding: 0 16px;
         }
 
@@ -177,8 +179,9 @@ const SignUpPage = () => {
           width: 100%;
           max-width: 28rem;
           background: white;
-          border-radius: 1rem;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          border-top-left-radius: 1rem;
+          border-top-right-radius: 1rem;
+          // box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
           padding: 1rem;
         }
 
@@ -188,6 +191,15 @@ const SignUpPage = () => {
           text-align: center;
           color: #1e293b;
           margin-bottom: 1.5rem;
+        }
+
+        .logo-wrapper-login {
+          width: 100%;
+          height: 55px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
         }
 
         .signin-error {

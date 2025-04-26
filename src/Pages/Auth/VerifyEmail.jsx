@@ -73,11 +73,8 @@ const VerifyEmailPage = () => {
       <style>{`
         .signin-container {
           font-family: 'Poppins';
-          min-height: 100vh;
+          min-height: 100svh;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(135deg, #ebf4ff 0%, #e0e7ff 100%);
           padding: 0 16px;
         }
 
@@ -85,8 +82,9 @@ const VerifyEmailPage = () => {
           width: 100%;
           max-width: 28rem;
           background: white;
-          border-radius: 1rem;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          border-top-left-radius: 1rem;
+          border-top-right-radius: 1rem;
+          // box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
           padding: 1rem;
         }
 

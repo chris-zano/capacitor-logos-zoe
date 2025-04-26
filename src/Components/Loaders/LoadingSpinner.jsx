@@ -10,9 +10,9 @@ const LoadingSpinner = () => (
         padding: "20px",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "start",
+        justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.8)",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
         zIndex: 999999
     }}>
         <div style={{
@@ -24,7 +24,6 @@ const LoadingSpinner = () => (
             animation: "spin 1s linear infinite"
         }} />
         <br />
-        <p style={{ marginLeft: "10px" }}>Getting things ready for you...</p>
         <style>
             {`
                 @keyframes spin {

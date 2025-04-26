@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import getSpiritualLaws from "../../data/articles/get_spiritual_laws.js";
+import { NavLink } from "react-router-dom";
 
 function SpiritualLawsComponent() {
     const [articles, setArticles] = useState([]);
@@ -20,19 +21,13 @@ function SpiritualLawsComponent() {
     <section id="spiritual-laws" className="symbols">
       <div className="podcast-header">
         <h2 className="section-title">Spiritual Laws</h2>
-        <div>
-          {/* <a href="/explore">
-            <span>See More</span>
-            <i className="fa-solid fa-arrow-right"></i>
-          </a> */}
-        </div>
       </div>
 
       <div className="symbols-list">
         {articles.map((article) => (
-          <a
+          <NavLink
             key={article._id}
-            href={`/articles/article/${article._id}/`}
+            to={`/articles/article/${article._id}/`}
             className="related-article-card"
           >
             <img src={article.article_image} alt={article.article_title} />
@@ -47,7 +42,7 @@ function SpiritualLawsComponent() {
                 })}
               </small>
             </div>
-          </a>
+          </NavLink>
         ))}
       </div>
     </section>

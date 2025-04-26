@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Import specific icons
 import getCategories from "../../data/explore/get_categories.js";
 import "../../styles/explore.css";
+import { NavLink } from "react-router-dom";
 
 const ExplorePage = () => {
   const [categories, setCategories] = useState([]);
@@ -40,8 +41,8 @@ const ExplorePage = () => {
               }}
               data-url={`/categories/${category._id}`}
             >
-              <a
-                href={
+              <NavLink
+                to={
                   isSpecialCategory
                     ? `/categories/chapters/${category._id}`
                     : `/categories/${category._id}`
@@ -59,7 +60,7 @@ const ExplorePage = () => {
                 <div className="card-description">
                   <p>{category.description}</p>
                 </div>
-              </a>
+              </NavLink>
             </div>
           );
         })}
@@ -71,7 +72,7 @@ const ExplorePage = () => {
           }}
           data-url="/prayer-center"
         >
-          <a href="/prayer-center">
+          <NavLink to="/prayer-center">
             <div className="card-icon">
               <FontAwesomeIcon icon={faBuilding} style={{ color: "pink" }} />
             </div>
@@ -81,7 +82,7 @@ const ExplorePage = () => {
             <div className="card-description">
               <p>Submit a prayer request today.</p>
             </div>
-          </a>
+          </NavLink>
         </div>
         <div
           className="grid-card"
@@ -90,7 +91,7 @@ const ExplorePage = () => {
           }}
           data-url="/devotionals"
         >
-          <a href="/bible">
+          <NavLink to="/bible">
             <div className="card-icon">
               <FontAwesomeIcon icon={faBible} style={{ color: "blue" }} />
             </div>
@@ -102,7 +103,7 @@ const ExplorePage = () => {
                 Explore the timeless wisdom and teachings of the word of God
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>

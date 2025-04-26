@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/spdd.archives.css";
 import getDevotionals from "../../data/devotionals/get_all_devotionals.js";
+import { NavLink } from "react-router-dom";
 
 const Devotionals = () => {
   const [devotionals, setDevotionals] = useState({});
@@ -49,7 +50,7 @@ const Devotionals = () => {
               .reverse()
               .map((devotional, index) => (
                 <li key={index}>
-                  <a href={`/devotionals/devotional/${devotional._id}`}>
+                  <NavLink to={`/devotionals/devotional/${devotional._id}`}>
                     <img
                       src={devotional.theme_picture_url}
                       alt="Devotional Image"
@@ -59,7 +60,7 @@ const Devotionals = () => {
                       <p>{`${devotional.day} ${devotional.month} ${devotional.year}`}</p>
                       <button>Read It</button>
                     </div>
-                  </a>
+                  </NavLink>
                 </li>
               ))}
           </ul>

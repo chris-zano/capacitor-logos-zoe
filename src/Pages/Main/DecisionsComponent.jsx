@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import getDecisions from "../../data/articles/get_decisions.js";
+import { NavLink } from "react-router-dom";
 
 const DecisionsComponent = () => {
   const [decisions, setDecisions] = useState([]);
@@ -21,19 +22,13 @@ const DecisionsComponent = () => {
     <section id="recommended-readings">
       <div className="podcast-header">
         <h2 className="section-title">Steps of Faith</h2>
-        <div>
-          {/* <a href="/explore">
-            <span>See More</span>
-            <i className="fa-solid fa-arrow-right"></i>
-          </a> */}
-        </div>
       </div>
 
       <div className="reading-articles">
         {decisions.map((article) => (
-          <a
+          <NavLink
             key={article._id}
-            href={`/articles/article/${article._id}/`}
+            to={`/articles/article/${article._id}/`}
             className="reading-card"
           >
             <div className="r-card-img">
@@ -55,7 +50,7 @@ const DecisionsComponent = () => {
                 </small>
               </div>
             </div>
-          </a>
+          </NavLink>
         ))}
       </div>
     </section>

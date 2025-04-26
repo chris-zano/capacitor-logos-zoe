@@ -3,10 +3,15 @@ import { createRoot } from "react-dom/client";
 import "./styles/index.css";
 import "./fontawesome";
 import App from "./App.jsx";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom"; // Import HashRouter
+import { AudioProvider } from "./Components/AudioProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <HashRouter>
+      <AudioProvider>
+        <App />
+      </AudioProvider>
+    </HashRouter>
+  </StrictMode>
 );

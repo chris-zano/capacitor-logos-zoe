@@ -57,9 +57,9 @@ const WelcomePage = () => {
       <style>{`
         .welcome-wrapper {
           font-family: 'Poppins', sans-serif;
-          height: 100vh;
+          height: 100svh;
           position: relative;
-          background: #f9fafb;
+          background: #ffffff;
           overflow: hidden;
         }
 
@@ -78,6 +78,7 @@ const WelcomePage = () => {
           width: 100%;
           height: 100%;
           object-fit: contain;
+          object-position: center;
           opacity: 0;
           transition: opacity 0.6s ease-in-out;
         }
@@ -129,12 +130,12 @@ const WelcomePage = () => {
 
         .skip-link {
         font-family: 'Poppins', sans-serif;
-        font-size: 0.785rem;
+        font-size: 1rem;
         color: white;
         text-decoration: none;
         background-color: rgba(34, 139, 34, 0.9); /* greenish background with transparency */
         padding: 1rem 3rem;
-        border-radius: 1rem;
+        border-radius: 50px;
         transition: background-color 0.3s ease;
         backdrop-filter: blur(6px); /* frosted glass effect */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* soft shadow for depth */

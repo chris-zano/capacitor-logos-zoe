@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import getCategoryById from "../../data/explore/get_category_by_id.js";
@@ -88,7 +88,7 @@ const CategoryArticle = () => {
                 <span>Home</span>
               </button>
             </div>
-            <div className="drop-down-item">
+            {/* <div className="drop-down-item">
               <button
               // onClick={ async () => {
               //   const shareData = {
@@ -104,7 +104,7 @@ const CategoryArticle = () => {
                 <FontAwesomeIcon icon={faShareNodes} />
                 <span>Share</span>
               </button>
-            </div>
+            </div> */}
             <div className="drop-down-item"></div>
           </div>
         </div>
@@ -187,12 +187,12 @@ const CategoryArticle = () => {
                 </div>
               </>
             ) : (
-              <a
-                href="/donate"
+              <NavLink
+                to="/donate"
                 style={{ textDecoration: "underline", color: "blue" }}
               >
                 Support our mission with a donation
-              </a>
+              </NavLink>
             )}
           </section>
         </div>

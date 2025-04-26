@@ -4,9 +4,10 @@ import BottomNavBarComponent from "../Components/BottomNavBar.jsx";
 
 const AuthenticatedLayout = () => {
   const user = JSON.parse(localStorage.getItem("user-data"));
+  const navigate = useNavigate()
 
   if (!user) {
-    window.location.href = "/auth/welcome";
+    navigate("/auth/welcome");
     return null;
   }
 

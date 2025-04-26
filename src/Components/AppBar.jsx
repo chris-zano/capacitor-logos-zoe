@@ -7,9 +7,9 @@ const AppBarComponent = () => {
   return (
     <header id="header_top_navbar">
       <div className="app-bar">
-        <a href="/profile" className="user-icon-btn">
+        <NavLink to="/profile" className="user-icon-btn">
           <FontAwesomeIcon icon="circle-user" />
-        </a>
+        </NavLink>
         <NavLink to="/" className="logo-title">
           <img src={logoImage} alt="Logo" className="logo" />
           <h1 className="title">
@@ -17,9 +17,9 @@ const AppBarComponent = () => {
           </h1>
         </NavLink>
         <div className="header_actions">
-          <a href="/search" className="search-icon">
+          <NavLink to="/search" className="search-icon">
             <FontAwesomeIcon icon="magnifying-glass" />
-          </a>
+          </NavLink>
         </div>
       </div>
     </header>

@@ -4,6 +4,7 @@ import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../Loaders/LoadingSpinner.jsx";
 import logo from '../../assets/images/ali.jpg'
 import { fetchYouTubeVideoDetails } from "../../data/videos/get_video_data.js";
+import { NavLink } from "react-router-dom";
 
 function VideosComponent({ data_source, category }) {
 
@@ -73,9 +74,9 @@ function VideosComponent({ data_source, category }) {
         videos.map((video) => {
           const cleanedIframe = video.video_fullText.replace(/\\"/g, '"');
           return (
-            <a
+            <NavLink
               key={video._id}
-              href={`/videos/video/${video._id}/${video.category}`}
+              to={`/videos/video/${video._id}/${video.category}`}
               className="video-card"
               id={video._id}
 
@@ -141,7 +142,7 @@ function VideosComponent({ data_source, category }) {
                   </span>
                 </div>
               </div>
-            </a>
+            </NavLink>
           );
         })
       )}

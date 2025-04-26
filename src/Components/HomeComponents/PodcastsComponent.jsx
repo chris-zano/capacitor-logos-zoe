@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import getRandomPodcasts from "../../data/podcasts/get_random_podcasts";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const PodcastComponent = () => {
   const [podcasts, setPodcasts] = useState([]);
@@ -32,10 +32,10 @@ const PodcastComponent = () => {
       <div className="podcast-header">
         <h2 className="section-title">Listen Now</h2>
         <div>
-          <a href="/broadcast">
+          <NavLink to="/broadcast">
             <span>View All</span>
             <FontAwesomeIcon icon={faArrowRight} />
-          </a>
+          </NavLink>
         </div>
       </div>
 

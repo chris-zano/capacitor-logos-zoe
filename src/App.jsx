@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router, // Changed import to HashRouter
   Routes,
   Route,
   Navigate,
@@ -54,8 +54,8 @@ function App() {
   useEffect(() => {
     CapacitorApp.addListener("backButton", (event) => {
       if (
-        window.location.pathname === "/auth/welcome" ||
-        window.location.pathname === "/"
+        window.location.hash === "#/auth/welcome" ||
+        window.location.hash === "#/"
       ) {
         CapacitorApp.exitApp();
       } else {
@@ -67,7 +67,7 @@ function App() {
     };
   }, []);
   return (
-    <Router>
+    <>
       {/* scroll to top */}
       <ScrollToTop />
       <ErrorBoundary>
@@ -167,10 +167,9 @@ function App() {
           />
           {/* catch all route */}
           <Route path="*" element={<NotFoundPage />} />
-
         </Routes>
       </ErrorBoundary>
-    </Router>
+    </>
   );
 }
 

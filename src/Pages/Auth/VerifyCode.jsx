@@ -1,17 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BASEURL from "../../baseUrl.js";
+import ConfirmationModal from "../../Components/ConfirmationModal.jsx";
 
 const VerifyCodePage = () => {
+  const DEFAULT_TIMEOUT_IN_SECONDS = 60;
   const [code, setCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false); // Loading state for the button
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [resendBtnEnabled, setResendBtnEnabled] = useState(false);
+  const [secondsRemaining, setSecondsRemaining] = useState(DEFAULT_TIMEOUT_IN_SECONDS);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalTitle, setModalTitle] = useState("Confirm Action");
+  const [modalCallback, setModalCallback] = useState(null);
+
+  useEffect(() => {
+    let timer;
+    if (secondsRemaining > 0) {
+      timer = setInterval(() => {
+        setSecondsRemaining(prev => prev - 1);
+      }, 1000);
+    } else {
+      setResendBtnEnabled(true);
+      clearInterval(timer);
+    }
+
+    return () => clearInterval(timer);
+  }, [secondsRemaining]);
+
+  const handleResendCode = async () => {
+    const email = sessionStorage.getItem("temp-email");
+    console.log({ email })
+    console.log("resend button clicked")
+    try {
+      const response = await fetch(`${BASEURL}/auth/verify-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      setSecondsRemaining(DEFAULT_TIMEOUT_IN_SECONDS);
+      setResendBtnEnabled(false);
+    } catch (error) {
+      console.error("Error resending code:", error);
+    }
+  };
 
   const handleVerify = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-    setLoading(true); // Start loading animation
+    setLoading(true);
 
     const email = sessionStorage.getItem("temp-email");
 
@@ -25,68 +67,100 @@ const VerifyCodePage = () => {
       });
 
       const result = await response.json();
-      setLoading(false); // Stop loading animation
+      setLoading(false);
 
       if (response.ok) {
-        alert("Verification successful!");
+
+
+        setModalTitle('Email Confirmed');
+        setModalMessage('Your email has been confirmed successfully.');
+        setShowModal(true)
         localStorage.setItem("auth", JSON.stringify({ authenticated: true }));
         localStorage.setItem("user-data", JSON.stringify(result.user));
 
-        const reset = localStorage.getItem("reset");
-        if (reset !== "true") {
-          navigate("/");
-        } else {
-          localStorage.setItem("reset", "false");
-          navigate("/auth/new-password");
-        }
       } else {
         setErrorMessage(result.message || "Verification failed.");
       }
     } catch (err) {
-      setLoading(false); // Stop loading animation on error
+      setLoading(false);
       setErrorMessage("An error occurred. Please try again.");
     }
   };
 
   return (
-    <div className="signin-container">
-      <div className="signin-card">
-        <h2 className="signin-title">Verify Your Email</h2>
+    <>
+      <ConfirmationModal
+        title="Confirm Action"
+        message="Are you sure you want to proceed?"
+        isOpen={showModal}
+        onConfirm={() => {
+          setShowModal(false)
+          const reset = localStorage.getItem("reset");
+          if (reset !== "true") {
+            navigate("/");
+          } else {
+            localStorage.setItem("reset", "false");
+            navigate("/auth/new-password");
+          } s
+        }}
+      />
+      <div className="signin-container">
+        <div className="signin-card">
+          <h2 className="signin-title">Enter your verification code</h2>
 
-        {errorMessage && <div className="signin-error">{errorMessage}</div>}
+          {errorMessage && <div className="signin-error">{errorMessage}</div>}
 
-        <form onSubmit={handleVerify} className="signin-form">
-          <div className="form-group">
-            <label htmlFor="code" className="form-label">Verification Code</label>
-            <input
-              id="code"
-              type="text"
-              className="form-input"
-              placeholder="Enter the 6-digit code"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              required
-            />
-          </div>
+          <form onSubmit={handleVerify} className="signin-form">
+            <div className="form-group">
+              <label htmlFor="code" className="form-label">Verification Code</label>
+              <input
+                id="code"
+                type="text"
+                className="form-input"
+                placeholder="Enter the 6-digit code"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                required
+              />
+            </div>
 
-          <button type="submit" className="submit-button" disabled={loading}>
-            {loading ? (
-              <div className="loader"></div> // Loading spinner
-            ) : (
-              "Verify"
-            )}
-          </button>
-        </form>
-      </div>
+            <div style={{ display: 'flex', justifyContent: 'end' }}>
+              <small>
+                Didn't receive the code?{" "}
+                <button
+                  type="button"
+                  style={{
+                    color: `${resendBtnEnabled ? "#4f46e5" : "grey"}`,
+                    border: 'none',
+                    outline: 'none',
+                    background: 'none',
+                    fontFamily: 'inherit',
+                    cursor: resendBtnEnabled ? 'pointer' : 'not-allowed',
+                  }}
+                  onClick={handleResendCode}
+                >
+                  Resend
+                </button>
+                {!resendBtnEnabled && ` (${secondsRemaining})`}
+              </small>
+            </div>
 
-      <style>{`
+            <button type="submit" className="submit-button" disabled={loading}>
+              {loading ? (
+                <div className="loader"></div>
+              ) : (
+                "Verify"
+              )}
+            </button>
+          </form>
+        </div>
+
+        {/* Your exact same styling here */}
+        <style>{`
         .signin-container {
           font-family: 'Poppins';
-          min-height: 100vh;
+          min-height: 100svh;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(135deg, #ebf4ff 0%, #e0e7ff 100%);
           padding: 0 16px;
         }
 
@@ -94,8 +168,8 @@ const VerifyCodePage = () => {
           width: 100%;
           max-width: 28rem;
           background: white;
-          border-radius: 1rem;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          border-top-left-radius: 1rem;
+          border-top-right-radius: 1rem;
           padding: 1rem;
         }
 
@@ -206,7 +280,8 @@ const VerifyCodePage = () => {
           100% { transform: rotate(360deg); }
         }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 };
 
