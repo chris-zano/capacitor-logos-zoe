@@ -184,6 +184,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --blue: #1e89e0;
     --theme-background: #121212;
     /* Base dark background */
     --background-light: #1a1a1a;

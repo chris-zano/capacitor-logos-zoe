@@ -54,7 +54,7 @@ const VerseComponent = () => {
             <a
               href={dailyVerse.verseurl}
               id="verse-ref"
-              target="_blank"
+              target="_bla  nk"
               rel="noopener noreferrer"
             >
               {dailyVerse.reference} ({dailyVerse.version})
